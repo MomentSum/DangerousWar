@@ -2,11 +2,6 @@ extends Node2D
 
 class_name CharacterAI
 
-signal attack()
-
-
-@export var attack_distance: float
-
 @export var attack_wait: float
 @export var refind_target_wait: float = 0.1
 @export var character: Character
@@ -15,7 +10,8 @@ signal attack()
 var target: Character:
 	get:
 		return character.target
-
+	set(new):
+		character.target = new
 
 
 var _direction_to_target: Vector2:
@@ -40,12 +36,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
 		character.set_sprite_rotation(character.position.direction_to(target.position).angle())
-	if _distance_to_target < attack_distance:
-		if $AttackTimer.time_left == 0:
-			$AttackTimer.start()
-			_on_attack_timer_timeout()
-	else:
-		$AttackTimer.stop()
 
 
 func find_target() -> void:
@@ -68,7 +58,3 @@ func find_target() -> void:
 
 func _on_refind_target_timer_timeout() -> void:
 	find_target()
-
-
-func _on_attack_timer_timeout() -> void:
-	attack.emit()

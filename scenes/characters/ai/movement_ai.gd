@@ -3,7 +3,9 @@ extends CharacterAI
 
 class_name MovementAI
 
+
 @export var target_distance_min: float
+@export var target_distance_max: float
 @export var teammate_away_distance_max: float
 @export var teammate_away_weight_max: float = 1
 @export var move_speed: float
@@ -24,7 +26,7 @@ func _process(delta: float) -> void:
 
 func get_direction_follow_target() -> Vector2:
 	if is_instance_valid(target):
-		if _distance_to_target > attack_distance:
+		if _distance_to_target > target_distance_max:
 			return _direction_to_target
 		if _distance_to_target < target_distance_min:
 			return -_direction_to_target
