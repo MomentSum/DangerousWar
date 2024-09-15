@@ -29,9 +29,9 @@ offset_top = -23.0
 offset_right = 16.0
 offset_bottom = -18.0
 
-[node name="Coll" type="CollisionShape2D" parent="." index="2"]
+[node name="Coll" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_ben8p")
 
-[node name="Coll2" type="CollisionShape2D" parent="." index="3"]
+[node name="Coll2" type="CollisionShape2D" parent="Hurtbox" index="1"]
 position = Vector2(9.5, 8)
 shape = SubResource("RectangleShape2D_evqvc")

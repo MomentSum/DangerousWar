@@ -1,42 +1,28 @@
-extends Area2D
+extends Node2D
 
 class_name Character
 
-signal be_hurt(damage: int)
-signal died()
-
 @export var team_group: StringName
 
-@export var health: int
-@export var defense: int
 @export var aggression_multiple: float = 1
 
 @onready var sprite :Node2D = $Sprite
 
 var target: Character
 
+@onready var hurtbox: Hurtbox = $Hurtbox
+
 func _ready() -> void:
 	if not team_group.is_empty():
+		hurtbox.team_group = team_group
 		add_to_group(team_group)
 	
 	var color = get_tree().get_first_node_in_group(team_group+"_color")
 	if is_instance_valid(color):
 		sprite.modulate = color.modulate
 	
-	$HealthBar.max_value = health
-	$HealthBar.value = health
-
-
-func be_attacked(damage: int) -> void:
-	damage *= randf_range(0.8,1.2)
-	damage = max(damage - defense, 1)
-	health = max(health - damage, 0)
-	be_hurt.emit(damage)
-	if health <= 0:
-		died.emit()
-		queue_free()
-	
-	$HealthBar.value = health
+	#$HealthBar.max_value = health
+	#$HealthBar.value = health
 
 
 func set_sprite_rotation(new: float) -> void:

@@ -14,9 +14,6 @@ func _on_movement_ai_attack() -> void:
 	$Anim.play(\"attack\")
 "
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t23b2"]
-radius = 12.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg87i"]
 size = Vector2(80, 546.667)
 
@@ -105,14 +102,13 @@ _data = {
 "attack": SubResource("Animation_888p5")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t23b2"]
+radius = 12.0
+
 [node name="Swordsman" instance=ExtResource("1_knicm")]
 script = SubResource("GDScript_smqq5")
-health = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_t23b2")
-
-[node name="MovementAI" parent="." index="1" node_paths=PackedStringArray("character") instance=ExtResource("3_esjob")]
+[node name="MovementAI" parent="." index="0" node_paths=PackedStringArray("character") instance=ExtResource("3_esjob")]
 target_distance_min = 24.0
 teammate_away_distance_max = 32.0
 move_speed = 60.0
@@ -133,22 +129,28 @@ offset = Vector2(0, -192)
 
 [node name="Hitbox" parent="Sprite/Character/Sword" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_xtyep")]
 damage = 1
-character = NodePath("../../../..")
 disabled = true
+character = NodePath("../../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Character/Sword/Hitbox" index="0"]
 position = Vector2(0, -220)
 shape = SubResource("RectangleShape2D_kg87i")
 
-[node name="Anim" type="AnimationPlayer" parent="." index="3"]
+[node name="Anim" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_pdofc")
 }
 
-[node name="HealthBar" parent="." index="4"]
+[node name="HealthBar" parent="." index="3"]
 offset_left = -16.0
 offset_top = -22.0
 offset_right = 16.0
 offset_bottom = -17.0
+
+[node name="Hurtbox" parent="." index="4"]
+health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_t23b2")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

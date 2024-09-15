@@ -36,7 +36,6 @@ radius = 12.0
 
 [node name="Archer" instance=ExtResource("1_alqo0")]
 script = ExtResource("2_gpq8s")
-health = 7
 
 [node name="Bow" type="AnimatedSprite2D" parent="Sprite" index="0"]
 texture_filter = 1
@@ -62,15 +61,18 @@ offset_top = -19.0
 offset_right = 16.0
 offset_bottom = -14.0
 
-[node name="Coll" type="CollisionShape2D" parent="." index="2"]
-shape = SubResource("CircleShape2D_2t87e")
-
-[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
+[node name="MovementAI" parent="." index="2" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
 target_distance_min = 64.0
 teammate_away_distance_max = 32.0
 move_speed = 48.0
 attack_distance = 256.0
 attack_wait = 1.0
 character = NodePath("..")
+
+[node name="Hurtbox" parent="." index="3"]
+health = 50
+
+[node name="Coll" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_2t87e")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
