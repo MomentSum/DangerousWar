@@ -26,6 +26,8 @@ project/assembly_name="Fighting"
 [editor]
 
 movie_writer/movie_file="C:/Users/MomentSum/Documents/Projects/Godot/Fighting/record.avi"
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 

@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+record*.mp4
+record*.avi
