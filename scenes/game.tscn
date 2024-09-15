@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3 uid="uid://bstgsc6o0av36"]
+
+[ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="1_w0h2u"]
+
+[sub_resource type="GDScript" id="GDScript_lfjto"]
+script/source = "extends Node2D
+
+@export var team_group: StringName
+@export var count: int
+@export var scene: PackedScene
+
+func _ready() -> void:
+	for i in range(count):
+		var ins = scene.instantiate()
+		ins.position = position
+		ins.team_group = team_group
+		call_deferred(\"add_sibling\",ins)
+"
+
+[node name="Game" type="Node2D"]
+
+[node name="Colors" type="Node2D" parent="."]
+
+[node name="AColor" type="Node2D" parent="Colors" groups=["a_color"]]
+modulate = Color(0.843137, 0.376471, 0, 1)
+
+[node name="BColor" type="Node2D" parent="Colors" groups=["b_color"]]
+modulate = Color(0.145098, 0.839216, 0.976471, 1)
+
+[node name="CColor" type="Node2D" parent="Colors" groups=["c_color"]]
+modulate = Color(0.92549, 0.639216, 0.921569, 1)
+
+[node name="CharactersSpace" type="Node2D" parent="." groups=["character_space"]]
+y_sort_enabled = true
+
+[node name="A" type="Node2D" parent="CharactersSpace"]
+position = Vector2(546, 411)
+script = SubResource("GDScript_lfjto")
+team_group = &"a"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="A2" type="Node2D" parent="CharactersSpace"]
+position = Vector2(642, 153)
+script = SubResource("GDScript_lfjto")
+team_group = &"a"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="A3" type="Node2D" parent="CharactersSpace"]
+position = Vector2(336, 73)
+script = SubResource("GDScript_lfjto")
+team_group = &"a"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="B" type="Node2D" parent="CharactersSpace"]
+position = Vector2(884, 497)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="B2" type="Node2D" parent="CharactersSpace"]
+position = Vector2(208, 333)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="B3" type="Node2D" parent="CharactersSpace"]
+position = Vector2(221, 608)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="C" type="Node2D" parent="CharactersSpace"]
+position = Vector2(201, 487)
+script = SubResource("GDScript_lfjto")
+team_group = &"c"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="C2" type="Node2D" parent="CharactersSpace"]
+position = Vector2(935, 214)
+script = SubResource("GDScript_lfjto")
+team_group = &"c"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="C3" type="Node2D" parent="CharactersSpace"]
+position = Vector2(714, 369)
+script = SubResource("GDScript_lfjto")
+team_group = &"c"
+count = 25
+scene = ExtResource("1_w0h2u")
+
+[node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]

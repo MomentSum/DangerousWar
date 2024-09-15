@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://os0ny1ello6n"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_8iasr"]
+[ext_resource type="Texture2D" uid="uid://bkiulvpac7ylb" path="res://resources/images/horse.png" id="2_3de1m"]
+[ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="2_p7lcp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ben8p"]
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evqvc"]
+size = Vector2(31, 30)
+
+[node name="Cavalry" instance=ExtResource("1_8iasr")]
+
+[node name="Horse" type="Sprite2D" parent="Sprite" index="0"]
+texture_filter = 1
+position = Vector2(11, 7)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3de1m")
+
+[node name="Character" type="Sprite2D" parent="Sprite" index="1"]
+self_modulate = Color(0.670588, 0.670588, 0.670588, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_p7lcp")
+
+[node name="HealthBar" parent="." index="1"]
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 16.0
+offset_bottom = -18.0
+
+[node name="Coll" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_ben8p")
+
+[node name="Coll2" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(9.5, 8)
+shape = SubResource("RectangleShape2D_evqvc")

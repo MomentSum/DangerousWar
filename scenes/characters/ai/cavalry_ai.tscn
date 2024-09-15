@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cafa4u4dyheno"]
+
+[ext_resource type="PackedScene" uid="uid://51kfe53cpumm" path="res://scenes/characters/ai/characterAI.tscn" id="1_g6pil"]
+[ext_resource type="Script" path="res://scenes/characters/ai/cavalry_ai.gd" id="2_rc6lk"]
+
+[node name="CavalryAI" instance=ExtResource("1_g6pil")]
+script = ExtResource("2_rc6lk")
+keep_distance_min = 0.0
+keep_distance_max = 0.0
+move_speed = 0.0
+rush_wait = 0.0
+rush_speed = 0.0
+
+[node name="RushTimer" type="Timer" parent="." index="2"]

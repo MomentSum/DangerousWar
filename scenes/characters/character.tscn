@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://orrylwy00mj5"]
+
+[ext_resource type="Script" path="res://scenes/characters/character.gd" id="1_p3xoq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyxi2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivs3i"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Character" type="Area2D" groups=["character"]]
+script = ExtResource("1_p3xoq")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 32.0
+offset_bottom = 5.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dyxi2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ivs3i")
+step = 1.0
+value = 50.0
+show_percentage = false
