@@ -14,7 +14,7 @@ signal died()
 
 @onready var sprite :Node2D = $Sprite
 
-
+var target: Character
 
 func _ready() -> void:
 	if not team_group.is_empty():

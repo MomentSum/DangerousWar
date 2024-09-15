@@ -11,7 +11,10 @@ signal attack()
 @export var refind_target_wait: float = 0.1
 @export var character: Character
 
-var target: Character
+
+var target: Character:
+	get:
+		return character.target
 
 
 
