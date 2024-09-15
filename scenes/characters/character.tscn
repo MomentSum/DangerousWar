@@ -24,4 +24,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_htkme")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_htkme")]
+character = NodePath("..")
+
+[connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]

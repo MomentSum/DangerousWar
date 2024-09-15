@@ -7,7 +7,7 @@ signal died()
 
 @export var health: int
 @export var defense: int
-@export var team_group: StringName
+@export var character: Character
 
 
 func be_attacked(damage: int) -> void:

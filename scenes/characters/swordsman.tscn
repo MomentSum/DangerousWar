@@ -110,9 +110,9 @@ script = SubResource("GDScript_smqq5")
 
 [node name="MovementAI" parent="." index="0" node_paths=PackedStringArray("character") instance=ExtResource("3_esjob")]
 target_distance_min = 24.0
+target_distance_max = 48.0
 teammate_away_distance_max = 32.0
 move_speed = 60.0
-attack_distance = 36.0
 attack_wait = 0.8
 character = NodePath("..")
 
@@ -128,7 +128,7 @@ texture = ExtResource("4_40k77")
 offset = Vector2(0, -192)
 
 [node name="Hitbox" parent="Sprite/Character/Sword" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_xtyep")]
-damage = 1
+damage = 20
 disabled = true
 character = NodePath("../../../..")
 

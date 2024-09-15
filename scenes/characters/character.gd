@@ -10,11 +10,8 @@ class_name Character
 
 var target: Character
 
-@onready var hurtbox: Hurtbox = $Hurtbox
-
 func _ready() -> void:
 	if not team_group.is_empty():
-		hurtbox.team_group = team_group
 		add_to_group(team_group)
 	
 	var color = get_tree().get_first_node_in_group(team_group+"_color")
@@ -31,3 +28,7 @@ func set_sprite_rotation(new: float) -> void:
 	else:
 		sprite.scale.y = scale.x
 	sprite.rotation = new
+
+
+func _on_hurtbox_died() -> void:
+	queue_free()

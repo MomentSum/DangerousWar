@@ -2,7 +2,6 @@ extends Node2D
 
 class_name CharacterAI
 
-@export var attack_wait: float
 @export var refind_target_wait: float = 0.1
 @export var character: Character
 
@@ -29,7 +28,6 @@ var _distance_to_target: float:
 
 func _ready() -> void:
 	$RefindTargetTimer.wait_time = refind_target_wait
-	$AttackTimer.wait_time = attack_wait
 	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
 
 

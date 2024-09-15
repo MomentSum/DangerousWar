@@ -18,8 +18,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if disabled:
 		return
 	if area is Hurtbox:
-		if not is_instance_valid(character) or area.team_group != team_group:
-			var direction = global_position.direction_to(area.position)
+		if not is_instance_valid(character) or not area.character.is_in_group(team_group):
 			area.be_attacked(damage)
 			hit.emit()
 
