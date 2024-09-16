@@ -20,6 +20,10 @@ func _ready() -> void:
 	if not team_group.is_empty():
 		add_to_group(team_group)
 	
+	var color = get_tree().get_first_node_in_group(team_group+"_color")
+	if is_instance_valid(color):
+		modulate = color.modulate
+	
 	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
 	$RefindTargetTimer.wait_time = refind_target_wait
 

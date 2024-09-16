@@ -16,9 +16,6 @@ func _ready() -> void:
 	get_tree().process_frame.connect(func():
 		$HealthBar.max_value = character.hurtbox.health
 		character.target_changed.connect(_on_character_target_changed)
-		var color = get_tree().get_first_node_in_group(character.team_group+"_color")
-		if is_instance_valid(color):
-			modulate = color.modulate
 	,CONNECT_ONE_SHOT)
 
 
