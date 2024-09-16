@@ -43,14 +43,6 @@ health = 50
 [node name="Coll" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_2t87e")
 
-[node name="MovementAI" parent="." index="1" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
-target_distance_min = 96.0
-target_distance_max = 456.0
-teammate_away_distance_max = 32.0
-move_speed = 50.0
-attack_wait = 1.2
-character = NodePath("..")
-
 [node name="Bow" type="AnimatedSprite2D" parent="CharacterSprite" index="1"]
 texture_filter = 1
 position = Vector2(-2.86102e-06, 0)
@@ -71,5 +63,13 @@ unique_name_in_owner = true
 position = Vector2(18, 0)
 character = NodePath("../..")
 projectile_scene = ExtResource("10_3hgcr")
+
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
+target_distance_min = 96.0
+target_distance_max = 456.0
+teammate_away_distance_max = 32.0
+move_speed = 50.0
+attack_wait = 1.2
+character = NodePath("..")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

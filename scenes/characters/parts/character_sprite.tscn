@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c87ahrubtnk35"]
 
-[ext_resource type="Script" path="res://scenes/characters/character_sprite.gd" id="1_70k2p"]
+[ext_resource type="Script" path="res://scenes/characters/parts/character_sprite.gd" id="1_70k2p"]
 [ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="1_u1ijl"]
 
 [node name="CharacterSprite" type="Node2D"]

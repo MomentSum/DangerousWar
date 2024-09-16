@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://orrylwy00mj5"]
 
 [ext_resource type="Script" path="res://scenes/characters/character.gd" id="1_p3xoq"]
-[ext_resource type="PackedScene" uid="uid://c87ahrubtnk35" path="res://scenes/characters/character_sprite.tscn" id="2_6g35d"]
-[ext_resource type="PackedScene" uid="uid://cwhl1cty2qin7" path="res://scenes/characters/hurtbox.tscn" id="2_htkme"]
+[ext_resource type="PackedScene" uid="uid://c87ahrubtnk35" path="res://scenes/characters/parts/character_sprite.tscn" id="2_6g35d"]
+[ext_resource type="PackedScene" uid="uid://cwhl1cty2qin7" path="res://scenes/characters/parts/hurtbox.tscn" id="2_htkme"]
 
 [node name="Character" type="Node2D" groups=["character"]]
 script = ExtResource("1_p3xoq")
