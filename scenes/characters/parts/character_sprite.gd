@@ -26,12 +26,10 @@ func _on_character_target_changed() -> void:
 		create_tween().tween_property(self,"_transition_rotation_offset", 0, 0.3)
 		if new_direction.x < 0:
 			scale.y = -scale.x
+			$HealthBar.scale.y = -$HealthBar.scale.x
 		else:
 			scale.y = scale.x
-		#if new_direction.x < 0:
-			#create_tween().tween_property(self,"scale:y", -scale.x, 0.3)
-		#else:
-			#create_tween().tween_property(self,"scale:y", scale.x, 0.3)
+			$HealthBar.scale.y = $HealthBar.scale.x
 
 
 func _process(delta: float) -> void:
@@ -40,7 +38,7 @@ func _process(delta: float) -> void:
 			rotation = \
 					character.position.direction_to(character.target.position).angle() \
 					+ rotation_offset \
-					+ _transition_rotation_offset 
-		$HealthBar.rotation = -rotation
+					+ _transition_rotation_offset
+	$HealthBar.rotation = - sign($HealthBar.scale.y) * rotation
 	$HealthBar.value = character.hurtbox.health
 
