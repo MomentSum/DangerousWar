@@ -8,7 +8,7 @@ signal target_changed
 @export var team_group: StringName
 @export var aggression_multiple: float = 1
 
-@onready var sprite :Node2D = $Sprite
+@onready var hurtbox: Hurtbox = $Hurtbox
 
 var target: Character
 
@@ -16,19 +16,7 @@ func _ready() -> void:
 	if not team_group.is_empty():
 		add_to_group(team_group)
 	
-	var color = get_tree().get_first_node_in_group(team_group+"_color")
-	if is_instance_valid(color):
-		sprite.modulate = color.modulate
-	
 	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
-
-
-func set_sprite_rotation(new: float) -> void:
-	if Vector2.from_angle(new).x < 0:
-		sprite.scale.y = -scale.x
-	else:
-		sprite.scale.y = scale.x
-	sprite.rotation = new
 
 
 func _on_hurtbox_died() -> void:
@@ -50,8 +38,17 @@ func find_target() -> void:
 		if adistance < min_adistance:
 			nearest_enemy = c
 			min_adistance = adistance
-	target = nearest_enemy
-
+	if target != nearest_enemy:
+		target = nearest_enemy
+		target_changed.emit()
 
 func _on_refind_target_timer_timeout() -> void:
 	find_target()
+
+
+func _on_target_changed() -> void:
+	#if modulate.a == 1:
+		#modulate.a = 0.5
+	#else:
+		#modulate.a = 1
+	pass

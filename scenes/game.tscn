@@ -34,66 +34,17 @@ modulate = Color(0.92549, 0.639216, 0.921569, 1)
 y_sort_enabled = true
 
 [node name="A" type="Node2D" parent="CharactersSpace"]
-position = Vector2(546, 411)
+position = Vector2(183, 308)
 script = SubResource("GDScript_lfjto")
 team_group = &"a"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="A2" type="Node2D" parent="CharactersSpace"]
-position = Vector2(642, 153)
-script = SubResource("GDScript_lfjto")
-team_group = &"a"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="A3" type="Node2D" parent="CharactersSpace"]
-position = Vector2(336, 73)
-script = SubResource("GDScript_lfjto")
-team_group = &"a"
-count = 25
+count = 100
 scene = ExtResource("1_w0h2u")
 
 [node name="B" type="Node2D" parent="CharactersSpace"]
-position = Vector2(884, 497)
+position = Vector2(896, 319)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="B2" type="Node2D" parent="CharactersSpace"]
-position = Vector2(208, 333)
-script = SubResource("GDScript_lfjto")
-team_group = &"b"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="B3" type="Node2D" parent="CharactersSpace"]
-position = Vector2(221, 608)
-script = SubResource("GDScript_lfjto")
-team_group = &"b"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="C" type="Node2D" parent="CharactersSpace"]
-position = Vector2(201, 487)
-script = SubResource("GDScript_lfjto")
-team_group = &"c"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="C2" type="Node2D" parent="CharactersSpace"]
-position = Vector2(935, 214)
-script = SubResource("GDScript_lfjto")
-team_group = &"c"
-count = 25
-scene = ExtResource("1_w0h2u")
-
-[node name="C3" type="Node2D" parent="CharactersSpace"]
-position = Vector2(714, 369)
-script = SubResource("GDScript_lfjto")
-team_group = &"c"
-count = 25
+count = 100
 scene = ExtResource("1_w0h2u")
 
 [node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]

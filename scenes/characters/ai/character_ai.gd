@@ -22,9 +22,3 @@ var _distance_to_target: float:
 		if not is_instance_valid(target):
 			return 1e+10
 		return character.position.distance_to(target.position)
-
-
-func _process(delta: float) -> void:
-	if is_instance_valid(target):
-		character.set_sprite_rotation(character.position.direction_to(target.position).angle())
-

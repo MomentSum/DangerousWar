@@ -18,7 +18,7 @@ signal attacking_ended()
 
 var _teammate_away_direction: Vector2
 
-var _attacking: bool:
+var _attacking: bool = false:
 	set(new):
 		if _attacking == new:
 			return
@@ -32,13 +32,11 @@ var _attacking: bool:
 
 
 func _ready() -> void:
-	super()
 	%Coll.shape.radius = teammate_away_distance_max
 	$AttackTimer.wait_time = attack_wait
 
 
 func _process(delta: float) -> void:
-	super(delta)
 	var weighted_direction_away_from_teammate = get_weighted_direction_away_from_teammate()
 	var direction_follow_target = get_direction_follow_target()
 	var direction = (weighted_direction_away_from_teammate + direction_follow_target).normalized()
