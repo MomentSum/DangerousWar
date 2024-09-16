@@ -1,27 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcfuf7feut7yk"]
+[gd_scene load_steps=5 format=3 uid="uid://li6b3p8v1ne8"]
 
-[ext_resource type="PackedScene" uid="uid://cmgk2fmutmirp" path="res://scenes/projectiles/projectile.tscn" id="1_ikax8"]
+[ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_ea2lt"]
 [ext_resource type="Script" path="res://scenes/projectiles/arrow.gd" id="2_l0811"]
 [ext_resource type="Texture2D" uid="uid://j3xm6250pnxa" path="res://resources/images/arrow.png" id="3_q3jro"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl6ki"]
-size = Vector2(15, 2)
+[sub_resource type="CircleShape2D" id="CircleShape2D_owkij"]
 
-[node name="Arrow" instance=ExtResource("1_ikax8")]
+[node name="Arrow" instance=ExtResource("1_ea2lt")]
 script = ExtResource("2_l0811")
-move_speed = 600.0
+time = 1.5
+height = 152.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Hitbox" parent="." index="0"]
+damage = 5
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_owkij")
+
+[node name="Timer" parent="." index="2"]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("3_q3jro")
 
-[node name="Coll" type="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_xl6ki")
-
-[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
-position = Vector2(-4.76837e-07, 0)
-scale = Vector2(0.8, 0.3)
-
+[connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]

@@ -5,7 +5,7 @@ extends Node2D
 @export var projectile_scene: PackedScene
 
 
-func launch(direction: Vector2, target: Vector2) -> void:
+func launch(target: Vector2, direction: Vector2 = character.position.direction_to(target)) -> void:
 	var projectile = projectile_scene.instantiate() as Projectile
 	projectile.position = global_position
 	projectile.target = target

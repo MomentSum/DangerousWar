@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow4.png" id="6_3cn5q"]
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="7_crpix"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="8_lfyq3"]
-[ext_resource type="PackedScene" uid="uid://dcfuf7feut7yk" path="res://scenes/projectiles/arrow.tscn" id="9_cqlw0"]
+[ext_resource type="PackedScene" uid="uid://li6b3p8v1ne8" path="res://scenes/projectiles/arrow.tscn" id="9_cqlw0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2t87e"]
 radius = 12.0
@@ -43,17 +43,15 @@ health = 50
 shape = SubResource("CircleShape2D_2t87e")
 
 [node name="MovementAI" parent="." index="1" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
-target_distance_min = 64.0
+target_distance_min = 96.0
+target_distance_max = 256.0
 teammate_away_distance_max = 32.0
-move_speed = 48.0
+move_speed = 50.0
 attack_wait = 1.0
 character = NodePath("..")
 
-[node name="ProjectileLauncher" parent="." index="2" node_paths=PackedStringArray("character") instance=ExtResource("8_lfyq3")]
-unique_name_in_owner = true
-position = Vector2(18, 0)
-character = NodePath("..")
-projectile_scene = ExtResource("9_cqlw0")
+[node name="CharacterSprite" parent="." index="3"]
+rotation_offset = -0.392
 
 [node name="Bow" type="AnimatedSprite2D" parent="CharacterSprite" index="1"]
 texture_filter = 1
@@ -61,3 +59,11 @@ position = Vector2(12, 0)
 scale = Vector2(2.1, 2.1)
 sprite_frames = SubResource("SpriteFrames_7l8hi")
 frame_progress = 0.205487
+
+[node name="ProjectileLauncher" parent="CharacterSprite" index="4" node_paths=PackedStringArray("character") instance=ExtResource("8_lfyq3")]
+unique_name_in_owner = true
+position = Vector2(18, 0)
+character = NodePath("../..")
+projectile_scene = ExtResource("9_cqlw0")
+
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

@@ -1,15 +1,13 @@
-extends Projectile
-
-
-@export var move_speed: float
-
-func _ready() -> void:
-	rotation = direction.angle()
+extends ThrowableProjectile
 
 func _process(delta: float) -> void:
-	position += move_speed * direction * delta
+	super(delta)
+	rotation = sprite_rotation
 
 
 func _on_hitbox_hit() -> void:
 	$Hitbox.disabled = true
-	queue_free()
+
+
+func _on_dropped() -> void:
+	$Hitbox.disabled = false

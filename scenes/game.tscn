@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=3 format=3 uid="uid://bstgsc6o0av36"]
 
-[ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="1_kkp4t"]
-[ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="1_w0h2u"]
+[ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="2_24jfj"]
 
 [sub_resource type="GDScript" id="GDScript_lfjto"]
 script/source = "extends Node2D
@@ -35,38 +34,17 @@ modulate = Color(0.92549, 0.639216, 0.921569, 1)
 y_sort_enabled = true
 
 [node name="A" type="Node2D" parent="CharactersSpace"]
-position = Vector2(28, 593)
+position = Vector2(669, 517)
 script = SubResource("GDScript_lfjto")
 team_group = &"a"
-count = 1
-scene = ExtResource("1_kkp4t")
-
-[node name="A2" type="Node2D" parent="CharactersSpace"]
-position = Vector2(229, 149)
-script = SubResource("GDScript_lfjto")
-team_group = &"b"
-count = 2
-scene = ExtResource("1_kkp4t")
-
-[node name="A3" type="Node2D" parent="CharactersSpace"]
-position = Vector2(482, 470)
-script = SubResource("GDScript_lfjto")
-team_group = &"a"
-count = 1
-scene = ExtResource("1_kkp4t")
-
-[node name="A4" type="Node2D" parent="CharactersSpace"]
-position = Vector2(922, 309)
-script = SubResource("GDScript_lfjto")
-team_group = &"a"
-count = 1
-scene = ExtResource("1_kkp4t")
+count = 15
+scene = ExtResource("2_24jfj")
 
 [node name="B" type="Node2D" parent="CharactersSpace"]
-position = Vector2(565, 190)
+position = Vector2(1010, 288)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
-count = 100
-scene = ExtResource("1_w0h2u")
+count = 15
+scene = ExtResource("2_24jfj")
 
 [node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]
