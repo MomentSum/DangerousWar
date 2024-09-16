@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="horse.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="5.9936588"
+     inkscape:cx="56.726619"
+     inkscape:cy="69.656951"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;stroke:#00ffff;stroke-width:0;fill-opacity:1"
+       d="m 30.503417,17.701694 c 4.971295,-0.226683 2.121597,-7.237524 -0.92702,-8.1666169 -7.135179,-2.146134 -9.349419,0.1634347 -11.212545,2.0306189 -0.973198,8.59088 1.26012,10.271179 0.132432,10.903536 C 14.688832,23.46439 8.3462931,21.990291 6.0532995,23.486709 3.802576,24.955542 2.3915862,26.824218 0.61801424,29.399821 L 31.20972,29.267391 29.267388,25.162009 C 19.996184,9.5712308 28.568693,17.692633 30.503417,17.701694 Z"
+       id="path1"
+       sodipodi:nodetypes="ccccscccc" />
+  </g>
+</svg>
