@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=4 format=3 uid="uid://bstgsc6o0av36"]
 
+[ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="1_w0h2u"]
 [ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="2_24jfj"]
 
 [sub_resource type="GDScript" id="GDScript_lfjto"]
@@ -34,17 +35,24 @@ modulate = Color(0.92549, 0.639216, 0.921569, 1)
 y_sort_enabled = true
 
 [node name="A" type="Node2D" parent="CharactersSpace"]
-position = Vector2(669, 517)
+position = Vector2(218, 342)
 script = SubResource("GDScript_lfjto")
 team_group = &"a"
-count = 15
-scene = ExtResource("2_24jfj")
+count = 100
+scene = ExtResource("1_w0h2u")
 
 [node name="B" type="Node2D" parent="CharactersSpace"]
-position = Vector2(1010, 288)
+position = Vector2(923, 332)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
 count = 15
+scene = ExtResource("1_w0h2u")
+
+[node name="B2" type="Node2D" parent="CharactersSpace"]
+position = Vector2(1076, 359)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 25
 scene = ExtResource("2_24jfj")
 
 [node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]

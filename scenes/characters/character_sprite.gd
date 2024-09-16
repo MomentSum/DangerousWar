@@ -24,6 +24,10 @@ func _on_character_target_changed() -> void:
 		var new_direction = character.position.direction_to(character.target.position)
 		_transition_rotation_offset = new_direction.angle_to(Vector2.from_angle(rotation))
 		create_tween().tween_property(self,"_transition_rotation_offset", 0, 0.3)
+		if new_direction.x < 0:
+			scale.y = -scale.x
+		else:
+			scale.y = scale.x
 		#if new_direction.x < 0:
 			#create_tween().tween_property(self,"scale:y", -scale.x, 0.3)
 		#else:

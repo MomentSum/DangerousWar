@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://g4vtrvtgun0c"]
+
+[ext_resource type="PackedScene" uid="uid://dcfuf7feut7yk" path="res://scenes/projectiles/linear_projectile.tscn" id="1_x3qwl"]
+
+[node name="LinearArrow" instance=ExtResource("1_x3qwl")]
+move_speed = 400.0
+
+[node name="Hitbox" parent="." index="1"]
+damage = 20

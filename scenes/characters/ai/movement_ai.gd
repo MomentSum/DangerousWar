@@ -16,6 +16,7 @@ signal attacking_ended()
 @export var move_speed: float
 @export var attack_wait: float
 
+
 var _teammate_away_direction: Vector2
 
 var _attacking: bool = false:
