@@ -27,4 +27,9 @@ show_percentage = false
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_htkme")]
 character = NodePath("..")
 
+[node name="RefindTargetTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
+[connection signal="timeout" from="RefindTargetTimer" to="." method="_on_refind_target_timer_timeout"]

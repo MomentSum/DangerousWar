@@ -9,8 +9,6 @@ class_name CharacterAI
 var target: Character:
 	get:
 		return character.target
-	set(new):
-		character.target = new
 
 
 var _direction_to_target: Vector2:
@@ -26,33 +24,7 @@ var _distance_to_target: float:
 		return character.position.distance_to(target.position)
 
 
-func _ready() -> void:
-	$RefindTargetTimer.wait_time = refind_target_wait
-	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
-
-
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
 		character.set_sprite_rotation(character.position.direction_to(target.position).angle())
 
-
-func find_target() -> void:
-	var characters := get_tree().get_nodes_in_group("character")
-	var nearest_enemy: Character
-	var min_adistance: float = 1e+10
-	for c: Character in characters:
-		if c.is_in_group(character.team_group):
-			continue
-		var distance = character.position.distance_to(c.position)
-		var adistance = distance / character.aggression_multiple
-		if c == target:
-			adistance *= 0.8
-			pass
-		if adistance < min_adistance:
-			nearest_enemy = c
-			min_adistance = adistance
-	target = nearest_enemy
-
-
-func _on_refind_target_timer_timeout() -> void:
-	find_target()
