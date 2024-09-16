@@ -6,6 +6,7 @@
 
 [node name="Character" type="Node2D" groups=["character"]]
 script = ExtResource("1_p3xoq")
+refind_target_wait = 0.2
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_htkme")]
 character = NodePath("..")
@@ -17,6 +18,5 @@ autostart = true
 [node name="CharacterSprite" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_6g35d")]
 character = NodePath("..")
 
-[connection signal="target_changed" from="." to="." method="_on_target_changed"]
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="timeout" from="RefindTargetTimer" to="." method="_on_refind_target_timer_timeout"]

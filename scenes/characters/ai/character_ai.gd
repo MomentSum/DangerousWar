@@ -2,7 +2,6 @@ extends Node2D
 
 class_name CharacterAI
 
-@export var refind_target_wait: float = 0.1
 @export var character: Character
 
 

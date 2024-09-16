@@ -118,10 +118,7 @@ size = Vector2(80, 546.667)
 [node name="Swordsman" instance=ExtResource("1_knicm")]
 script = SubResource("GDScript_smqq5")
 
-[node name="Sprite" parent="." index="0"]
-visible = true
-
-[node name="Character" type="Sprite2D" parent="Sprite" index="0"]
+[node name="Sprite#Character" type="Sprite2D" parent="." index="0"]
 self_modulate = Color(0.670588, 0.670588, 0.670588, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_jb166")
@@ -139,19 +136,13 @@ libraries = {
 "": SubResource("AnimationLibrary_pdofc")
 }
 
-[node name="HealthBar" parent="." index="3"]
-offset_left = -16.0
-offset_top = -22.0
-offset_right = 16.0
-offset_bottom = -17.0
-
-[node name="Hurtbox" parent="." index="4"]
+[node name="Hurtbox" parent="." index="3"]
 health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_t23b2")
 
-[node name="Sword" type="Sprite2D" parent="CharacterSprite" index="2"]
+[node name="Sword" type="Sprite2D" parent="CharacterSprite" index="1"]
 position = Vector2(-6, 7)
 rotation = -1.93906
 scale = Vector2(0.075, 0.075)

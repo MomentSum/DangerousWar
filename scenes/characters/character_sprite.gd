@@ -7,6 +7,8 @@ class_name CharacterSprite
 
 
 var rotation_offset: float
+var rotate_enabled: bool = true
+
 var _transition_rotation_offset: float
 
 
@@ -23,16 +25,17 @@ func _ready() -> void:
 func _on_character_target_changed() -> void:
 	if is_instance_valid(character.target):
 		var new_direction = character.position.direction_to(character.target.position)
-		_transition_rotation_offset = - Vector2.from_angle(rotation).angle_to(new_direction)
+		_transition_rotation_offset = new_direction.angle_to(Vector2.from_angle(rotation))
 		create_tween().tween_property(self,"_transition_rotation_offset", 0, 0.3)
 
 
 func _process(delta: float) -> void:
-	if is_instance_valid(character.target):
-		rotation = \
-				character.position.direction_to(character.target.position).angle() \
-				+ rotation_offset \
-				+ _transition_rotation_offset 
-	$HealthBar.rotation = - rotation
+	if rotate_enabled:
+		if is_instance_valid(character.target):
+			rotation = \
+					character.position.direction_to(character.target.position).angle() \
+					+ rotation_offset \
+					+ _transition_rotation_offset 
+		$HealthBar.rotation = -rotation
 	$HealthBar.value = character.hurtbox.health
 

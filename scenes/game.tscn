@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=4 format=3 uid="uid://bstgsc6o0av36"]
 
+[ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="1_kkp4t"]
 [ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="1_w0h2u"]
 
 [sub_resource type="GDScript" id="GDScript_lfjto"]
@@ -22,7 +23,7 @@ func _ready() -> void:
 [node name="Colors" type="Node2D" parent="."]
 
 [node name="AColor" type="Node2D" parent="Colors" groups=["a_color"]]
-modulate = Color(0.843137, 0.376471, 0, 1)
+modulate = Color(1, 0.607843, 0.396078, 1)
 
 [node name="BColor" type="Node2D" parent="Colors" groups=["b_color"]]
 modulate = Color(0.145098, 0.839216, 0.976471, 1)
@@ -34,14 +35,35 @@ modulate = Color(0.92549, 0.639216, 0.921569, 1)
 y_sort_enabled = true
 
 [node name="A" type="Node2D" parent="CharactersSpace"]
-position = Vector2(183, 308)
+position = Vector2(28, 593)
 script = SubResource("GDScript_lfjto")
 team_group = &"a"
-count = 100
-scene = ExtResource("1_w0h2u")
+count = 1
+scene = ExtResource("1_kkp4t")
+
+[node name="A2" type="Node2D" parent="CharactersSpace"]
+position = Vector2(229, 149)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 2
+scene = ExtResource("1_kkp4t")
+
+[node name="A3" type="Node2D" parent="CharactersSpace"]
+position = Vector2(482, 470)
+script = SubResource("GDScript_lfjto")
+team_group = &"a"
+count = 1
+scene = ExtResource("1_kkp4t")
+
+[node name="A4" type="Node2D" parent="CharactersSpace"]
+position = Vector2(922, 309)
+script = SubResource("GDScript_lfjto")
+team_group = &"a"
+count = 1
+scene = ExtResource("1_kkp4t")
 
 [node name="B" type="Node2D" parent="CharactersSpace"]
-position = Vector2(896, 319)
+position = Vector2(565, 190)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
 count = 100

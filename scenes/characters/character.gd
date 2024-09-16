@@ -7,20 +7,21 @@ signal target_changed
 
 @export var team_group: StringName
 @export var aggression_multiple: float = 1
+@export var refind_target_wait: float
 
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var character_sprite: CharacterSprite = $CharacterSprite
 
+var refind_target_enabled: bool = true
 var target: Character
+
 
 func _ready() -> void:
 	if not team_group.is_empty():
 		add_to_group(team_group)
 	
 	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
-
-
-func _on_hurtbox_died() -> void:
-	queue_free()
+	$RefindTargetTimer.wait_time = refind_target_wait
 
 
 func find_target() -> void:
@@ -43,12 +44,9 @@ func find_target() -> void:
 		target_changed.emit()
 
 func _on_refind_target_timer_timeout() -> void:
-	find_target()
+	if refind_target_enabled:
+		find_target()
 
 
-func _on_target_changed() -> void:
-	#if modulate.a == 1:
-		#modulate.a = 0.5
-	#else:
-		#modulate.a = 1
-	pass
+func _on_hurtbox_died() -> void:
+	queue_free()
