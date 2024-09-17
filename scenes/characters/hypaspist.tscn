@@ -23,6 +23,11 @@ defense = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_lje0h")
 
+[node name="Shield" type="Sprite2D" parent="CharacterSprite" index="3"]
+position = Vector2(10, 6.82121e-13)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("5_ndi55")
+
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("2_0d0ul")]
 target_distance_min = 16.0
 target_distance_max = 38.0
@@ -33,17 +38,11 @@ character = NodePath("..")
 
 [node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("4_h6c4c")]
 damage = 100
-disabled = true
 single_attack = true
 character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(9.5, 0.5)
 shape = SubResource("RectangleShape2D_l54i6")
-
-[node name="Shield" type="Sprite2D" parent="." index="5"]
-position = Vector2(10, 6.82121e-13)
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("5_ndi55")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
