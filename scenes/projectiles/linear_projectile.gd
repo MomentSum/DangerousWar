@@ -11,5 +11,4 @@ func _process(delta: float) -> void:
 
 
 func _on_hitbox_hit() -> void:
-	$Hitbox.disabled = true
 	queue_free()

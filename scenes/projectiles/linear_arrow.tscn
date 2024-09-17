@@ -7,3 +7,4 @@ move_speed = 400.0
 
 [node name="Hitbox" parent="." index="1"]
 damage = 20
+single_attack = true

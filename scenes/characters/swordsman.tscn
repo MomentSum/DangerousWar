@@ -123,6 +123,7 @@ offset = Vector2(0, -192)
 [node name="Hitbox" parent="CharacterSprite/Sword" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_xtyep")]
 damage = 20
 disabled = true
+single_attack = true
 character = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite/Sword/Hitbox" index="0"]

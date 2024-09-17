@@ -7,6 +7,7 @@ signal hit
 @export var damage: int
 @export var disabled: bool
 
+@export var single_attack: bool
 @export var character: Character
 
 
@@ -18,3 +19,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			area.be_attacked(damage)
 			hit.emit()
 
+
+func _on_hit() -> void:
+	if single_attack:
+		disabled = true
