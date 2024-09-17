@@ -13,7 +13,7 @@ height = 128.0
 
 [node name="Hitbox" parent="." index="0"]
 monitoring = false
-damage = 25
+damage = 15
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]

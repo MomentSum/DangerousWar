@@ -11,10 +11,11 @@ signal attacking_ended()
 
 @export var target_distance_min: float
 @export var target_distance_max: float
-@export var teammate_away_distance_max: float
+@export var teammate_away_distance_max: float = 24
 @export var teammate_away_weight_max: float = 1
 @export var move_speed: float
-@export var attack_wait: float
+@export var attack_wait: float = 1e+5
+@export var attacking_speed_multiple: float = 0.5
 
 
 var _teammate_away_direction: Vector2
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 	var direction_follow_target = get_direction_follow_target()
 	var direction = (weighted_direction_away_from_teammate + direction_follow_target).normalized()
 	if attacking:
-		direction /= 2
+		direction *= attacking_speed_multiple
 	character.position += direction * move_speed * delta
 	character.position = character.position.clamp(Vector2.ZERO, character.viewport_size)
 	attacking = character.distance_to_target <= target_distance_max

@@ -13,23 +13,6 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8b36"]
 radius = 63.0079
 
-[sub_resource type="Animation" id="Animation_fbx76"]
-resource_name = "running"
-length = 0.4
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite/PowderKeg:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-8.878, 0), Vector2(-8.878, -2.065)]
-}
-
 [sub_resource type="Animation" id="Animation_8sgjg"]
 length = 0.001
 tracks/0/type = "value"
@@ -123,6 +106,23 @@ tracks/3/keys = {
 "values": [Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_fbx76"]
+resource_name = "running"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/PowderKeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8.878, 0), Vector2(-8.878, -2.065)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlu8m"]
 _data = {
 "RESET": SubResource("Animation_8sgjg"),
@@ -134,7 +134,7 @@ _data = {
 script = ExtResource("2_ix1nk")
 
 [node name="Hurtbox" parent="." index="0"]
-health = 100
+health = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_sfboa")
@@ -144,19 +144,14 @@ position = Vector2(-8.878, 0)
 scale = Vector2(0.135, 0.135)
 texture = ExtResource("3_lud27")
 
-[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
-target_distance_max = 48.0
-teammate_away_distance_max = 32.0
-teammate_away_weight_max = 0.0
-move_speed = 65.0
-attack_wait = 1.0
-character = NodePath("..")
+[node name="Boom" type="Sprite2D" parent="." index="3"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(1, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_gpaq2")
 
-[node name="Timer" type="Timer" parent="." index="4"]
-wait_time = 0.1
-one_shot = true
-
-[node name="Hitbox" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("5_xdhg4")]
+[node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("5_xdhg4")]
 monitoring = false
 damage = 600
 character = NodePath("..")
@@ -164,18 +159,23 @@ character = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_u8b36")
 
+[node name="MovementAI" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
+target_distance_max = 42.0
+teammate_away_distance_max = 24.0
+teammate_away_weight_max = 0.0
+move_speed = 60.0
+attack_wait = 1.0
+character = NodePath("..")
+
 [node name="Anim" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 "": SubResource("AnimationLibrary_nlu8m")
 }
 autoplay = "running"
 
-[node name="Boom" type="Sprite2D" parent="." index="7"]
-modulate = Color(1, 1, 1, 0)
-z_index = -1
-position = Vector2(1, 1)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("6_gpaq2")
+[node name="Timer" type="Timer" parent="." index="7"]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
 [connection signal="attacking_began" from="MovementAI" to="." method="_on_movement_ai_attacking_began"]

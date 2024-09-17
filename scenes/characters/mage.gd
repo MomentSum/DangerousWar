@@ -20,10 +20,10 @@ func _on_target_changed() -> void:
 	damage = origin_damage
 
 
-func _on_attack_timer_timeout() -> void:
-	if is_instance_valid(target) and $MovementAI.attacking:
-		target.hurtbox.be_attacked(damage as int)
-
-
 func _on_movement_ai_attacking_began() -> void:
 	damage = origin_damage
+
+
+func _on_movement_ai_attack() -> void:
+	if is_instance_valid(target) and $MovementAI.attacking:
+		target.hurtbox.be_attacked(damage as int, 1)

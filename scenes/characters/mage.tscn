@@ -11,10 +11,10 @@
 [node name="Mage" instance=ExtResource("1_cita8")]
 script = ExtResource("2_4tbp4")
 origin_damage = 2
-accelerated_damage = 5.0
+accelerated_damage = 4.0
 
 [node name="Hurtbox" parent="." index="0"]
-health = 100
+health = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_a53oq")
@@ -30,28 +30,24 @@ rotation = 0.380482
 scale = Vector2(0.195, 0.195)
 texture = ExtResource("2_ph0da")
 
-[node name="MageHat" type="Sprite2D" parent="." index="3"]
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_m7n5q")]
+target_distance_min = 64.0
+target_distance_max = 160.0
+move_speed = 48.0
+attack_wait = 0.2
+attacking_speed_multiple = 0.3
+character = NodePath("..")
+
+[node name="MageHat" type="Sprite2D" parent="." index="4"]
 position = Vector2(1, -16)
 scale = Vector2(0.245, 0.245)
 texture = ExtResource("3_ft66y")
-
-[node name="MovementAI" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("4_m7n5q")]
-target_distance_min = 48.0
-target_distance_max = 128.0
-teammate_away_distance_max = 24.0
-move_speed = 48.0
-attack_wait = 0.01
-character = NodePath("..")
 
 [node name="Laser" type="Line2D" parent="." index="5"]
 points = PackedVector2Array(10, -10, 10, -10)
 width = 5.0
 default_color = Color(1, 1, 1, 0.509804)
 
-[node name="AttackTimer" type="Timer" parent="." index="6"]
-wait_time = 0.2
-autostart = true
-
 [connection signal="target_changed" from="." to="." method="_on_target_changed"]
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
 [connection signal="attacking_began" from="MovementAI" to="." method="_on_movement_ai_attacking_began"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

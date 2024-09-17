@@ -9,10 +9,11 @@
 script = ExtResource("1_r68ud")
 target_distance_min = 0.0
 target_distance_max = 0.0
-teammate_away_distance_max = 0.0
+teammate_away_distance_max = 24.0
 teammate_away_weight_max = 1.0
 move_speed = 0.0
-attack_wait = 0.0
+attack_wait = 10000.0
+attacking_speed_multiple = 0.5
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 

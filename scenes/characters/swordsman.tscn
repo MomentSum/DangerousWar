@@ -123,6 +123,7 @@ offset = Vector2(0, -192)
 [node name="Hitbox" parent="CharacterSprite/Sword" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_xtyep")]
 monitoring = false
 damage = 20
+peneration_rate = 0.2
 single_attack = true
 character = NodePath("../../..")
 
@@ -131,10 +132,10 @@ position = Vector2(0, -220)
 shape = SubResource("RectangleShape2D_kg87i")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_esjob")]
-target_distance_min = 24.0
-target_distance_max = 48.0
-teammate_away_distance_max = 32.0
-move_speed = 60.0
+target_distance_min = 16.0
+target_distance_max = 32.0
+teammate_away_distance_max = 24.0
+move_speed = 42.0
 attack_wait = 0.8
 character = NodePath("..")
 
