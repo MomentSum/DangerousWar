@@ -10,8 +10,8 @@ signal died()
 @export var character: Character
 
 
-func be_attacked(damage: int) -> void:
-	damage = max(damage - defense, 0)
+func be_attacked(damage: int, peneration_rate: float = 0) -> void:
+	damage = max(damage - defense * (1 - peneration_rate), 0)
 	health = max(health - damage, 0)
 	be_hurt.emit()
 	if health <= 0:
