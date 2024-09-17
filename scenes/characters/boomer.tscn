@@ -1,0 +1,137 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1tywr7n4hid2"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_noyjs"]
+[ext_resource type="Script" path="res://scenes/characters/boomer.gd" id="2_ix1nk"]
+[ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/powder_keg.svg" id="3_lud27"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_ebtrs"]
+[ext_resource type="PackedScene" uid="uid://npl5wlbxyur8" path="res://scenes/characters/parts/hitbox.tscn" id="5_xdhg4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfboa"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8b36"]
+radius = 77.0584
+
+[sub_resource type="Animation" id="Animation_fbx76"]
+resource_name = "running"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/PowderKeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8.878, 0), Vector2(-8.878, -2.065)]
+}
+
+[sub_resource type="Animation" id="Animation_8sgjg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/PowderKeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8.878, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite/PowderKeg:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p78ng"]
+resource_name = "boom"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite/PowderKeg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite/PowderKeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8.878, -1.54875), Vector2(4.867, -1.549)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlu8m"]
+_data = {
+"RESET": SubResource("Animation_8sgjg"),
+"boom": SubResource("Animation_p78ng"),
+"running": SubResource("Animation_fbx76")
+}
+
+[node name="Boomer" instance=ExtResource("1_noyjs")]
+script = ExtResource("2_ix1nk")
+
+[node name="Hurtbox" parent="." index="0"]
+health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_sfboa")
+
+[node name="PowderKeg" type="Sprite2D" parent="CharacterSprite" index="3"]
+position = Vector2(-8.878, 0)
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("3_lud27")
+
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
+target_distance_max = 32.0
+teammate_away_distance_max = 32.0
+teammate_away_weight_max = 0.0
+move_speed = 65.0
+attack_wait = 0.6
+character = NodePath("..")
+
+[node name="Timer" type="Timer" parent="." index="4"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Hitbox" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("5_xdhg4")]
+monitoring = false
+damage = 600
+character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_u8b36")
+
+[node name="Anim" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_nlu8m")
+}
+autoplay = "running"
+
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
+[connection signal="attacking_began" from="MovementAI" to="." method="_on_movement_ai_attacking_began"]
+[connection signal="attacking_ended" from="MovementAI" to="." method="_on_movement_ai_attacking_ended"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
