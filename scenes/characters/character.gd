@@ -12,6 +12,11 @@ signal target_changed
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite
 
+var viewport_size: Vector2:
+	get:
+		return Vector2(ProjectSettings.get_setting("display/window/size/viewport_width") \
+				,ProjectSettings.get_setting("display/window/size/viewport_height"))
+
 
 var direction_to_target: Vector2:
 	get:
@@ -68,3 +73,8 @@ func _on_refind_target_timer_timeout() -> void:
 
 func _on_hurtbox_died() -> void:
 	queue_free()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PROCESS:
+		position = position.clamp(Vector2.ZERO, viewport_size)

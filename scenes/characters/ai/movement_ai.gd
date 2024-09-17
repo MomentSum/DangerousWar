@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 	if _attacking:
 		direction /= 2
 	character.position += direction * move_speed * delta
+	character.position = character.position.clamp(Vector2.ZERO, character.viewport_size)
 	_attacking = character.distance_to_target <= target_distance_max
 
 
