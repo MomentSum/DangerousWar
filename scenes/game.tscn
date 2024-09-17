@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=5 format=3 uid="uid://bstgsc6o0av36"]
 
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
 [ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="1_xqigd"]
+
+[sub_resource type="GDScript" id="GDScript_1w8pj"]
+script/source = "extends Label
+
+
+func _process(delta: float) -> void:
+	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS)) \\
+			+ \"\\nA:\" + str(get_tree().get_nodes_in_group(\"a\").size()) \\
+			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
+"
 
 [node name="Game" type="Node2D"]
 
@@ -18,6 +29,7 @@ modulate = Color(0.92549, 0.639216, 0.921569, 1)
 
 [node name="CharactersSpace" type="Node2D" parent="." groups=["characters_space"]]
 y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
 
 [node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]
 
@@ -30,36 +42,72 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_0kgbk")
 
-[node name="CharacterDropArea" parent="CanvasLayer/GUI" instance=ExtResource("1_hstst")]
+[node name="Opeartions" type="Control" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterDropArea" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.000868056
 anchor_right = 0.5
+offset_left = 0.965278
+offset_right = 0.965279
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="CharacterDropArea2" parent="CanvasLayer/GUI" instance=ExtResource("1_hstst")]
+[node name="CharacterDropArea2" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.999132
+anchor_left = 0.500868
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="CardsBar" parent="CanvasLayer/GUI" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
+[node name="CardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 layout_mode = 1
-offset_left = 1.0
-offset_top = 146.0
-offset_right = -1039.0
-offset_bottom = -254.0
+anchors_preset = -1
+anchor_left = 0.000868056
+anchor_top = 0.225309
+anchor_right = 0.0980903
+anchor_bottom = 0.608025
+offset_bottom = -3.05176e-05
 drop_area = NodePath("../CharacterDropArea")
 team_group = &"a"
+metadata/_edit_use_anchors_ = true
 
-[node name="CardsBar2" parent="CanvasLayer/GUI" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
+[node name="CardsBar2" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 layout_mode = 1
-offset_left = 1040.0
-offset_top = 146.0
-offset_bottom = -254.0
+anchors_preset = -1
+anchor_left = 0.897569
+anchor_top = 0.225309
+anchor_right = 0.994792
+anchor_bottom = 0.608025
+offset_bottom = -3.05176e-05
 drop_area = NodePath("../CharacterDropArea2")
 team_group = &"b"
+metadata/_edit_use_anchors_ = true
+
+[node name="View" type="Control" parent="CanvasLayer/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StateLabel" type="Label" parent="CanvasLayer/GUI/View"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "FPS:
+A:
+B:"
+script = SubResource("GDScript_1w8pj")

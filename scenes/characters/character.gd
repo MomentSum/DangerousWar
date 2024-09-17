@@ -15,7 +15,7 @@ signal target_changed
 var viewport_size: Vector2:
 	get:
 		return Vector2(ProjectSettings.get_setting("display/window/size/viewport_width") \
-				,ProjectSettings.get_setting("display/window/size/viewport_height"))
+				,ProjectSettings.get_setting("display/window/size/viewport_height")) *2 
 
 
 var direction_to_target: Vector2:

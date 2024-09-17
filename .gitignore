@@ -2,3 +2,5 @@
 .godot/
 record*.mp4
 record*.avi
+*.apk
+*.idsig
