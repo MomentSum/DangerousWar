@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clhu3aiefb5nl"]
+
+[ext_resource type="Script" path="res://scenes/teams.gd" id="1_hdcj4"]
+
+[node name="Teams" type="Node"]
+script = ExtResource("1_hdcj4")

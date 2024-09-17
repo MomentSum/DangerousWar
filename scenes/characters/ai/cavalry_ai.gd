@@ -74,8 +74,8 @@ func _on_dashing_check_timer_timeout() -> void:
 		_dashing = false
 		dashing_ended.emit()
 		$DashTimer.start()
+		character.refind_target_enabled = true
 		character.character_sprite.rotate_enabled = true
-		character.character_sprite.transition_rotation()
 		_clockwise_rotation *= -1
 
 
@@ -83,6 +83,7 @@ func _on_dash_timer_timeout() -> void:
 	_dashing = true
 	dashing_began.emit()
 	_dash_direction = character.direction_to_target
+	character.refind_target_enabled = false
 	character.character_sprite.rotate_enabled = false
 	await get_tree().create_timer( \
 			(character.distance_to_target + extra_dash_distance_min) / dash_speed).timeout

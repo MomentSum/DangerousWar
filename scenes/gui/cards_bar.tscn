@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1wbixhhhqs6m"]
+
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
+[ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
+[ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="3_l4wks"]
+[ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="4_0e2wk"]
+[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/sword.svg" id="5_r4tbe"]
+[ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="6_j55dx"]
+[ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow4.png" id="7_h23wr"]
+[ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="8_wn0im"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="9_4oq0w"]
+
+[node name="CardsBar" type="PanelContainer"]
+modulate = Color(1, 1, 1, 0.313726)
+self_modulate = Color(0.827451, 0.827451, 0.827451, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_46xbe")
+script = ExtResource("2_njnq7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Cards" type="HFlowContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+
+[node name="CharacterCard" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("4_0e2wk")
+icon = ExtResource("5_r4tbe")
+
+[node name="CharacterCard2" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("6_j55dx")
+icon = ExtResource("7_h23wr")
+
+[node name="CharacterCard3" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("8_wn0im")
+icon = ExtResource("9_4oq0w")

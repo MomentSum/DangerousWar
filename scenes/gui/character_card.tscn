@@ -1,27 +1,43 @@
-[gd_scene format=3 uid="uid://cj258gv81mfi4"]
+[gd_scene load_steps=4 format=3 uid="uid://cj258gv81mfi4"]
+
+[ext_resource type="Texture2D" uid="uid://cbxgwhvcped6m" path="res://resources/images/card_background.svg" id="1_0b8tb"]
+[ext_resource type="Script" path="res://scenes/gui/character_card.gd" id="1_08yjy"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="2_qylwc"]
 
 [node name="CharacterCard" type="Control"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
-anchor_right = 0.056
-anchor_bottom = 0.099
-offset_right = -0.512001
-offset_bottom = -0.152008
+anchor_right = 0.0555556
+anchor_bottom = 0.0987654
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+script = ExtResource("1_08yjy")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_0b8tb")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_top = 0.078125
+anchor_right = 0.921875
+anchor_bottom = 0.921875
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_qylwc")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

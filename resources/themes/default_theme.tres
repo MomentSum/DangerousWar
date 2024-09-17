@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://duumt3ib4xkid"]
+
+[ext_resource type="StyleBox" uid="uid://ch7u706w37pbg" path="res://resources/themes/default_panel.tres" id="1_bh08j"]
+[ext_resource type="FontFile" uid="uid://ckwi5ymgl32ew" path="res://resources/fonts/unifont-15.0.01.otf" id="2_xi7ma"]
+
+[resource]
+default_font = ExtResource("2_xi7ma")
+default_font_size = 16
+PanelContainer/styles/panel = ExtResource("1_bh08j")
