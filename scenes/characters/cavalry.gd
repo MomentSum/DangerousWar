@@ -2,11 +2,11 @@ extends Character
 
 
 func _on_cavalry_ai_dashing_began() -> void:
-	%Hitbox.disabled = false
+	%Hitbox.monitoring = true
 
 
 func _on_cavalry_ai_dashing_ended() -> void:
-	%Hitbox.disabled = true
+	%Hitbox.monitoring = false
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):

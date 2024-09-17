@@ -80,7 +80,6 @@ position = Vector2(8.66459e-05, 135.263)
 rotation = -1.5708
 scale = Vector2(10.4049, 35)
 damage = 20
-disabled = true
 character = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite/Sword/Hitbox" index="0"]

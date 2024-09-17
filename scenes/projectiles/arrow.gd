@@ -6,4 +6,4 @@ func _process(delta: float) -> void:
 
 
 func _on_dropped() -> void:
-	$Hitbox.disabled = false
+	$Hitbox.monitoring = true

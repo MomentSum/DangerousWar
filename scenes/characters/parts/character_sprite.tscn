@@ -6,25 +6,25 @@
 [node name="CharacterSprite" type="Node2D"]
 script = ExtResource("1_70k2p")
 
-[node name="Character2" type="Sprite2D" parent="."]
+[node name="Back" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(0.5, 0.25)
-scale = Vector2(0.16, 0.16)
+position = Vector2(0, 0.57)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("1_u1ijl")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 self_modulate = Color(0.690196, 0.690196, 0.690196, 1)
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-scale = Vector2(0.16, 0.16)
+offset_left = -64.12
+offset_top = -63.73
+offset_right = 63.88
+offset_bottom = 64.27
+scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(64, 64)
 value = 60.0
 fill_mode = 5
 texture_progress = ExtResource("1_u1ijl")
 
 [node name="Character" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, 1.90735e-06)
-scale = Vector2(0.08, 0.08)
+position = Vector2(-0.33, 0.475)
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("1_u1ijl")

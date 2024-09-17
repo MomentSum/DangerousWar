@@ -8,12 +8,12 @@
 
 [node name="Arrow" instance=ExtResource("1_ea2lt")]
 script = ExtResource("2_l0811")
-time = 1.25
+time = 1.0
 height = 128.0
 
 [node name="Hitbox" parent="." index="0"]
+monitoring = false
 damage = 25
-disabled = true
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]

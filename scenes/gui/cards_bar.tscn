@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1wbixhhhqs6m"]
+[gd_scene load_steps=14 format=3 uid="uid://c1wbixhhhqs6m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow4.png" id="7_h23wr"]
 [ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="8_wn0im"]
 [ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="9_4oq0w"]
+[ext_resource type="PackedScene" uid="uid://denkescm5r7fs" path="res://scenes/characters/hypaspist.tscn" id="10_udspp"]
+[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/shield.svg" id="11_u2o3l"]
+[ext_resource type="PackedScene" uid="uid://b1tywr7n4hid2" path="res://scenes/characters/boomer.tscn" id="12_5txk1"]
+[ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/powder_keg.svg" id="13_ai4gn"]
 
 [node name="CardsBar" type="PanelContainer"]
 modulate = Color(1, 1, 1, 0.313726)
@@ -47,3 +51,13 @@ icon = ExtResource("7_h23wr")
 layout_mode = 2
 character_scene = ExtResource("8_wn0im")
 icon = ExtResource("9_4oq0w")
+
+[node name="CharacterCard4" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("10_udspp")
+icon = ExtResource("11_u2o3l")
+
+[node name="CharacterCard5" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("12_5txk1")
+icon = ExtResource("13_ai4gn")

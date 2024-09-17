@@ -14,6 +14,7 @@ func _ready() -> void:
 	var color_node = get_tree().get_first_node_in_group(team_group+"_color")
 	if is_instance_valid(color_node):
 		modulate = color_node.modulate
+		modulate.a = 0.5
 		if is_instance_valid(drop_area):
 			drop_area.color = color_node.modulate
 	

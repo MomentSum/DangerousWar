@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_xl6ki")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 position = Vector2(-4.76837e-07, 0)
 scale = Vector2(0.8, 0.3)
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
