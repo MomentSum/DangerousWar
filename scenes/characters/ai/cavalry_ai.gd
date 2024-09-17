@@ -80,6 +80,8 @@ func _on_dashing_check_timer_timeout() -> void:
 
 
 func _on_dash_timer_timeout() -> void:
+	if not is_instance_valid(target):
+		return
 	_dashing = true
 	dashing_began.emit()
 	_dash_direction = character.direction_to_target
