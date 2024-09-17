@@ -10,8 +10,8 @@
 
 [node name="Mage" instance=ExtResource("1_cita8")]
 script = ExtResource("2_4tbp4")
-origin_damage = 1
-accelerated_damage = 3.0
+origin_damage = 2
+accelerated_damage = 5.0
 
 [node name="Hurtbox" parent="." index="0"]
 health = 100

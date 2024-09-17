@@ -67,6 +67,13 @@ shape = SubResource("CircleShape2D_ben8p")
 position = Vector2(6.5, 8.5)
 shape = SubResource("RectangleShape2D_evqvc")
 
+[node name="Horse" type="Sprite2D" parent="." index="2"]
+texture_filter = 1
+position = Vector2(0, 3)
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("3_e7rxf")
+offset = Vector2(18.575, 0)
+
 [node name="Sword" type="Sprite2D" parent="CharacterSprite" index="1"]
 position = Vector2(10, 4.76837e-07)
 rotation = 1.5708
@@ -85,13 +92,6 @@ character = NodePath("../../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite/Sword/Hitbox" index="0"]
 position = Vector2(25, -1.78814e-07)
 shape = SubResource("RectangleShape2D_lnctb")
-
-[node name="Horse" type="Sprite2D" parent="." index="3"]
-texture_filter = 1
-position = Vector2(0, 3)
-scale = Vector2(0.305, 0.305)
-texture = ExtResource("3_e7rxf")
-offset = Vector2(18.575, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
