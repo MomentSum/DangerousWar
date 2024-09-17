@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1tywr7n4hid2"]
+[gd_scene load_steps=13 format=3 uid="uid://b1tywr7n4hid2"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_noyjs"]
 [ext_resource type="Script" path="res://scenes/characters/boomer.gd" id="2_ix1nk"]
 [ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/powder_keg.svg" id="3_lud27"]
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_ebtrs"]
 [ext_resource type="PackedScene" uid="uid://npl5wlbxyur8" path="res://scenes/characters/parts/hitbox.tscn" id="5_xdhg4"]
+[ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="6_gpaq2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfboa"]
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8b36"]
-radius = 77.0584
+radius = 63.0079
 
 [sub_resource type="Animation" id="Animation_fbx76"]
 resource_name = "running"
@@ -46,42 +47,80 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite/PowderKeg:modulate")
+tracks/1/path = NodePath("Boom:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boom:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
 }
 
 [sub_resource type="Animation" id="Animation_p78ng"]
 resource_name = "boom"
-length = 0.6
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite/PowderKeg:modulate")
+tracks/0/path = NodePath("CharacterSprite/PowderKeg:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(-8.878, -1.54875), Vector2(4.867, -1.549)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite/PowderKeg:position")
+tracks/1/path = NodePath("Boom:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 1.1, 1.4),
+"transitions": PackedFloat32Array(1, 0, 0.5, 1),
 "update": 0,
-"values": [Vector2(-8.878, -1.54875), Vector2(4.867, -1.549)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boom:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1, 1.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlu8m"]
@@ -106,11 +145,11 @@ scale = Vector2(0.135, 0.135)
 texture = ExtResource("3_lud27")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
-target_distance_max = 32.0
+target_distance_max = 48.0
 teammate_away_distance_max = 32.0
 teammate_away_weight_max = 0.0
 move_speed = 65.0
-attack_wait = 0.6
+attack_wait = 1.0
 character = NodePath("..")
 
 [node name="Timer" type="Timer" parent="." index="4"]
@@ -130,6 +169,13 @@ libraries = {
 "": SubResource("AnimationLibrary_nlu8m")
 }
 autoplay = "running"
+
+[node name="Boom" type="Sprite2D" parent="." index="7"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(1, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_gpaq2")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
 [connection signal="attacking_began" from="MovementAI" to="." method="_on_movement_ai_attacking_began"]

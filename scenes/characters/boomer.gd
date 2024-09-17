@@ -4,10 +4,11 @@ extends Character
 func _on_movement_ai_attack() -> void:
 	$Hitbox.monitoring = true
 	$Timer.start()
+	$CharacterSprite.hide()
 	hurtbox.defense = 1e+10
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	$Hitbox.monitoring = false
 
 
 func _on_movement_ai_attacking_began() -> void:
@@ -15,4 +16,5 @@ func _on_movement_ai_attacking_began() -> void:
 
 
 func _on_movement_ai_attacking_ended() -> void:
-	$Anim.play("RESET")
+	if $Timer.time_left == 0:
+		$Anim.play("RESET")
