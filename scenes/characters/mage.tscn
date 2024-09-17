@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy54o873rsjys"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_cita8"]
+[ext_resource type="Script" path="res://scenes/characters/mage.gd" id="2_4tbp4"]
+[ext_resource type="Texture2D" uid="uid://bxoxir7vh7rw0" path="res://resources/images/staff.svg" id="2_ph0da"]
+[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/mage_hat.svg" id="3_ft66y"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_m7n5q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a53oq"]
+
+[node name="Mage" instance=ExtResource("1_cita8")]
+script = ExtResource("2_4tbp4")
+origin_damage = 1
+accelerated_damage = 3.0
+
+[node name="Hurtbox" parent="." index="0"]
+health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_a53oq")
+
+[node name="LaserOrigin" type="Marker2D" parent="CharacterSprite" index="3"]
+unique_name_in_owner = true
+position = Vector2(10, -10)
+scale = Vector2(0.195, 0.195)
+
+[node name="Staff" type="Sprite2D" parent="CharacterSprite" index="4"]
+position = Vector2(13, -3)
+rotation = 0.380482
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("2_ph0da")
+
+[node name="MageHat" type="Sprite2D" parent="." index="3"]
+position = Vector2(1, -16)
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("3_ft66y")
+
+[node name="MovementAI" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("4_m7n5q")]
+target_distance_min = 48.0
+target_distance_max = 128.0
+teammate_away_distance_max = 24.0
+move_speed = 48.0
+attack_wait = 0.01
+character = NodePath("..")
+
+[node name="Laser" type="Line2D" parent="." index="5"]
+points = PackedVector2Array(10, -10, 10, -10)
+width = 5.0
+default_color = Color(1, 1, 1, 0.509804)
+
+[node name="AttackTimer" type="Timer" parent="." index="6"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="target_changed" from="." to="." method="_on_target_changed"]
+[connection signal="attacking_began" from="MovementAI" to="." method="_on_movement_ai_attacking_began"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -19,11 +19,11 @@ signal attacking_ended()
 
 var _teammate_away_direction: Vector2
 
-var _attacking: bool = false:
+var attacking: bool = false:
 	set(new):
-		if _attacking == new:
+		if attacking == new:
 			return
-		_attacking = new
+		attacking = new
 		if new:
 			attacking_began.emit()
 			$AttackTimer.start()
@@ -41,11 +41,11 @@ func _process(delta: float) -> void:
 	var weighted_direction_away_from_teammate = get_weighted_direction_away_from_teammate()
 	var direction_follow_target = get_direction_follow_target()
 	var direction = (weighted_direction_away_from_teammate + direction_follow_target).normalized()
-	if _attacking:
+	if attacking:
 		direction /= 2
 	character.position += direction * move_speed * delta
 	character.position = character.position.clamp(Vector2.ZERO, character.viewport_size)
-	_attacking = character.distance_to_target <= target_distance_max
+	attacking = character.distance_to_target <= target_distance_max
 
 
 func get_direction_follow_target() -> Vector2:
