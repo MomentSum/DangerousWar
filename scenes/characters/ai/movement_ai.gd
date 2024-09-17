@@ -44,15 +44,15 @@ func _process(delta: float) -> void:
 	if _attacking:
 		direction /= 2
 	character.position += direction * move_speed * delta
-	_attacking = _distance_to_target <= target_distance_max
+	_attacking = character.distance_to_target <= target_distance_max
 
 
 func get_direction_follow_target() -> Vector2:
 	if is_instance_valid(target):
-		if _distance_to_target > target_distance_max:
-			return _direction_to_target
-		if _distance_to_target < target_distance_min:
-			return -_direction_to_target
+		if character.distance_to_target > target_distance_max:
+			return character.direction_to_target
+		if character.distance_to_target < target_distance_min:
+			return -character.direction_to_target
 	return Vector2.ZERO
 
 

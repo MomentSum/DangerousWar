@@ -10,7 +10,7 @@ func _on_cavalry_ai_dashing_ended() -> void:
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target):
-		if target.position.x < position.x:
+		if character_sprite.scale.y < 0:
 			$Horse.scale.y = -$Horse.scale.x
 			$Horse.rotation = PI
 		else:

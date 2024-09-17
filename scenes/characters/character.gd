@@ -12,6 +12,20 @@ signal target_changed
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite
 
+
+var direction_to_target: Vector2:
+	get:
+		if not is_instance_valid(target):
+			return Vector2.ZERO
+		return position.direction_to(target.position)
+
+var distance_to_target: float:
+	get:
+		if not is_instance_valid(target):
+			return 1e+10
+		return position.distance_to(target.position)
+
+
 var refind_target_enabled: bool = true
 var target: Character
 

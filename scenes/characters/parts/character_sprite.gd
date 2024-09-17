@@ -21,10 +21,8 @@ func _ready() -> void:
 
 func _on_character_target_changed() -> void:
 	if is_instance_valid(character.target):
-		var new_direction = character.position.direction_to(character.target.position)
-		_transition_rotation_offset = new_direction.angle_to(Vector2.from_angle(rotation))
-		create_tween().tween_property(self,"_transition_rotation_offset", 0, 0.3)
-		if new_direction.x < 0:
+		transition_rotation()
+		if character.direction_to_target.x < 0:
 			scale.y = -scale.x
 			$HealthBar.scale.y = -$HealthBar.scale.x
 		else:
@@ -36,9 +34,15 @@ func _process(delta: float) -> void:
 	if rotate_enabled:
 		if is_instance_valid(character.target):
 			rotation = \
-					character.position.direction_to(character.target.position).angle() \
+					character.direction_to_target.angle() \
 					+ rotation_offset \
 					+ _transition_rotation_offset
+	
 	$HealthBar.rotation = - sign($HealthBar.scale.y) * rotation
 	$HealthBar.value = character.hurtbox.health
 
+
+func transition_rotation(from_direction: Vector2 = Vector2.from_angle(rotation)) -> void:
+	var direction = character.direction_to_target
+	_transition_rotation_offset = direction.angle_to(from_direction)
+	create_tween().tween_property(self,"_transition_rotation_offset", 0, 0.3)

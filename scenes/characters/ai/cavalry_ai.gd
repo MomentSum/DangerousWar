@@ -49,19 +49,19 @@ func _process(delta: float) -> void:
 	if not is_instance_valid(target):
 		return
 	
-	if _distance_to_target > keep_distance_max:
-		var angle = asin(keep_distance_max / _distance_to_target)
-		var direction = _direction_to_target.rotated(-_clockwise_rotation*angle)
+	if character.distance_to_target > keep_distance_max:
+		var angle = asin(keep_distance_max / character.distance_to_target)
+		var direction = character.direction_to_target.rotated(-_clockwise_rotation*angle)
 		character.position += direction * move_speed * delta
 		_attacking = false
 	else:
 		var vec = character.position - target.position
 		var arc = move_speed * delta
-		var angle = arc / _distance_to_target
+		var angle = arc / character.distance_to_target
 		var result_vec = vec.rotated(_clockwise_rotation * angle)
 		var direction = vec.direction_to(result_vec)
-		if _distance_to_target < keep_distance_min:
-			direction = (direction - _direction_to_target ) / 2
+		if character.distance_to_target < keep_distance_min:
+			direction = (direction - character.direction_to_target ) / 2
 		character.position += direction * move_speed * delta
 		_attacking = true
 
@@ -75,14 +75,15 @@ func _on_dashing_check_timer_timeout() -> void:
 		dashing_ended.emit()
 		$DashTimer.start()
 		character.character_sprite.rotate_enabled = true
+		character.character_sprite.transition_rotation()
 		_clockwise_rotation *= -1
 
 
 func _on_dash_timer_timeout() -> void:
 	_dashing = true
 	dashing_began.emit()
-	_dash_direction = _direction_to_target
+	_dash_direction = character.direction_to_target
 	character.character_sprite.rotate_enabled = false
 	await get_tree().create_timer( \
-			(_distance_to_target + extra_dash_distance_min) / dash_speed).timeout
+			(character.distance_to_target + extra_dash_distance_min) / dash_speed).timeout
 	$DashingCheckTimer.start()

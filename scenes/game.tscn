@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="1_w0h2u"]
-[ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="2_24jfj"]
+[ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="2_vuvq4"]
 
 [sub_resource type="GDScript" id="GDScript_lfjto"]
 script/source = "extends Node2D
@@ -45,14 +45,21 @@ scene = ExtResource("1_w0h2u")
 position = Vector2(923, 332)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
-count = 15
+count = 25
 scene = ExtResource("1_w0h2u")
 
 [node name="B2" type="Node2D" parent="CharactersSpace"]
 position = Vector2(1076, 359)
 script = SubResource("GDScript_lfjto")
 team_group = &"b"
-count = 25
-scene = ExtResource("2_24jfj")
+count = 1
+scene = ExtResource("2_vuvq4")
+
+[node name="B3" type="Node2D" parent="CharactersSpace"]
+position = Vector2(517, 129)
+script = SubResource("GDScript_lfjto")
+team_group = &"b"
+count = 1
+scene = ExtResource("2_vuvq4")
 
 [node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]
