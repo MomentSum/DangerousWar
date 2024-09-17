@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://denkescm5r7fs"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_2ms0k"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="2_0d0ul"]
+[ext_resource type="Script" path="res://scenes/characters/hypaspist.gd" id="2_u7tml"]
+[ext_resource type="PackedScene" uid="uid://npl5wlbxyur8" path="res://scenes/characters/parts/hitbox.tscn" id="4_h6c4c"]
+[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/shield.svg" id="5_ndi55"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lje0h"]
+radius = 8.06226
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l54i6"]
+size = Vector2(3, 17)
+
+[node name="Hypaspist" instance=ExtResource("1_2ms0k")]
+script = ExtResource("2_u7tml")
+aggression_multiple = 3.0
+
+[node name="Hurtbox" parent="." index="0"]
+health = 1200
+defense = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_lje0h")
+
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("2_0d0ul")]
+target_distance_min = 16.0
+target_distance_max = 38.0
+teammate_away_distance_max = 32.0
+move_speed = 45.0
+attack_wait = 3.0
+character = NodePath("..")
+
+[node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("4_h6c4c")]
+damage = 100
+disabled = true
+single_attack = true
+character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(9.5, 0.5)
+shape = SubResource("RectangleShape2D_l54i6")
+
+[node name="Shield" type="Sprite2D" parent="." index="5"]
+position = Vector2(10, 6.82121e-13)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("5_ndi55")
+
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]
