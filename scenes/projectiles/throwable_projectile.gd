@@ -16,6 +16,7 @@ var _ending: Vector2
 var _control :Vector2
 
 var _time: float
+var _dropped: bool
 
 
 func _ready() -> void:
@@ -34,8 +35,9 @@ func _process(delta: float) -> void:
 	var c = c1.lerp(c2, weight)
 	sprite_rotation = position.direction_to(c).angle()
 	position = c
-	if weight > 0.9:
+	if not _dropped and weight > 0.9:
 		dropped.emit()
+		_dropped = true
 	if weight > 1:
 		queue_free()
 

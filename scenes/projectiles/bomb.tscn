@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://isttwytgb6qc"]
+
+[ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_kctlu"]
+[ext_resource type="Script" path="res://scenes/projectiles/bomb.gd" id="2_62pe7"]
+[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="2_blg6t"]
+[ext_resource type="PackedScene" uid="uid://d0et1fhbu042c" path="res://scenes/projectiles/explosion_spawner.tscn" id="3_rp6uc"]
+
+[node name="Bomb" instance=ExtResource("1_kctlu")]
+script = ExtResource("2_62pe7")
+rotate_speed = 90.0
+time = 1.5
+height = 96.0
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+position = Vector2(-2.98023e-08, 0.5)
+scale = Vector2(0.2, 0.65)
+
+[node name="Bomb" type="Sprite2D" parent="." index="3"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_blg6t")
+
+[node name="ExplosionSpawner" parent="." index="4" instance=ExtResource("3_rp6uc")]
+scale = Vector2(2.88, 2.88)
+damage = 35.0
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]

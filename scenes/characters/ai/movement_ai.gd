@@ -40,6 +40,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var weighted_direction_away_from_teammate = get_weighted_direction_away_from_teammate()
+	#var weighted_direction_away_from_teammate = Vector2.ZERO
 	var direction_follow_target = get_direction_follow_target()
 	var direction = (weighted_direction_away_from_teammate + direction_follow_target).normalized()
 	if attacking:

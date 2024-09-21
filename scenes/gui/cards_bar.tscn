@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1wbixhhhqs6m"]
+[gd_scene load_steps=18 format=3 uid="uid://c1wbixhhhqs6m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/powder_keg.svg" id="13_ai4gn"]
 [ext_resource type="PackedScene" uid="uid://dy54o873rsjys" path="res://scenes/characters/mage.tscn" id="14_4nv6q"]
 [ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/mage_hat.svg" id="15_45l5t"]
+[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="16_2ht8q"]
+[ext_resource type="PackedScene" uid="uid://bvscspkmu2un6" path="res://scenes/characters/thrower.tscn" id="16_vj435"]
 
 [node name="CardsBar" type="PanelContainer"]
 modulate = Color(1, 1, 1, 0.313726)
@@ -68,3 +70,8 @@ icon = ExtResource("13_ai4gn")
 layout_mode = 2
 character_scene = ExtResource("14_4nv6q")
 icon = ExtResource("15_45l5t")
+
+[node name="CharacterCard7" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("16_vj435")
+icon = ExtResource("16_2ht8q")
