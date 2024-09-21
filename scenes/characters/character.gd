@@ -55,7 +55,7 @@ func find_target() -> void:
 		if c.is_in_group(team_group):
 			continue
 		var distance = position.distance_to(c.position)
-		var adistance = distance / aggression_multiple
+		var adistance = distance / c.aggression_multiple
 		if c == target:
 			adistance *= 0.8
 			pass
