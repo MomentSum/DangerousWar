@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1wbixhhhqs6m"]
+[gd_scene load_steps=22 format=3 uid="uid://c1wbixhhhqs6m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/mage_hat.svg" id="15_45l5t"]
 [ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="16_2ht8q"]
 [ext_resource type="PackedScene" uid="uid://bvscspkmu2un6" path="res://scenes/characters/thrower.tscn" id="16_vj435"]
+[ext_resource type="PackedScene" uid="uid://dpjo4u2wd1g4q" path="res://scenes/characters/infantry.tscn" id="18_k7ggu"]
+[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/rifle.svg" id="19_xf0h3"]
+[ext_resource type="PackedScene" uid="uid://cwrd5jnbqr51v" path="res://scenes/characters/sniper.tscn" id="20_t2kaf"]
+[ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/sniper_rifle.svg" id="21_thiya"]
 
 [node name="CardsBar" type="PanelContainer"]
 modulate = Color(1, 1, 1, 0.313726)
@@ -45,6 +49,7 @@ theme_override_constants/h_separation = 20
 layout_mode = 2
 character_scene = ExtResource("4_0e2wk")
 icon = ExtResource("5_r4tbe")
+price = 52
 
 [node name="CharacterCard2" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
@@ -75,3 +80,13 @@ icon = ExtResource("15_45l5t")
 layout_mode = 2
 character_scene = ExtResource("16_vj435")
 icon = ExtResource("16_2ht8q")
+
+[node name="CharacterCard8" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("18_k7ggu")
+icon = ExtResource("19_xf0h3")
+
+[node name="CharacterCard9" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+layout_mode = 2
+character_scene = ExtResource("20_t2kaf")
+icon = ExtResource("21_thiya")

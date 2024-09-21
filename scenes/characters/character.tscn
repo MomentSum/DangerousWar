@@ -9,6 +9,7 @@ script = ExtResource("1_p3xoq")
 refind_target_wait = 0.2
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_htkme")]
+collision_layer = 3
 character = NodePath("..")
 
 [node name="RefindTargetTimer" type="Timer" parent="."]

@@ -69,6 +69,13 @@ func get_weighted_direction_away_from_teammate() -> Vector2:
 			var direction = teammate.position.direction_to(character.position)
 			wdirection += direction * weight
 	return wdirection
+	#var wdirection: Vector2
+	#for teammate in get_tree().get_nodes_in_group(character.team_group):
+		#var distance = teammate.position.distance_to(character.position)
+		#var weight = max(1- distance / teammate_away_distance_max, 0)
+		#var direction = teammate.position.direction_to(character.position)
+		#wdirection += direction * weight
+	#return wdirection
 
 
 func _on_attack_timer_timeout() -> void:

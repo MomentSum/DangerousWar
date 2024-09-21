@@ -8,10 +8,12 @@ signal card_button_down
 
 @export var character_scene: PackedScene
 @export var icon: Texture
+@export var price: int
 
 
 func _ready() -> void:
 	$Icon.texture = icon
+	$Price.text = str(price)
 
 
 func _on_gui_input(event: InputEvent) -> void:

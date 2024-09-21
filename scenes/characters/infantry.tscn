@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpjo4u2wd1g4q"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_7wdjn"]
+[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/rifle.svg" id="2_5fk40"]
+[ext_resource type="Script" path="res://scenes/characters/infantry.gd" id="2_bykdc"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="3_b8m5n"]
+[ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="4_y3sp5"]
+[ext_resource type="PackedScene" uid="uid://dvc1ateyo4jab" path="res://scenes/projectiles/bullet.tscn" id="5_3ymig"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5htw"]
+radius = 8.0
+
+[node name="Infantry" instance=ExtResource("1_7wdjn")]
+script = ExtResource("2_bykdc")
+
+[node name="Hurtbox" parent="." index="0"]
+health = 80
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_p5htw")
+
+[node name="Rifle" type="Sprite2D" parent="CharacterSprite" index="3"]
+position = Vector2(6, 4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_5fk40")
+
+[node name="ProjectileLauncher" parent="CharacterSprite/Rifle" index="0" node_paths=PackedStringArray("character") instance=ExtResource("4_y3sp5")]
+unique_name_in_owner = true
+position = Vector2(60, -20)
+scale = Vector2(6.66667, 6.66667)
+character = NodePath("../../..")
+projectile_scene = ExtResource("5_3ymig")
+
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_b8m5n")]
+target_distance_min = 96.0
+target_distance_max = 128.0
+move_speed = 40.0
+attack_wait = 0.3
+attacking_speed_multiple = 0.7
+character = NodePath("..")
+
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

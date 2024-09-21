@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvc1ateyo4jab"]
+
+[ext_resource type="PackedScene" uid="uid://dcfuf7feut7yk" path="res://scenes/projectiles/linear_projectile.tscn" id="1_dyuft"]
+[ext_resource type="Texture2D" uid="uid://bg27f0wh176sj" path="res://resources/images/bullet.svg" id="2_7h4r7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss50n"]
+size = Vector2(8, 3)
+
+[node name="Bullet" instance=ExtResource("1_dyuft")]
+move_speed = 800.0
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, 1)
+rotation = 0.0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_7h4r7")
+
+[node name="Hitbox" parent="." index="1"]
+damage = 10
+single_attack = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ss50n")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-2.38419e-07, 0.5)
+scale = Vector2(0.4, 0.15)

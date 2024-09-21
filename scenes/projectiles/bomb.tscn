@@ -7,7 +7,7 @@
 
 [node name="Bomb" instance=ExtResource("1_kctlu")]
 script = ExtResource("2_62pe7")
-rotate_speed = 90.0
+rotate_speed = 180.0
 time = 1.5
 height = 96.0
 
