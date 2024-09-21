@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt233nt6e5iep"]
+[gd_scene load_steps=8 format=3 uid="uid://dt233nt6e5iep"]
 
+[ext_resource type="PackedScene" uid="uid://npl5wlbxyur8" path="res://scenes/characters/parts/hitbox.tscn" id="1_8np7j"]
 [ext_resource type="Script" path="res://scenes/projectiles/explosion.gd" id="1_xynh5"]
 [ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="2_b3rxr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f4rh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbqet"]
 
 [sub_resource type="Animation" id="Animation_0lmjv"]
 length = 0.001
@@ -80,20 +81,19 @@ _data = {
 "boom": SubResource("Animation_i51t2")
 }
 
-[node name="Explosion" type="Area2D"]
+[node name="Hitbox" instance=ExtResource("1_8np7j")]
 script = ExtResource("1_xynh5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2f4rh")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_fbqet")
+debug_color = Color(1, 1, 1, 0.419608)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_soboa")
 }
 autoplay = "boom"
 
-[node name="Character" type="Sprite2D" parent="."]
+[node name="Character" type="Sprite2D" parent="." index="2"]
 scale = Vector2(0.155, 0.155)
 texture = ExtResource("2_b3rxr")
-
-[connection signal="hit" from="." to="." method="_on_hitbox_hit"]

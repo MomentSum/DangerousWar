@@ -20,7 +20,8 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_blg6t")
 
 [node name="ExplosionSpawner" parent="." index="4" instance=ExtResource("3_rp6uc")]
-scale = Vector2(2.88, 2.88)
+scale = Vector2(5, 5)
 damage = 35.0
+peneration_rate = 1.0
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]

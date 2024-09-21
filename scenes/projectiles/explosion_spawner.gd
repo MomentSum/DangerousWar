@@ -13,6 +13,8 @@ func _ready() -> void:
 
 
 func spawn() -> void:
+	if not is_instance_valid(character):
+		return
 	var explosion = explosion_scene.instantiate()
 	explosion.position = global_position
 	explosion.scale = scale
