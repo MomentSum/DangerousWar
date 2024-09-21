@@ -34,8 +34,11 @@ func _ready() -> void:
 	$DashTimer.wait_time = dash_wait
 	get_tree().process_frame.connect(func():
 		character.hurtbox.area_entered.connect(func(area: Area2D):
-			if area is Hurtbox and not area.character.is_in_group(character.team_group):
-				_be_touched = true
+			if area is Hurtbox:
+				if not area.character.is_in_group(character.team_group):
+					_be_touched = true
+				if _dashing and area.character.is_in_group("armoured"):
+					_dash_direction *= -0.5
 		)
 		_clockwise_rotation = -1 if randi_range(0,1) == 0 else 1
 	,CONNECT_ONE_SHOT)

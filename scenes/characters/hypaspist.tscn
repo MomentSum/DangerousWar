@@ -7,8 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lje0h"]
 radius = 8.06226
 
-[node name="Hypaspist" instance=ExtResource("1_2ms0k")]
-aggression_multiple = 5.0
+[node name="Hypaspist" groups=["armoured"] instance=ExtResource("1_2ms0k")]
+aggression_multiple = 4.0
 
 [node name="Hurtbox" parent="." index="0"]
 health = 1000

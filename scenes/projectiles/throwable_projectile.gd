@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	var c = c1.lerp(c2, weight)
 	sprite_rotation = position.direction_to(c).angle()
 	position = c
-	if not _dropped and weight > 0.9:
+	if not _dropped and weight > 0.95:
 		dropped.emit()
 		_dropped = true
 	if weight > 1:
