@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk6udvfe58mdc"]
+[gd_scene load_steps=12 format=3 uid="uid://dk6udvfe58mdc"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_alqo0"]
 [ext_resource type="Script" path="res://scenes/characters/archer.gd" id="2_gpq8s"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="7_crpix"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="8_lfyq3"]
 [ext_resource type="PackedScene" uid="uid://li6b3p8v1ne8" path="res://scenes/projectiles/arrow.tscn" id="9_cqlw0"]
-[ext_resource type="PackedScene" uid="uid://g4vtrvtgun0c" path="res://scenes/projectiles/linear_arrow.tscn" id="10_3hgcr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2t87e"]
 radius = 12.0
@@ -57,12 +56,6 @@ unique_name_in_owner = true
 position = Vector2(18, 0)
 character = NodePath("../..")
 projectile_scene = ExtResource("9_cqlw0")
-
-[node name="LinearArrowLauncher" parent="CharacterSprite" index="5" node_paths=PackedStringArray("character") instance=ExtResource("8_lfyq3")]
-unique_name_in_owner = true
-position = Vector2(18, 0)
-character = NodePath("../..")
-projectile_scene = ExtResource("10_3hgcr")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
 target_distance_min = 64.0
