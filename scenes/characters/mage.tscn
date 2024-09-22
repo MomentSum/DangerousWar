@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_cita8"]
 [ext_resource type="Script" path="res://scenes/characters/mage.gd" id="2_4tbp4"]
-[ext_resource type="Texture2D" uid="uid://bxoxir7vh7rw0" path="res://resources/images/staff.svg" id="2_ph0da"]
-[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/mage_hat.svg" id="3_ft66y"]
+[ext_resource type="Texture2D" uid="uid://bxoxir7vh7rw0" path="res://resources/images/weapons/staff.svg" id="3_v0b58"]
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_m7n5q"]
+[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/weapons/mage_hat.svg" id="5_g4qix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a53oq"]
 
@@ -19,6 +19,9 @@ health = 80
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_a53oq")
 
+[node name="CharacterSprite" parent="." index="2"]
+rotation_offset = 21.8
+
 [node name="LaserOrigin" type="Marker2D" parent="CharacterSprite" index="3"]
 unique_name_in_owner = true
 position = Vector2(10, -10)
@@ -26,9 +29,8 @@ scale = Vector2(0.195, 0.195)
 
 [node name="Staff" type="Sprite2D" parent="CharacterSprite" index="4"]
 position = Vector2(13, -3)
-rotation = 0.380482
 scale = Vector2(0.195, 0.195)
-texture = ExtResource("2_ph0da")
+texture = ExtResource("3_v0b58")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_m7n5q")]
 target_distance_min = 64.0
@@ -41,7 +43,7 @@ character = NodePath("..")
 [node name="MageHat" type="Sprite2D" parent="." index="4"]
 position = Vector2(1, -16)
 scale = Vector2(0.245, 0.245)
-texture = ExtResource("3_ft66y")
+texture = ExtResource("5_g4qix")
 
 [node name="Laser" type="Line2D" parent="." index="5"]
 points = PackedVector2Array(10, -10, 10, -10)

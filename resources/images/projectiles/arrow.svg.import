@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j3xm6250pnxa"
-path="res://.godot/imported/arrow.png-efebc6c0f4f4bb3b40432cf7769306b4.ctex"
+uid="uid://bodpp4inmbpcc"
+path="res://.godot/imported/arrow.svg-e3f59afdc8db0c9c44b6a566432ffce0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-efebc6c0f4f4bb3b40432cf7769306b4.ctex"]
+source_file="res://resources/images/projectiles/arrow.svg"
+dest_files=["res://.godot/imported/arrow.svg-e3f59afdc8db0c9c44b6a566432ffce0.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

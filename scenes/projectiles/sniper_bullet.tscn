@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pm6nli32m56x"]
 
 [ext_resource type="PackedScene" uid="uid://dcfuf7feut7yk" path="res://scenes/projectiles/linear_projectile.tscn" id="1_rk48d"]
-[ext_resource type="Texture2D" uid="uid://bg27f0wh176sj" path="res://resources/images/bullet.svg" id="2_70cx4"]
+[ext_resource type="Texture2D" uid="uid://bg27f0wh176sj" path="res://resources/images/projectiles/bullet.svg" id="2_70cx4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxglq"]
 size = Vector2(8, 3)

@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_ea2lt"]
 [ext_resource type="Script" path="res://scenes/projectiles/arrow.gd" id="2_l0811"]
-[ext_resource type="Texture2D" uid="uid://j3xm6250pnxa" path="res://resources/images/arrow.png" id="3_q3jro"]
+[ext_resource type="Texture2D" uid="uid://bodpp4inmbpcc" path="res://resources/images/projectiles/arrow.svg" id="3_7muam"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_owkij"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fyfhj"]
+radius = 15.0333
 
 [node name="Arrow" instance=ExtResource("1_ea2lt")]
 script = ExtResource("2_l0811")
@@ -17,7 +18,7 @@ damage = 15
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_owkij")
+shape = SubResource("CircleShape2D_fyfhj")
 
 [node name="Timer" parent="." index="2"]
 wait_time = 2.0
@@ -25,6 +26,7 @@ wait_time = 2.0
 [node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 texture_filter = 1
 rotation = 1.5708
-texture = ExtResource("3_q3jro")
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("3_7muam")
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gs8cljo73lwr"
-path="res://.godot/imported/bow4.png-981a3c2fd6a93cd1823277777ef37f1c.ctex"
+uid="uid://x5104nlwg6r5"
+path="res://.godot/imported/sniper_rifle.svg-d7b730fa92e9cd79093772e14464a53c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/bow4.png"
-dest_files=["res://.godot/imported/bow4.png-981a3c2fd6a93cd1823277777ef37f1c.ctex"]
+source_file="res://resources/images/weapons/sniper_rifle.svg"
+dest_files=["res://.godot/imported/sniper_rifle.svg-d7b730fa92e9cd79093772e14464a53c.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

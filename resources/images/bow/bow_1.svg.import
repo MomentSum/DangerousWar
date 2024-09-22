@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4mi56jclmqg0"
-path="res://.godot/imported/powder_keg.svg-87b9e01bbed70862e654bbc9851da6b6.ctex"
+uid="uid://c0yhq0sura3sb"
+path="res://.godot/imported/bow_1.svg-b2e2829eeebd60cd3b8827bf0b915261.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/powder_keg.svg"
-dest_files=["res://.godot/imported/powder_keg.svg-87b9e01bbed70862e654bbc9851da6b6.ctex"]
+source_file="res://resources/images/bow/bow_1.svg"
+dest_files=["res://.godot/imported/bow_1.svg-b2e2829eeebd60cd3b8827bf0b915261.ctex"]
 
 [params]
 

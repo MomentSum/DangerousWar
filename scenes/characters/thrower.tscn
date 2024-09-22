@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvscspkmu2un6"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_jt6m3"]
-[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="2_2ceay"]
+[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/projectiles/bomb.svg" id="2_2ceay"]
 [ext_resource type="Script" path="res://scenes/characters/thrower.gd" id="2_6heey"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="3_ohgag"]
 [ext_resource type="PackedScene" uid="uid://isttwytgb6qc" path="res://scenes/projectiles/bomb.tscn" id="4_imsxt"]

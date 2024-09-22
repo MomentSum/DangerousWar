@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		if is_instance_valid(character.target):
 			rotation = \
 					character.direction_to_target.angle() \
-					+ rotation_offset \
+					+ sign($HealthBar.scale.y) * deg_to_rad(rotation_offset) \
 					+ _transition_rotation_offset
 	
 	$HealthBar.rotation = - sign($HealthBar.scale.y) * rotation

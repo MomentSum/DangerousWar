@@ -4,23 +4,23 @@
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="3_l4wks"]
 [ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="4_0e2wk"]
-[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/sword.svg" id="5_r4tbe"]
+[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="5_mqter"]
 [ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="6_j55dx"]
-[ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow4.png" id="7_h23wr"]
+[ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow/bow4.png" id="7_ak6g0"]
 [ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="8_wn0im"]
-[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="9_4oq0w"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="9_pvjfy"]
 [ext_resource type="PackedScene" uid="uid://denkescm5r7fs" path="res://scenes/characters/hypaspist.tscn" id="10_udspp"]
-[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/shield.svg" id="11_u2o3l"]
+[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/weapons/shield.svg" id="11_vno6t"]
 [ext_resource type="PackedScene" uid="uid://b1tywr7n4hid2" path="res://scenes/characters/boomer.tscn" id="12_5txk1"]
-[ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/powder_keg.svg" id="13_ai4gn"]
+[ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/weapons/powder_keg.svg" id="13_27t6e"]
 [ext_resource type="PackedScene" uid="uid://dy54o873rsjys" path="res://scenes/characters/mage.tscn" id="14_4nv6q"]
-[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/mage_hat.svg" id="15_45l5t"]
-[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="16_2ht8q"]
+[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/weapons/mage_hat.svg" id="15_87p81"]
 [ext_resource type="PackedScene" uid="uid://bvscspkmu2un6" path="res://scenes/characters/thrower.tscn" id="16_vj435"]
+[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/projectiles/bomb.svg" id="17_q2iaa"]
 [ext_resource type="PackedScene" uid="uid://dpjo4u2wd1g4q" path="res://scenes/characters/infantry.tscn" id="18_k7ggu"]
-[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/rifle.svg" id="19_xf0h3"]
+[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/weapons/rifle.svg" id="19_1q6yu"]
 [ext_resource type="PackedScene" uid="uid://cwrd5jnbqr51v" path="res://scenes/characters/sniper.tscn" id="20_t2kaf"]
-[ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/sniper_rifle.svg" id="21_thiya"]
+[ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/weapons/sniper_rifle.svg" id="21_l4cx3"]
 
 [node name="CardsBar" type="Control"]
 layout_mode = 3
@@ -64,55 +64,55 @@ theme_override_constants/h_separation = 20
 [node name="Swordsman" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("4_0e2wk")
-icon = ExtResource("5_r4tbe")
+icon = ExtResource("5_mqter")
 price = 25
 
 [node name="Archer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("6_j55dx")
-icon = ExtResource("7_h23wr")
+icon = ExtResource("7_ak6g0")
 price = 25
 
 [node name="Cava;ry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("8_wn0im")
-icon = ExtResource("9_4oq0w")
+icon = ExtResource("9_pvjfy")
 price = 100
 
 [node name="Hypaspist" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("10_udspp")
-icon = ExtResource("11_u2o3l")
+icon = ExtResource("11_vno6t")
 price = 100
 
 [node name="Boomer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("12_5txk1")
-icon = ExtResource("13_ai4gn")
+icon = ExtResource("13_27t6e")
 price = 75
 
 [node name="Mage" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("14_4nv6q")
-icon = ExtResource("15_45l5t")
+icon = ExtResource("15_87p81")
 price = 75
 
 [node name="Thrower" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("16_vj435")
-icon = ExtResource("16_2ht8q")
+icon = ExtResource("17_q2iaa")
 price = 50
 
 [node name="Infantry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("18_k7ggu")
-icon = ExtResource("19_xf0h3")
+icon = ExtResource("19_1q6yu")
 price = 50
 
 [node name="Sniper" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("20_t2kaf")
-icon = ExtResource("21_thiya")
+icon = ExtResource("21_l4cx3")
 price = 200
 
 [node name="Money" type="PanelContainer" parent="."]

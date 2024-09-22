@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1hl0b1go1m6"
-path="res://.godot/imported/gun_rack.svg-273b9d14fb9d2c6c3c2dc0198816b5fe.ctex"
+uid="uid://cu0ysvnvq8b0r"
+path="res://.godot/imported/mage_hat.svg-6cac862a13e31915daaad5521e6e0d69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/gun_rack.svg"
-dest_files=["res://.godot/imported/gun_rack.svg-273b9d14fb9d2c6c3c2dc0198816b5fe.ctex"]
+source_file="res://resources/images/weapons/mage_hat.svg"
+dest_files=["res://.godot/imported/mage_hat.svg-6cac862a13e31915daaad5521e6e0d69.ctex"]
 
 [params]
 

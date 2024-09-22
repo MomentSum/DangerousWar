@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvh0eiumpx0km"
-path="res://.godot/imported/rifle.svg-faae44a711e75b21142026c70652b1fe.ctex"
+uid="uid://j3xm6250pnxa"
+path="res://.godot/imported/arrow.png-52b21947a31d47650ce65cc24cce3785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/rifle.svg"
-dest_files=["res://.godot/imported/rifle.svg-faae44a711e75b21142026c70652b1fe.ctex"]
+source_file="res://resources/images/projectiles/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-52b21947a31d47650ce65cc24cce3785.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

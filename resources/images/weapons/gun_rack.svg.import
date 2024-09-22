@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb0j7rfbadd2f"
-path="res://.godot/imported/sword.svg-9ae1f7ddf2079e2349c49c2bdd9fb4ff.ctex"
+uid="uid://bf1hl0b1go1m6"
+path="res://.godot/imported/gun_rack.svg-15083370ad6da336fce222a2caa18bff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/sword.svg"
-dest_files=["res://.godot/imported/sword.svg-9ae1f7ddf2079e2349c49c2bdd9fb4ff.ctex"]
+source_file="res://resources/images/weapons/gun_rack.svg"
+dest_files=["res://.godot/imported/gun_rack.svg-15083370ad6da336fce222a2caa18bff.ctex"]
 
 [params]
 

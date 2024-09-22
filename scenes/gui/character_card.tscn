@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbxgwhvcped6m" path="res://resources/images/card_background.svg" id="1_0b8tb"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_2nro3"]
 [ext_resource type="Script" path="res://scenes/gui/character_card.gd" id="1_08yjy"]
-[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="2_qylwc"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="2_qylwc"]
 
 [node name="CharacterCard" type="Control"]
 custom_minimum_size = Vector2(36, 36)

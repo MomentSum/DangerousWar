@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg27f0wh176sj"
-path="res://.godot/imported/bullet.svg-136d5c6b097208d60215e49aae8c8de8.ctex"
+uid="uid://cy0ax6xox6mlj"
+path="res://.godot/imported/shield.svg-2e6944341b39e83b0fd65a2f8adc9e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/bullet.svg"
-dest_files=["res://.godot/imported/bullet.svg-136d5c6b097208d60215e49aae8c8de8.ctex"]
+source_file="res://resources/images/weapons/shield.svg"
+dest_files=["res://.godot/imported/shield.svg-2e6944341b39e83b0fd65a2f8adc9e92.ctex"]
 
 [params]
 

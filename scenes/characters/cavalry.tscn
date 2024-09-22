@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_8iasr"]
 [ext_resource type="Script" path="res://scenes/characters/cavalry.gd" id="2_706mo"]
-[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/horse.svg" id="3_e7rxf"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="3_e7rxf"]
 [ext_resource type="PackedScene" uid="uid://cafa4u4dyheno" path="res://scenes/characters/ai/cavalry_ai.tscn" id="4_0ln8m"]
-[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/sword.svg" id="4_y082t"]
+[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="4_y082t"]
 [ext_resource type="PackedScene" uid="uid://npl5wlbxyur8" path="res://scenes/characters/parts/hitbox.tscn" id="5_beacd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ben8p"]

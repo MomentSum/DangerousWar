@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu0ysvnvq8b0r"
-path="res://.godot/imported/mage_hat.svg-8a47e235e4fc77e6c3f58324bbdd9355.ctex"
+uid="uid://b2d3wmk2funsm"
+path="res://.godot/imported/horse.svg-968e69493fd7706be0d1e70eb0c66f98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/mage_hat.svg"
-dest_files=["res://.godot/imported/mage_hat.svg-8a47e235e4fc77e6c3f58324bbdd9355.ctex"]
+source_file="res://resources/images/weapons/horse.svg"
+dest_files=["res://.godot/imported/horse.svg-968e69493fd7706be0d1e70eb0c66f98.ctex"]
 
 [params]
 

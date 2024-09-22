@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_kctlu"]
 [ext_resource type="Script" path="res://scenes/projectiles/bomb.gd" id="2_62pe7"]
-[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/bomb.svg" id="2_blg6t"]
+[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/projectiles/bomb.svg" id="2_blg6t"]
 [ext_resource type="PackedScene" uid="uid://d0et1fhbu042c" path="res://scenes/projectiles/explosion_spawner.tscn" id="3_rp6uc"]
 
 [node name="Bomb" instance=ExtResource("1_kctlu")]

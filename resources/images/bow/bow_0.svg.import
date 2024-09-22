@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2d3wmk2funsm"
-path="res://.godot/imported/horse.svg-a1fe559e213af5f49e2a994151c7d547.ctex"
+uid="uid://db7sfm2xlmktd"
+path="res://.godot/imported/bow_0.svg-692346ed8eac28fb1f56de5aed6bd200.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/horse.svg"
-dest_files=["res://.godot/imported/horse.svg-a1fe559e213af5f49e2a994151c7d547.ctex"]
+source_file="res://resources/images/bow/bow_0.svg"
+dest_files=["res://.godot/imported/bow_0.svg-692346ed8eac28fb1f56de5aed6bd200.ctex"]
 
 [params]
 
