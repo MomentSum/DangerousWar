@@ -28,3 +28,11 @@ func be_selected() -> void:
 
 func be_deselected() -> void:
 	create_tween().tween_property(self,"scale", Vector2.ONE, 0.1)
+
+
+func be_enabled() -> void:
+	modulate = Color.WHITE
+
+
+func be_disabled() -> void:
+	modulate = Color.DARK_GRAY

@@ -22,9 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cwrd5jnbqr51v" path="res://scenes/characters/sniper.tscn" id="20_t2kaf"]
 [ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/sniper_rifle.svg" id="21_thiya"]
 
-[node name="CardsBar" type="PanelContainer"]
-modulate = Color(1, 1, 1, 0.313726)
-self_modulate = Color(0.827451, 0.827451, 0.827451, 1)
+[node name="CardsBar" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,61 +31,103 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_46xbe")
 script = ExtResource("2_njnq7")
+cost_money = true
+money_add_speed = 50.0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Bar" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00173611
+anchor_top = 0.294753
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_46xbe")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Bar"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Cards" type="HFlowContainer" parent="MarginContainer"]
+[node name="Cards" type="HFlowContainer" parent="Bar/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 
-[node name="CharacterCard" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Swordsman" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("4_0e2wk")
 icon = ExtResource("5_r4tbe")
-price = 52
+price = 25
 
-[node name="CharacterCard2" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Archer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("6_j55dx")
 icon = ExtResource("7_h23wr")
+price = 25
 
-[node name="CharacterCard3" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Cava;ry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("8_wn0im")
 icon = ExtResource("9_4oq0w")
+price = 100
 
-[node name="CharacterCard4" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Hypaspist" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("10_udspp")
 icon = ExtResource("11_u2o3l")
+price = 100
 
-[node name="CharacterCard5" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Boomer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("12_5txk1")
 icon = ExtResource("13_ai4gn")
+price = 75
 
-[node name="CharacterCard6" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Mage" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("14_4nv6q")
 icon = ExtResource("15_45l5t")
+price = 75
 
-[node name="CharacterCard7" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Thrower" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("16_vj435")
 icon = ExtResource("16_2ht8q")
+price = 50
 
-[node name="CharacterCard8" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Infantry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("18_k7ggu")
 icon = ExtResource("19_xf0h3")
+price = 50
 
-[node name="CharacterCard9" parent="MarginContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Sniper" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 character_scene = ExtResource("20_t2kaf")
 icon = ExtResource("21_thiya")
+price = 200
+
+[node name="Money" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0.776471)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.105
+offset_bottom = -13.04
+
+[node name="MoneyLabel" type="Label" parent="Money"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "124"
+horizontal_alignment = 1
+vertical_alignment = 1

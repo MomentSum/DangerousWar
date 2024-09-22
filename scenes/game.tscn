@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=7 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
 [ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="1_xqigd"]
+[ext_resource type="PackedScene" uid="uid://d1cgk8rxytsdh" path="res://scenes/castle.tscn" id="4_u60u2"]
 
 [sub_resource type="GDScript" id="GDScript_wuwvk"]
 script/source = "extends Button
@@ -37,6 +38,14 @@ modulate = Color(0.145098, 0.839216, 0.976471, 1)
 [node name="CColor" type="Node2D" parent="Colors" groups=["c_color"]]
 modulate = Color(0.92549, 0.639216, 0.921569, 1)
 
+[node name="Castle" parent="." instance=ExtResource("4_u60u2")]
+position = Vector2(57, 322)
+team_group = &"a"
+
+[node name="Castle2" parent="." instance=ExtResource("4_u60u2")]
+position = Vector2(1095, 325)
+team_group = &"b"
+
 [node name="CharactersSpace" type="Node2D" parent="." groups=["characters_space"]]
 y_sort_enabled = true
 
@@ -65,8 +74,8 @@ grow_vertical = 2
 [node name="CharacterDropArea" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.000868056
-anchor_right = 0.5
+anchor_left = 0.000898196
+anchor_right = 0.237009
 offset_left = 0.965278
 offset_right = 0.965279
 grow_horizontal = 1
@@ -75,33 +84,37 @@ grow_vertical = 1
 [node name="CharacterDropArea2" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.500868
+anchor_left = 0.758681
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="CardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.000868056
-anchor_top = 0.222222
-anchor_right = 0.0842014
-anchor_bottom = 0.611111
-offset_bottom = -3.05176e-05
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_top = -266.0
+offset_right = 145.0
+offset_bottom = 128.0
+grow_horizontal = 1
 drop_area = NodePath("../CharacterDropArea")
 team_group = &"a"
-metadata/_edit_use_anchors_ = true
+cost_money = false
 
 [node name="CardsBar2" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.911458
-anchor_top = 0.222222
-anchor_right = 0.994792
-anchor_bottom = 0.611111
-offset_bottom = -3.05176e-05
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -266.0
+offset_bottom = 128.0
+grow_horizontal = 0
 drop_area = NodePath("../CharacterDropArea2")
 team_group = &"b"
-metadata/_edit_use_anchors_ = true
+cost_money = false
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
 layout_mode = 1
