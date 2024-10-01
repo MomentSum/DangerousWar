@@ -8,6 +8,7 @@ signal target_changed
 @export var team_group: StringName
 @export var aggression_multiple: float = 1
 @export var refind_target_wait: float
+@export var castle_damage: int = 0
 
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite
@@ -50,7 +51,7 @@ func find_target() -> void:
 	var nearest_enemy: Character
 	var min_adistance: float = 1e+10
 	for c: Character in characters:
-		if c.is_in_group(team_group):
+		if c.team_group == team_group:
 			continue
 		var distance = position.distance_to(c.position)
 		var adistance = distance / c.aggression_multiple

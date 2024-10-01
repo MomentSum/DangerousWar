@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=12 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_k5yl3"]
 [ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="1_xqigd"]
-[ext_resource type="PackedScene" uid="uid://d1cgk8rxytsdh" path="res://scenes/castle.tscn" id="4_u60u2"]
+[ext_resource type="PackedScene" uid="uid://dn681g5d7clg3" path="res://scenes/castle.tscn" id="4_u60u2"]
+[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="6_1vujt"]
 
 [sub_resource type="GDScript" id="GDScript_wuwvk"]
 script/source = "extends Button
@@ -25,7 +27,69 @@ func _process(delta: float) -> void:
 			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
 "
 
+[sub_resource type="Animation" id="Animation_3riog"]
+resource_name = "game_over"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GUI/GameOver:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GUI/GameOver:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0huj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GUI/GameOver:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GUI/GameOver:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wl7q"]
+_data = {
+"RESET": SubResource("Animation_0huj8"),
+"game_over": SubResource("Animation_3riog")
+}
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_k5yl3")
 
 [node name="Colors" type="Node2D" parent="."]
 
@@ -38,12 +102,12 @@ modulate = Color(0.145098, 0.839216, 0.976471, 1)
 [node name="CColor" type="Node2D" parent="Colors" groups=["c_color"]]
 modulate = Color(0.92549, 0.639216, 0.921569, 1)
 
-[node name="Castle" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(57, 322)
+[node name="RedCastle" parent="." instance=ExtResource("4_u60u2")]
+position = Vector2(51, 319)
 team_group = &"a"
 
-[node name="Castle2" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(1095, 325)
+[node name="BlueCastle" parent="." instance=ExtResource("4_u60u2")]
+position = Vector2(1097, 315)
 team_group = &"b"
 
 [node name="CharactersSpace" type="Node2D" parent="." groups=["characters_space"]]
@@ -94,9 +158,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-offset_top = -266.0
-offset_right = 145.0
-offset_bottom = 128.0
+offset_top = -205.5
+offset_right = 165.0
+offset_bottom = 205.5
 grow_horizontal = 1
 drop_area = NodePath("../CharacterDropArea")
 team_group = &"a"
@@ -108,9 +172,9 @@ anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -141.0
+offset_left = -165.0
 offset_top = -266.0
-offset_bottom = 128.0
+offset_bottom = 152.0
 grow_horizontal = 0
 drop_area = NodePath("../CharacterDropArea2")
 team_group = &"b"
@@ -152,4 +216,72 @@ A:
 B:"
 script = SubResource("GDScript_1w8pj")
 
+[node name="GameOver" type="Control" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="ColorRect" parent="CanvasLayer/GUI/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.290196, 0.290196, 0.290196, 0.745098)
+
+[node name="Label" type="Label" parent="CanvasLayer/GUI/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 106.0
+offset_right = 218.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+
+[node name="WinInfo" type="Control" parent="CanvasLayer/GUI/GameOver"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GUI/GameOver/WinInfo"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 235.0
+offset_right = 649.0
+offset_bottom = 377.0
+texture = ExtResource("6_1vujt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="CanvasLayer/GUI/GameOver/WinInfo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 342.0
+offset_top = 399.0
+offset_right = 774.0
+offset_bottom = 495.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "WINNER:A"
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wl7q")
+}
+
+[connection signal="be_destoryed" from="RedCastle" to="." method="_on_red_castle_be_destoryed"]
+[connection signal="be_destoryed" from="BlueCastle" to="." method="_on_blue_castle_be_destoryed"]
 [connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="CanvasLayer/GUI/Opeartions/PauseButton" method="_on_button_down"]

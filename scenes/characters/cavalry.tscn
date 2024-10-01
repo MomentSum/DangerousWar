@@ -56,6 +56,7 @@ _data = {
 
 [node name="Cavalry" instance=ExtResource("1_8iasr")]
 script = ExtResource("2_706mo")
+castle_damage = 100
 
 [node name="Hurtbox" parent="." index="0"]
 health = 100

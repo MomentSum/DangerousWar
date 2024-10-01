@@ -13,7 +13,7 @@ signal hit
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Hurtbox:
-		if not is_instance_valid(character) or not area.character.is_in_group(character.team_group):
+		if not is_instance_valid(character) or not area.character.team_group == character.team_group:
 			area.be_attacked(damage, peneration_rate)
 			hit.emit()
 
