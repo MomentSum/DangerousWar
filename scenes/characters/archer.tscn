@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_alqo0"]
 [ext_resource type="Script" path="res://scenes/characters/archer.gd" id="2_gpq8s"]
-[ext_resource type="Texture2D" uid="uid://skc0v03aroml" path="res://resources/images/bow/bow.svg" id="3_vsfvy"]
-[ext_resource type="Texture2D" uid="uid://db7sfm2xlmktd" path="res://resources/images/bow/bow_0.svg" id="4_2lbmd"]
-[ext_resource type="Texture2D" uid="uid://c0yhq0sura3sb" path="res://resources/images/bow/bow_1.svg" id="5_0p63i"]
-[ext_resource type="Texture2D" uid="uid://dfdxsvnp6nsqm" path="res://resources/images/bow/bow_2.svg" id="6_ue374"]
+[ext_resource type="Texture2D" uid="uid://skc0v03aroml" path="res://resources/images/weapons/bow/bow.svg" id="3_vsfvy"]
+[ext_resource type="Texture2D" uid="uid://db7sfm2xlmktd" path="res://resources/images/weapons/bow/bow_0.svg" id="4_2lbmd"]
+[ext_resource type="Texture2D" uid="uid://c0yhq0sura3sb" path="res://resources/images/weapons/bow/bow_1.svg" id="5_0p63i"]
+[ext_resource type="Texture2D" uid="uid://dfdxsvnp6nsqm" path="res://resources/images/weapons/bow/bow_2.svg" id="6_ue374"]
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="7_crpix"]
-[ext_resource type="Texture2D" uid="uid://bx61ksprw4g73" path="res://resources/images/bow/bow_3.svg" id="7_t1pw0"]
+[ext_resource type="Texture2D" uid="uid://bx61ksprw4g73" path="res://resources/images/weapons/bow/bow_3.svg" id="7_t1pw0"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="8_lfyq3"]
 [ext_resource type="PackedScene" uid="uid://li6b3p8v1ne8" path="res://scenes/projectiles/arrow.tscn" id="9_cqlw0"]
 

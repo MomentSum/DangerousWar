@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="4_0e2wk"]
 [ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="5_mqter"]
 [ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="6_j55dx"]
-[ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/bow/bow4.png" id="7_ak6g0"]
+[ext_resource type="Texture2D" uid="uid://gs8cljo73lwr" path="res://resources/images/weapons/bow/bow4.png" id="7_ak6g0"]
 [ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="8_wn0im"]
 [ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="9_pvjfy"]
 [ext_resource type="PackedScene" uid="uid://denkescm5r7fs" path="res://scenes/characters/hypaspist.tscn" id="10_udspp"]

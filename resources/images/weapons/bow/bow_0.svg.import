@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqr0lgg640roa"
-path="res://.godot/imported/bow3.png-e337826cad9b476f524dca1d1a11a0aa.ctex"
+uid="uid://db7sfm2xlmktd"
+path="res://.godot/imported/bow_0.svg-0c12d99a4488a7b1588e863730fb5444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/bow/bow3.png"
-dest_files=["res://.godot/imported/bow3.png-e337826cad9b476f524dca1d1a11a0aa.ctex"]
+source_file="res://resources/images/weapons/bow/bow_0.svg"
+dest_files=["res://.godot/imported/bow_0.svg-0c12d99a4488a7b1588e863730fb5444.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
