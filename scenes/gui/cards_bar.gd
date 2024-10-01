@@ -1,6 +1,6 @@
 extends Control
 
-
+@export var card_scene: PackedScene
 @export var drop_area: CharacterDropArea
 @export var team_group: StringName
 @export var cost_money: bool
@@ -12,9 +12,9 @@ var _money: float
 
 
 func _ready() -> void:
-	for card: CharacterCard in %Cards.get_children():
-		card.card_button_down.connect(_on_card_button_down.bind(card))
-	
+	#for card: CharacterCard in %Cards.get_children():
+		#card.card_button_down.connect(_on_card_button_down.bind(card))
+	set_data(Assets.character_datas)
 	var color_node = get_tree().get_first_node_in_group(team_group+"_color")
 	if is_instance_valid(color_node):
 		modulate = color_node.modulate
@@ -38,6 +38,21 @@ func _process(delta: float) -> void:
 	%MoneyLabel.text = str(int(_money))
 
 
+func set_data(card_datas: Array[CharacterData]) -> void:
+	clear_cards()
+	for data in card_datas:
+		var card = card_scene.instantiate() as CharacterCard
+		card.data = data
+		card.card_button_down.connect(_on_card_button_down.bind(card))
+		%Cards.add_child(card)
+
+
+func clear_cards() -> void:
+	for child in %Cards.get_children():
+		child.queue_free()
+	_selecting_card = null
+
+
 func _on_card_button_down(card: CharacterCard) -> void:
 	if is_instance_valid(_selecting_card):
 		_selecting_card.be_deselected()
@@ -52,15 +67,15 @@ func _on_character_dropped(pos: Vector2) -> void:
 	if not is_instance_valid(_selecting_card):
 		return
 	
-	if cost_money and _money < _selecting_card.price:
+	if cost_money and _money < _selecting_card.data.price:
 		return
 	
-	var character = _selecting_card.character_scene.instantiate() as Character
+	var character = _selecting_card.data.character_scene.instantiate() as Character
 	character.team_group = team_group
 	character.position = pos
 	get_tree().get_first_node_in_group("characters_space").add_child(character)
 	
 	if cost_money:
-		_money -= _selecting_card.price
+		_money -= _selecting_card.data.price
 	else:
-		_money += _selecting_card.price
+		_money += _selecting_card.data.price

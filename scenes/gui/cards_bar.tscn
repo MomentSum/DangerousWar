@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1wbixhhhqs6m"]
+[gd_scene load_steps=4 format=3 uid="uid://c1wbixhhhqs6m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
@@ -32,6 +32,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_46xbe")
 script = ExtResource("2_njnq7")
+card_scene = ExtResource("3_l4wks")
 cost_money = true
 money_add_speed = 50.0
 
@@ -66,9 +67,6 @@ layout_mode = 2
 
 [node name="Swordsman" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("4_0e2wk")
-icon = ExtResource("5_mqter")
-price = 25
 
 [node name="Archer" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
@@ -78,45 +76,24 @@ price = 25
 
 [node name="Cava;ry" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("8_wn0im")
-icon = ExtResource("9_pvjfy")
-price = 100
 
 [node name="Hypaspist" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("10_udspp")
-icon = ExtResource("11_vno6t")
-price = 100
 
 [node name="Boomer" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("12_5txk1")
-icon = ExtResource("13_27t6e")
-price = 75
 
 [node name="Mage" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("14_4nv6q")
-icon = ExtResource("15_87p81")
-price = 75
 
 [node name="Thrower" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("16_vj435")
-icon = ExtResource("17_q2iaa")
-price = 50
 
 [node name="Infantry" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("18_k7ggu")
-icon = ExtResource("19_1q6yu")
-price = 50
 
 [node name="Sniper" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("20_t2kaf")
-icon = ExtResource("21_l4cx3")
-price = 200
 
 [node name="Money" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0.776471)

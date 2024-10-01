@@ -5,15 +5,11 @@ class_name CharacterCard
 
 signal card_button_down
 
-
-@export var character_scene: PackedScene
-@export var icon: Texture
-@export var price: int
-
-
-func _ready() -> void:
-	$Icon.texture = icon
-	$Price.text = str(price)
+var data: CharacterData:
+	set(new):
+		data = new
+		$Icon.texture = data.icon
+		$Price.text = str(data.price)
 
 
 func _on_gui_input(event: InputEvent) -> void:
