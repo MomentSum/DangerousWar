@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://eflmp6jcpku1"]
+
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_2f63p"]
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_8aqqg"]
+
+[sub_resource type="GDScript" id="GDScript_anjcq"]
+script/source = "extends Button
+"
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8aqqg")
+script = ExtResource("1_2f63p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 96
+text = "Dangerous War"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.788194
+anchor_top = 0.408951
+anchor_right = 0.986111
+anchor_bottom = 0.520062
+theme_override_font_sizes/font_size = 64
+text = "Play"
+script = SubResource("GDScript_anjcq")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
