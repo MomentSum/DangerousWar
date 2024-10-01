@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=22 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="1_xqigd"]
 [ext_resource type="PackedScene" uid="uid://dn681g5d7clg3" path="res://scenes/castle.tscn" id="4_u60u2"]
 [ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="6_1vujt"]
+[ext_resource type="Texture2D" uid="uid://0hcksk1mjpk4" path="res://resources/images/ui/resume.svg" id="7_s00bm"]
+[ext_resource type="Texture2D" uid="uid://jjamb05m1743" path="res://resources/images/ui/restart.svg" id="8_ijqd7"]
+[ext_resource type="Texture2D" uid="uid://d2twu5af47kir" path="res://resources/images/ui/exit.svg" id="9_0sn3h"]
 
 [sub_resource type="GDScript" id="GDScript_wuwvk"]
 script/source = "extends Button
@@ -26,6 +29,34 @@ func _process(delta: float) -> void:
 	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS)) \\
 			+ \"\\nA:\" + str(get_tree().get_nodes_in_group(\"a\").size()) \\
 			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21n5a"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_f4yk8"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	%Anim.play(\"resume\")
+	get_tree().paused = false
+"
+
+[sub_resource type="GDScript" id="GDScript_ufyb5"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_cm7bb"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/title.tscn\")
 "
 
 [sub_resource type="Animation" id="Animation_0huj8"]
@@ -211,12 +242,41 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_t6s8e"]
+resource_name = "resume"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/GUI/Pause:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/GUI/Pause:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5wl7q"]
 _data = {
 "RESET": SubResource("Animation_0huj8"),
 "game_over": SubResource("Animation_3riog"),
 "game_start": SubResource("Animation_rb46r"),
-"pause": SubResource("Animation_ojs5a")
+"pause": SubResource("Animation_ojs5a"),
+"resume": SubResource("Animation_t6s8e")
 }
 
 [node name="Game" type="Node2D"]
@@ -426,6 +486,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.341176, 0.341176, 0.341176, 0.670588)
 
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GUI/Pause"]
+self_modulate = Color(1, 1, 1, 0.0745098)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -44.0
+offset_right = 144.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_21n5a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/Pause/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Resume" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("7_s00bm")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_f4yk8")
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("8_ijqd7")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_ufyb5")
+
+[node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("9_0sn3h")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_cm7bb")
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
@@ -440,3 +544,6 @@ offset = Vector2(576, 324)
 [connection signal="be_destoryed" from="RedCastle" to="." method="_on_red_castle_be_destoryed"]
 [connection signal="be_destoryed" from="BlueCastle" to="." method="_on_blue_castle_be_destoryed"]
 [connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="CanvasLayer/GUI/Opeartions/PauseButton" method="_on_button_down"]
+[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" method="_on_button_up"]
