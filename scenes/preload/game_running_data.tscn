@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://s1q7251dta3a"]
+
+[ext_resource type="Script" path="res://scenes/preload/game_running_data.gd" id="1_a6j03"]
+
+[node name="GameRunningData" type="Node"]
+script = ExtResource("1_a6j03")
+team_colors = Array[Color]([Color(1, 0.509804, 0.384314, 1), Color(0.360784, 0.556863, 1, 1)])
+team_names = Array[StringName]([&"RED", &"BLUE"])
