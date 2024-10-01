@@ -4,12 +4,12 @@ var win_team: StringName
 
 
 func _on_red_castle_be_destoryed() -> void:
-	set_winner("b")
+	set_winner("Blue")
 	$Anim.play("game_over")
 
 
 func _on_blue_castle_be_destoryed() -> void:
-	set_winner("a")
+	set_winner("Red")
 	$Anim.play("game_over")
 
 func set_winner(new: StringName) -> void:
