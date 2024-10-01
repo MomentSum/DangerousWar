@@ -6,7 +6,7 @@ signal hit
 
 @export var damage: int
 
-@export var peneration_rate: float
+@export_range(0,1) var peneration_rate: float
 @export var single_attack: bool
 @export var character: Character
 
