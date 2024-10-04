@@ -14,6 +14,7 @@ character = NodePath("..")
 
 [node name="RefindTargetTimer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 autostart = true
 
 [node name="CharacterSprite" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_6g35d")]

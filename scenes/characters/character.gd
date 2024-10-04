@@ -51,6 +51,8 @@ func find_target() -> void:
 	var nearest_enemy: Character
 	var min_adistance: float = 1e+10
 	for c: Character in characters:
+		if not is_instance_valid(c):
+			continue
 		if c.team_group == team_group:
 			continue
 		var distance = position.distance_to(c.position)
@@ -68,6 +70,7 @@ func find_target() -> void:
 func _on_refind_target_timer_timeout() -> void:
 	if refind_target_enabled:
 		find_target()
+	$RefindTargetTimer.start()
 
 
 func _on_hurtbox_died() -> void:

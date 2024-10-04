@@ -32,7 +32,7 @@ projectile_scene = ExtResource("4_imsxt")
 [node name="MovementAI" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("6_una06")]
 target_distance_min = 48.0
 target_distance_max = 96.0
-move_speed = 42.0
+move_speed = 48.0
 attack_wait = 1.5
 character = NodePath("..")
 
