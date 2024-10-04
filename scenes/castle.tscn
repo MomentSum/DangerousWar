@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="3_d6d2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6vxp"]
-size = Vector2(21.1328, 169.727)
+size = Vector2(62.6953, 437.109)
 
 [node name="Castle" type="Area2D"]
 scale = Vector2(5.12, 5.12)
@@ -19,11 +19,12 @@ health_max = 1000
 [node name="Castle" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 1)
-scale = Vector2(1.32, 1.32)
+scale = Vector2(3.485, 3.485)
 texture = ExtResource("1_h5uti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.566406, 0.292969)
+visible = false
+position = Vector2(0.683594, -1.36721)
 shape = SubResource("RectangleShape2D_u6vxp")
 
 [node name="Markers" type="Node2D" parent="."]
@@ -43,10 +44,10 @@ position = Vector2(-0.585938, 26.5625)
 position = Vector2(0, 50.5859)
 
 [node name="HealthBar" type="ColorRect" parent="."]
-offset_left = -11.0
-offset_top = -82.0
-offset_right = -1.0
-offset_bottom = 84.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 18.0
+offset_bottom = 127.0
 color = Color(0.780392, 0.780392, 0.780392, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

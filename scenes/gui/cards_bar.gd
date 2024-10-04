@@ -48,7 +48,7 @@ func _on_card_button_down(card: CharacterCard) -> void:
 	_selecting_card.be_selected()
 
 
-func _on_character_dropped(position: Vector2) -> void:
+func _on_character_dropped(pos: Vector2) -> void:
 	if not is_instance_valid(_selecting_card):
 		return
 	
@@ -57,7 +57,7 @@ func _on_character_dropped(position: Vector2) -> void:
 	
 	var character = _selecting_card.character_scene.instantiate() as Character
 	character.team_group = team_group
-	character.position = position
+	character.position = pos
 	get_tree().get_first_node_in_group("characters_space").add_child(character)
 	
 	if cost_money:

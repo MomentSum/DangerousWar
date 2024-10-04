@@ -5,7 +5,7 @@ func _on_movement_ai_attack() -> void:
 	$Hitbox.monitoring = true
 	$Timer.start()
 	$CharacterSprite.hide()
-	hurtbox.defense = 1e+10
+	hurtbox.damage_resist = 2
 
 func _on_timer_timeout() -> void:
 	$Hitbox.monitoring = false

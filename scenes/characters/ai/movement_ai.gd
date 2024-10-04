@@ -18,8 +18,6 @@ signal attacking_ended()
 @export var attacking_speed_multiple: float = 0.5
 
 
-var _teammate_away_direction: Vector2
-
 var attacking: bool = false:
 	set(new):
 		if attacking == new:
@@ -59,7 +57,7 @@ func get_direction_follow_target() -> Vector2:
 
 
 func get_weighted_direction_away_from_teammate() -> Vector2:
-	var wdirection: Vector2
+	var wdirection: Vector2 = Vector2()
 	for area in $Area2D.get_overlapping_areas():
 		if area is Hurtbox and area.character.is_in_group(character.team_group):
 			var teammate = area.character

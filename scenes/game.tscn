@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=23 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
@@ -18,6 +18,7 @@ script/source = "extends Button
 
 func _on_button_down() -> void:
 	%Anim.play(\"pause\")
+	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = true
 "
 
@@ -31,8 +32,23 @@ func _process(delta: float) -> void:
 			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21n5a"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="GDScript" id="GDScript_sl88w"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_n5ks7"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/title.tscn\")
+"
 
 [sub_resource type="GDScript" id="GDScript_f4yk8"]
 script/source = "extends TextureButton
@@ -108,7 +124,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 118.5)]
+"values": [Vector2(0, -0.5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -120,7 +136,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(987, 115)]
+"values": [Vector2(987, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -200,7 +216,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(-256, 118.5), Vector2(0, 118.5)]
+"values": [Vector2(-256, 0), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -212,7 +228,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(1243, 115), Vector2(987, 115)]
+"values": [Vector2(1243, 0), Vector2(1002, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_ojs5a"]
@@ -286,7 +302,7 @@ script = ExtResource("1_k5yl3")
 [node name="Colors" type="Node2D" parent="."]
 
 [node name="RedColor" type="Node2D" parent="Colors" groups=["Red_color"]]
-modulate = Color(1, 0.403922, 0.270588, 1)
+modulate = Color(1, 0.45098, 0.301961, 1)
 
 [node name="BlueColor" type="Node2D" parent="Colors" groups=["Blue_color"]]
 modulate = Color(0.145098, 0.839216, 0.976471, 1)
@@ -320,6 +336,7 @@ grow_vertical = 2
 theme = ExtResource("1_0kgbk")
 
 [node name="Opeartions" type="Control" parent="CanvasLayer/GUI"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -330,8 +347,8 @@ grow_vertical = 2
 [node name="CharacterDropArea" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.000898196
-anchor_right = 0.237009
+anchor_left = 0.146732
+anchor_right = 0.271732
 offset_left = 0.965278
 offset_right = 0.965279
 grow_horizontal = 1
@@ -340,7 +357,8 @@ grow_vertical = 1
 [node name="CharacterDropArea2" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.758681
+anchor_left = 0.737847
+anchor_right = 0.857639
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -351,9 +369,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-offset_top = -205.5
-offset_right = 165.0
-offset_bottom = 205.5
+offset_top = -324.5
+offset_right = 152.0
+offset_bottom = 325.5
 grow_horizontal = 1
 drop_area = NodePath("../CharacterDropArea")
 team_group = &"Red"
@@ -365,13 +383,16 @@ layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -165.0
-offset_top = -209.0
-offset_bottom = 209.0
+offset_top = -324.0
+offset_right = -15.0
+offset_bottom = 328.0
 grow_horizontal = 0
 drop_area = NodePath("../CharacterDropArea2")
 team_group = &"Blue"
+money_add_speed = 100000.0
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
 layout_mode = 1
@@ -434,9 +455,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -214.0
-offset_top = 106.0
+offset_top = 56.0
 offset_right = 218.0
-offset_bottom = 202.0
+offset_bottom = 152.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
 text = "GAME OVER"
@@ -449,10 +470,10 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/GUI/GameOver/WinInfo"]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 235.0
-offset_right = 649.0
-offset_bottom = 377.0
+offset_left = 520.0
+offset_top = 182.0
+offset_right = 659.0
+offset_bottom = 324.0
 texture = ExtResource("6_1vujt")
 expand_mode = 1
 stretch_mode = 5
@@ -462,13 +483,41 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 342.0
-offset_top = 399.0
-offset_right = 774.0
-offset_bottom = 495.0
+offset_left = -14.0
+offset_top = 368.0
+offset_right = 1123.0
+offset_bottom = 464.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
 text = "WINNER:A"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_right = 0.508
+offset_left = -144.216
+offset_top = 505.0
+offset_right = 143.784
+offset_bottom = 601.0
+theme_override_constants/separation = 96
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/GUI/GameOver/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("8_ijqd7")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_sl88w")
+
+[node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/GameOver/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture_normal = ExtResource("9_0sn3h")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_n5ks7")
 
 [node name="Pause" type="Control" parent="CanvasLayer/GUI"]
 visible = false
@@ -489,7 +538,7 @@ grow_vertical = 2
 color = Color(0.341176, 0.341176, 0.341176, 0.670588)
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GUI/Pause"]
-self_modulate = Color(1, 1, 1, 0.0745098)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -502,7 +551,6 @@ offset_right = 144.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_21n5a")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/Pause/PanelContainer"]
 layout_mode = 2
@@ -546,6 +594,9 @@ offset = Vector2(576, 324)
 [connection signal="be_destoryed" from="RedCastle" to="." method="_on_red_castle_be_destoryed"]
 [connection signal="be_destoryed" from="BlueCastle" to="." method="_on_blue_castle_be_destoryed"]
 [connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="CanvasLayer/GUI/Opeartions/PauseButton" method="_on_button_down"]
+[connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" to="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" method="_on_button_up"]
