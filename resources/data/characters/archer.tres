@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://dhl11pd831gfa"]
+
+[ext_resource type="Texture2D" uid="uid://skc0v03aroml" path="res://resources/images/weapons/bow/bow.svg" id="1_p0prt"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="2_v0e34"]
+
+[resource]
+script = ExtResource("2_v0e34")
+id = &"archer"
+name = &"弓箭手"
+icon = ExtResource("1_p0prt")
+price = 50
+description = "是的，弓箭手！！！"
