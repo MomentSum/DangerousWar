@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://di8cdibthmj4m"]
+
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_fdeql"]
+[ext_resource type="Script" path="res://scenes/gui/character_selection.gd" id="1_h0ry6"]
+[ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_ictxk"]
+[ext_resource type="Script" path="res://scenes/gui/characters_selector.gd" id="3_b43i7"]
+[ext_resource type="PackedScene" uid="uid://cdcwx80rl01ud" path="res://scenes/gui/character_slot.tscn" id="3_dd0gw"]
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fdeql")
+script = ExtResource("1_h0ry6")
+
+[node name="RedCardsPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 25.0
+offset_right = 576.0
+offset_bottom = 541.0
+metadata/_edit_group_ = true
+
+[node name="RedCards" type="HFlowContainer" parent="RedCardsPanel" node_paths=PackedStringArray("slots_bar")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_b43i7")
+character_card_scene = ExtResource("2_ictxk")
+slots_bar = NodePath("../../RedSlots")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlueCardsPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 25.0
+offset_right = 995.0
+offset_bottom = 546.0
+metadata/_edit_group_ = true
+
+[node name="BlueCards" type="HFlowContainer" parent="BlueCardsPanel" node_paths=PackedStringArray("slots_bar")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_b43i7")
+character_card_scene = ExtResource("2_ictxk")
+slots_bar = NodePath("../../BlueSlots")
+metadata/_edit_use_anchors_ = true
+
+[node name="RedSlots" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 47.0
+offset_right = 146.0
+offset_bottom = 611.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CharacterSlot" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot2" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot3" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot4" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot5" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot6" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot7" parent="RedSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="BlueSlots" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 43.0
+offset_right = 1123.0
+offset_bottom = 607.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CharacterSlot" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot2" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot3" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot4" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot5" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot6" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="CharacterSlot7" parent="BlueSlots" instance=ExtResource("3_dd0gw")]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 577.0
+offset_right = 939.0
+offset_bottom = 633.0
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[connection signal="button_up" from="Start" to="." method="_on_start_button_up"]

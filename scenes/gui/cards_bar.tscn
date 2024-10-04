@@ -3,24 +3,6 @@
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_46xbe"]
 [ext_resource type="Script" path="res://scenes/gui/cards_bar.gd" id="2_njnq7"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="3_l4wks"]
-[ext_resource type="PackedScene" uid="uid://cxsiyult0v43j" path="res://scenes/characters/swordsman.tscn" id="4_0e2wk"]
-[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="5_mqter"]
-[ext_resource type="PackedScene" uid="uid://dk6udvfe58mdc" path="res://scenes/characters/archer.tscn" id="6_j55dx"]
-[ext_resource type="Texture2D" uid="uid://skc0v03aroml" path="res://resources/images/weapons/bow/bow.svg" id="7_85yr6"]
-[ext_resource type="PackedScene" uid="uid://os0ny1ello6n" path="res://scenes/characters/cavalry.tscn" id="8_wn0im"]
-[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="9_pvjfy"]
-[ext_resource type="PackedScene" uid="uid://denkescm5r7fs" path="res://scenes/characters/hypaspist.tscn" id="10_udspp"]
-[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/weapons/shield.svg" id="11_vno6t"]
-[ext_resource type="PackedScene" uid="uid://b1tywr7n4hid2" path="res://scenes/characters/boomer.tscn" id="12_5txk1"]
-[ext_resource type="Texture2D" uid="uid://d4mi56jclmqg0" path="res://resources/images/weapons/powder_keg.svg" id="13_27t6e"]
-[ext_resource type="PackedScene" uid="uid://dy54o873rsjys" path="res://scenes/characters/mage.tscn" id="14_4nv6q"]
-[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/weapons/mage_hat.svg" id="15_87p81"]
-[ext_resource type="PackedScene" uid="uid://bvscspkmu2un6" path="res://scenes/characters/thrower.tscn" id="16_vj435"]
-[ext_resource type="Texture2D" uid="uid://cxvi6g82l02q5" path="res://resources/images/projectiles/bomb.svg" id="17_q2iaa"]
-[ext_resource type="PackedScene" uid="uid://dpjo4u2wd1g4q" path="res://scenes/characters/infantry.tscn" id="18_k7ggu"]
-[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/weapons/rifle.svg" id="19_1q6yu"]
-[ext_resource type="PackedScene" uid="uid://cwrd5jnbqr51v" path="res://scenes/characters/sniper.tscn" id="20_t2kaf"]
-[ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/weapons/sniper_rifle.svg" id="21_l4cx3"]
 
 [node name="CardsBar" type="Control"]
 layout_mode = 3
@@ -39,8 +21,7 @@ money_add_speed = 50.0
 [node name="Bar" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.00173611
-anchor_top = 0.16821
+anchor_top = 0.0925926
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -70,9 +51,6 @@ layout_mode = 2
 
 [node name="Archer" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
-character_scene = ExtResource("6_j55dx")
-icon = ExtResource("7_85yr6")
-price = 25
 
 [node name="Cava;ry" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
@@ -96,12 +74,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Money" type="PanelContainer" parent="."]
-self_modulate = Color(1, 1, 1, 0.776471)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.105
-offset_bottom = -13.04
+anchor_right = 0.968
+anchor_bottom = 0.111
+offset_right = 3.96799
+offset_bottom = 0.071991
 
 [node name="MoneyLabel" type="Label" parent="Money"]
 unique_name_in_owner = true

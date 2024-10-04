@@ -312,11 +312,11 @@ modulate = Color(0.145098, 0.839216, 0.976471, 1)
 modulate = Color(0.92549, 0.639216, 0.921569, 1)
 
 [node name="RedCastle" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(121, 331)
+position = Vector2(121, 323)
 team_group = &"Red"
 
 [node name="BlueCastle" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(1025, 332)
+position = Vector2(1025, 324)
 team_group = &"Blue"
 
 [node name="CharactersSpace" type="Node2D" parent="." groups=["characters_space"]]
@@ -366,14 +366,14 @@ grow_vertical = 1
 [node name="RedCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 process_mode = 1
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
+anchors_preset = 0
 anchor_right = 0.0
-anchor_bottom = 0.5
-offset_top = -324.5
+anchor_bottom = 0.0
+offset_top = -0.5
 offset_right = 113.0
-offset_bottom = 325.5
+offset_bottom = 649.5
 grow_horizontal = 1
+grow_vertical = 1
 drop_area = NodePath("../RedArea")
 team_group = &"Red"
 money_add_speed = 1000.0
@@ -381,19 +381,20 @@ money_add_speed = 1000.0
 [node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 process_mode = 1
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -326.0
-offset_right = 15.0
-offset_bottom = 326.0
+anchor_bottom = 0.0
+offset_left = 1044.0
+offset_top = -2.0
+offset_right = 1161.0
+offset_bottom = 650.0
 grow_horizontal = 0
+grow_vertical = 1
 drop_area = NodePath("../BlueArea")
 team_group = &"Blue"
 money_add_speed = 100000.0
+data_index = 1
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
 layout_mode = 1

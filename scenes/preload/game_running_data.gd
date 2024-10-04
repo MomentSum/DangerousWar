@@ -1,6 +1,7 @@
 extends Node
 
-@export var team_colors: Array[Color]
-@export var team_names: Array[StringName]
 
-var game: Game
+@export var selecting_datas: Array[Array]
+
+func _ready() -> void:
+	selecting_datas.resize(2)

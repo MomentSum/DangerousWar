@@ -2,8 +2,8 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="128"
-   height="128"
+   width="256"
+   height="256"
    viewBox="0 0 128 128"
    version="1.1"
    id="svg1"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="3.2851563"
-     inkscape:cx="120.23781"
-     inkscape:cy="87.514863"
+     inkscape:zoom="1.1614781"
+     inkscape:cx="-21.524297"
+     inkscape:cy="142.49084"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
      inkscape:window-x="-9"
@@ -39,11 +39,46 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke:#d8d8d8;stroke-width:5.3592;stroke-linejoin:round;paint-order:stroke fill markers"
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:2.35479;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect1"
-       width="13.137979"
-       height="121.8086"
-       x="57.507114"
-       y="3.0195961" />
+       width="13.059793"
+       height="125.20138"
+       x="57.827751"
+       y="1.6493365" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:3.3;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect7"
+       width="16.143223"
+       height="17.649923"
+       x="56.608902"
+       y="2.1524303" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:3.3;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect8"
+       width="16.143223"
+       height="17.649923"
+       x="56.178417"
+       y="56.608898" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:3.3;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect9"
+       width="16.143223"
+       height="17.649923"
+       x="56.178417"
+       y="109.34343" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:3.3;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect10"
+       width="16.143223"
+       height="17.649923"
+       x="56.393661"
+       y="83.299034" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#bcbcbc;stroke-width:3.3;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect11"
+       width="16.143223"
+       height="17.649923"
+       x="56.608906"
+       y="29.488291" />
   </g>
 </svg>

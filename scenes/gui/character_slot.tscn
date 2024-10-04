@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdcwx80rl01ud"]
+
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_rwsuc"]
+[ext_resource type="Script" path="res://scenes/gui/character_slot.gd" id="2_553l8"]
+[ext_resource type="Texture2D" uid="uid://2b2cdda2oet5" path="res://resources/images/empty_slot.svg" id="3_6vedd"]
+[ext_resource type="Texture2D" uid="uid://cbxgwhvcped6m" path="res://resources/images/card_background.svg" id="4_fbuje"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="5_ypyju"]
+
+[node name="CharacterSlot" type="Control"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 3
+offset_top = -1.0
+offset_right = 72.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rwsuc")
+script = ExtResource("2_553l8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6vedd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="View" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(36, 36)
+mouse_filter = 1
+
+[node name="Back" type="TextureRect" parent="View"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fbuje")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icon" type="TextureRect" parent="View"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.925
+anchor_bottom = 0.95
+texture = ExtResource("5_ypyju")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -5,11 +5,14 @@ class_name CharacterCard
 
 signal card_button_down
 
-var data: CharacterData:
-	set(new):
-		data = new
-		$Icon.texture = data.icon
-		$Price.text = str(data.price)
+var data: CharacterData
+
+
+func set_data(new) -> void:
+	data = new
+	$Icon.texture = data.icon
+	$Price.text = str(data.price)
+
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -19,7 +22,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func be_selected() -> void:
-	create_tween().tween_property(self,"scale",Vector2.ONE * 1.2, 0.1)
+	create_tween().tween_property(self,"scale",Vector2.ONE * 0.8, 0.1)
 
 
 func be_deselected() -> void:

@@ -5,6 +5,7 @@ extends Control
 @export var team_group: StringName
 @export var cost_money: bool
 @export var money_add_speed: float
+@export var data_index: int
 
 var _selecting_card: CharacterCard
 
@@ -14,7 +15,7 @@ var _money: float
 func _ready() -> void:
 	#for card: CharacterCard in %Cards.get_children():
 		#card.card_button_down.connect(_on_card_button_down.bind(card))
-	set_data(Assets.character_datas)
+	set_data(GameRunningData.selecting_datas[data_index])
 	var color_node = get_tree().get_first_node_in_group(team_group+"_color")
 	if is_instance_valid(color_node):
 		modulate = color_node.modulate
@@ -31,10 +32,11 @@ func _process(delta: float) -> void:
 	if cost_money:
 		_money += money_add_speed * delta
 		for card in %Cards.get_children():
-			if _money >= card.data.price:
-				card.be_enabled()
-			else:
-				card.be_disabled()
+			if  is_instance_valid(card.data):
+				if _money >= card.data.price:
+					card.be_enabled()
+				else:
+					card.be_disabled()
 	%MoneyLabel.text = str(int(_money))
 
 
@@ -42,7 +44,7 @@ func set_data(card_datas: Array[CharacterData]) -> void:
 	clear_cards()
 	for data in card_datas:
 		var card = card_scene.instantiate() as CharacterCard
-		card.data = data
+		card.set_data(data)
 		card.card_button_down.connect(_on_card_button_down.bind(card))
 		%Cards.add_child(card)
 
