@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	if cost_money:
 		_money += money_add_speed * delta
 		for card in %Cards.get_children():
-			if _money >= card.price:
+			if _money >= card.data.price:
 				card.be_enabled()
 			else:
 				card.be_disabled()
