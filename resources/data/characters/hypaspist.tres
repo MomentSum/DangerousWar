@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://dhd714hjxt8xn"]
+
+[ext_resource type="PackedScene" uid="uid://denkescm5r7fs" path="res://scenes/characters/hypaspist.tscn" id="1_qflvr"]
+[ext_resource type="Texture2D" uid="uid://cy0ax6xox6mlj" path="res://resources/images/weapons/shield.svg" id="2_2t8yw"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="3_41hjl"]
+
+[resource]
+script = ExtResource("3_41hjl")
+id = &"hypaspist"
+name = &"盾兵"
+icon = ExtResource("2_2t8yw")
+price = 125
+description = "格挡一切！！！"
+character_scene = ExtResource("1_qflvr")

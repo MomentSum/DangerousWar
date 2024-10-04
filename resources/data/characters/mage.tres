@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://b6kk5xq4c58s5"]
+
+[ext_resource type="PackedScene" uid="uid://dy54o873rsjys" path="res://scenes/characters/mage.tscn" id="1_074yv"]
+[ext_resource type="Texture2D" uid="uid://cu0ysvnvq8b0r" path="res://resources/images/weapons/mage_hat.svg" id="2_78d0j"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="3_av85v"]
+
+[resource]
+script = ExtResource("3_av85v")
+id = &"mage"
+name = &"法师"
+icon = ExtResource("2_78d0j")
+price = 100
+description = "无畏的法师"
+character_scene = ExtResource("1_074yv")
