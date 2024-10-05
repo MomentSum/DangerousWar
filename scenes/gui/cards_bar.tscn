@@ -37,40 +37,36 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Bar/MarginContainer"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="Cards" type="VBoxContainer" parent="Bar/MarginContainer/ScrollContainer"]
+[node name="Cards" type="VBoxContainer" parent="Bar/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 1
 
-[node name="Swordsman" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Swordsman" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Archer" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Archer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Cava;ry" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Cava;ry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Hypaspist" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Hypaspist" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Boomer" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Boomer" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Mage" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Mage" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Thrower" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Thrower" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Infantry" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Infantry" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
-[node name="Sniper" parent="Bar/MarginContainer/ScrollContainer/Cards" instance=ExtResource("3_l4wks")]
+[node name="Sniper" parent="Bar/MarginContainer/Cards" instance=ExtResource("3_l4wks")]
 layout_mode = 2
 
 [node name="Money" type="PanelContainer" parent="."]

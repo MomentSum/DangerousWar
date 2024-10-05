@@ -306,10 +306,30 @@ script = ExtResource("1_k5yl3")
 modulate = Color(1, 0.45098, 0.301961, 1)
 
 [node name="BlueColor" type="Node2D" parent="Colors" groups=["Blue_color"]]
-modulate = Color(0.145098, 0.839216, 0.976471, 1)
+modulate = Color(0.14902, 0.784314, 1, 1)
 
 [node name="CColor" type="Node2D" parent="Colors" groups=["c_color"]]
 modulate = Color(0.92549, 0.639216, 0.921569, 1)
+
+[node name="RedArea" parent="." instance=ExtResource("1_hstst")]
+anchors_preset = -1
+anchor_left = 0.164961
+anchor_top = -0.208333
+anchor_right = 0.271732
+anchor_bottom = 1.15432
+offset_left = 0.965271
+offset_right = 0.965271
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="BlueArea" parent="." instance=ExtResource("1_hstst")]
+anchors_preset = -1
+anchor_left = 0.737847
+anchor_top = -0.208333
+anchor_right = 0.823785
+anchor_bottom = 1.15432
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="RedCastle" parent="." instance=ExtResource("4_u60u2")]
 position = Vector2(121, 323)
@@ -334,6 +354,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_0kgbk")
 
 [node name="Opeartions" type="Control" parent="CanvasLayer/GUI"]
@@ -344,24 +365,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="RedArea" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.146732
-anchor_right = 0.271732
-offset_left = 0.965278
-offset_right = 0.965279
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="BlueArea" parent="CanvasLayer/GUI/Opeartions" instance=ExtResource("1_hstst")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.737847
-anchor_right = 0.857639
-grow_horizontal = 1
-grow_vertical = 1
+mouse_filter = 2
 
 [node name="RedCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 process_mode = 1
@@ -374,7 +378,7 @@ offset_right = 113.0
 offset_bottom = 649.5
 grow_horizontal = 1
 grow_vertical = 1
-drop_area = NodePath("../RedArea")
+drop_area = NodePath("../../../../RedArea")
 team_group = &"Red"
 money_add_speed = 1000.0
 
@@ -391,7 +395,7 @@ offset_right = 1161.0
 offset_bottom = 650.0
 grow_horizontal = 0
 grow_vertical = 1
-drop_area = NodePath("../BlueArea")
+drop_area = NodePath("../../../../BlueArea")
 team_group = &"Blue"
 money_add_speed = 100000.0
 data_index = 1

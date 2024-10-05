@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj258gv81mfi4"]
+[gd_scene load_steps=6 format=3 uid="uid://cj258gv81mfi4"]
 
 [ext_resource type="Texture2D" uid="uid://cbxgwhvcped6m" path="res://resources/images/card_background.svg" id="1_0b8tb"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_2nro3"]
 [ext_resource type="Script" path="res://scenes/gui/character_card.gd" id="1_08yjy"]
 [ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="2_qylwc"]
+[ext_resource type="Texture2D" uid="uid://bspxv63db7hjn" path="res://resources/images/bias16.png" id="5_6tun7"]
 
 [node name="CharacterCard" type="Control"]
 custom_minimum_size = Vector2(72, 72)
@@ -59,5 +60,18 @@ theme_override_font_sizes/font_size = 24
 text = "1472"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Bias" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.556863, 0.556863, 0.556863, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_6tun7")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

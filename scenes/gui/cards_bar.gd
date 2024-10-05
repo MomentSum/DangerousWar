@@ -21,7 +21,7 @@ func _ready() -> void:
 		modulate = color_node.modulate
 		modulate.a = 0.9
 		if is_instance_valid(drop_area):
-			drop_area.color = color_node.modulate
+			drop_area.modulate *= color_node.modulate
 	
 	if is_instance_valid(drop_area):
 		drop_area.character_dropped.connect(_on_character_dropped)

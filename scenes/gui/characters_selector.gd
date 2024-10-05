@@ -3,7 +3,7 @@ extends HFlowContainer
 @export var character_card_scene: PackedScene
 @export var slots_bar: Control
 
-var selecting_datas: Array[CharacterData]
+var selecting_cards: Array[CharacterCard]
 
 func _ready() -> void:
 	for data in Assets.character_datas:
@@ -12,21 +12,32 @@ func _ready() -> void:
 		card.card_button_down.connect(_on_card_down.bind(card))
 		add_child(card)
 	
+	for slot: CharacterSlot in slots_bar.get_children():
+		slot.slot_down.connect(_on_slot_down.bind(slot))
 
 
 func _on_card_down(card: CharacterCard) -> void:
-	var data = card.data
-	if selecting_datas.has(data):
+	if selecting_cards.has(card):
 		card.be_enabled()
-		selecting_datas.erase(data)
+		selecting_cards.erase(card)
 		for i in range(slots_bar.get_child_count()):
-			if i < selecting_datas.size():
-				slots_bar.get_child(i).set_data(selecting_datas[i])
+			if i < selecting_cards.size():
+				slots_bar.get_child(i).set_card(selecting_cards[i])
 			else:
-				slots_bar.get_child(i).set_data(null)
-	elif selecting_datas.size() < 7:
+				slots_bar.get_child(i).set_card(null)
+	elif selecting_cards.size() < 7:
 		card.be_disabled()
-		selecting_datas.append(data)
-		var index =selecting_datas.size() - 1
-		slots_bar.get_child(index).set_data(data)
-		slots_bar.get_child(index).card = card
+		selecting_cards.append(card)
+		var index =selecting_cards.size() - 1
+		slots_bar.get_child(index).set_card(card)
+
+
+func _on_slot_down(slot: CharacterSlot) -> void:
+	_on_card_down(slot.card)
+
+
+func get_selecting_datas() -> Array[CharacterData]:
+	var arr:Array[CharacterData] = []
+	for card in selecting_cards:
+		arr.append(card.data)
+	return arr

@@ -22,11 +22,11 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func be_selected() -> void:
-	create_tween().tween_property(self,"scale",Vector2.ONE * 0.8, 0.1)
+	$Bias.show()
 
 
 func be_deselected() -> void:
-	create_tween().tween_property(self,"scale", Vector2.ONE, 0.1)
+	$Bias.hide()
 
 
 func be_enabled() -> void:

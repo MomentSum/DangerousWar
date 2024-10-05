@@ -24,6 +24,8 @@ func _ready() -> void:
 			character.position.x -= viewport_width
 		else:
 			character.position.x += viewport_width
+			scale.y = -scale.x
+			rotation = PI
 		character.team_group = team_group
 		character.refind_target_wait = 1e+10
 		get_tree().get_first_node_in_group("characters_space").add_child(character)
