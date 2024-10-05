@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://boj70avyrpj5o"]
+
+[ext_resource type="PackedScene" uid="uid://cwrd5jnbqr51v" path="res://scenes/characters/sniper.tscn" id="1_5uhtq"]
+[ext_resource type="Texture2D" uid="uid://x5104nlwg6r5" path="res://resources/images/weapons/sniper_rifle.svg" id="2_fhxiq"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="3_yw1f1"]
+
+[resource]
+script = ExtResource("3_yw1f1")
+id = &"sniper"
+name = &"狙击手"
+icon = ExtResource("2_fhxiq")
+price = 500
+description = "无畏的骑士
+"
+character_scene = ExtResource("1_5uhtq")

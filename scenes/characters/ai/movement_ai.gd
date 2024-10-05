@@ -11,8 +11,8 @@ signal attacking_ended()
 
 @export var target_distance_min: float
 @export var target_distance_max: float
-@export var teammate_away_distance_max: float = 24
-@export var teammate_away_weight_max: float = 1
+@export var teammate_away_distance_max: float = 36
+@export var teammate_away_weight_max: float = 0.8
 @export var move_speed: float
 @export var attack_wait: float = 1e+5
 @export var attacking_speed_multiple: float = 0.5

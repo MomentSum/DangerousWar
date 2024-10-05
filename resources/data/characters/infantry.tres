@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://23em7ci1b1vr"]
+
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="1_kh6bs"]
+[ext_resource type="PackedScene" uid="uid://dpjo4u2wd1g4q" path="res://scenes/characters/infantry.tscn" id="1_qm0ee"]
+[ext_resource type="Texture2D" uid="uid://bvh0eiumpx0km" path="res://resources/images/weapons/rifle.svg" id="2_bjuw6"]
+
+[resource]
+script = ExtResource("1_kh6bs")
+id = &"infantry"
+name = &"步兵"
+icon = ExtResource("2_bjuw6")
+price = 100
+description = ""
+character_scene = ExtResource("1_qm0ee")
