@@ -22,6 +22,6 @@ func spawn() -> void:
 	explosion.scale = scale
 	explosion.damage = damage
 	explosion.peneration_rate = peneration_rate
-	explosion.character = character
+	explosion.team_group = _team_group
 	explosion.modulate = get_tree().get_first_node_in_group(_team_group + "_color").modulate
 	get_tree().get_first_node_in_group("characters_space").add_child(explosion)
