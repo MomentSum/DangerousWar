@@ -4,10 +4,8 @@ class_name CharacterSprite
 
 
 @export var character: Character
-
 @export var rotation_offset: float
-
-var rotate_enabled: bool = true
+@export var rotate_enabled: bool = true
 
 var _transition_rotation_offset: float
 
@@ -25,9 +23,13 @@ func _on_character_target_changed() -> void:
 		if character.direction_to_target.x < 0:
 			scale.y = -scale.x
 			$HealthBar.scale.y = -$HealthBar.scale.x
+			if not rotate_enabled:
+				rotation = PI
 		else:
 			scale.y = scale.x
 			$HealthBar.scale.y = $HealthBar.scale.x
+			if not rotate_enabled:
+				rotation = 0
 
 
 func _process(delta: float) -> void:
@@ -37,7 +39,6 @@ func _process(delta: float) -> void:
 					character.direction_to_target.angle() \
 					+ sign($HealthBar.scale.y) * deg_to_rad(rotation_offset) \
 					+ _transition_rotation_offset
-	
 	$HealthBar.rotation = - sign($HealthBar.scale.y) * rotation
 	$HealthBar.value = character.hurtbox.health
 

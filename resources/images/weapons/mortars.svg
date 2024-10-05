@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="mortars.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="3.2851563"
+     inkscape:cx="51.13912"
+     inkscape:cy="97.560048"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       d="M 5.0298565,122.56256 57.275734,123.42859 81.354324,85.343141 32.62669,85.054464 Z"
+       id="path2"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       d="m 100.30891,7.6976811 -67.632316,89.6921469 0.0021,14.348802 16.560852,-0.11622 67.402274,-89.423605 z"
+       id="path1"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       d="M 94.586773,47.770108 86.726068,122.27973 101.83734,43.354723 112.42624,103.61037 104.52273,37.559529 94.049695,49.149917 Z"
+       id="path3"
+       sodipodi:nodetypes="ccccccc" />
+    <ellipse
+       style="fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       id="path4"
+       cx="96.587112"
+       cy="-52.648052"
+       rx="12.75562"
+       ry="9.5331469"
+       transform="rotate(37.064116)" />
+  </g>
+</svg>

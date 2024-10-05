@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://vw35globfc12"]
+
+[ext_resource type="PackedScene" uid="uid://b0k1e7ltcmbkq" path="res://scenes/characters/mortars.tscn" id="1_7qh7y"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="1_1176o"]
+[ext_resource type="Texture2D" uid="uid://bybsbt0fltpf0" path="res://resources/images/weapons/mortars.svg" id="2_7qg7j"]
+
+[resource]
+script = ExtResource("1_1176o")
+id = &"martars"
+name = &"迫击炮兵"
+icon = ExtResource("2_7qg7j")
+price = 100
+description = ""
+character_scene = ExtResource("1_7qh7y")

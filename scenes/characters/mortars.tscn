@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0k1e7ltcmbkq"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_t8iln"]
+[ext_resource type="Script" path="res://scenes/characters/mortars.gd" id="2_2yr1a"]
+[ext_resource type="Texture2D" uid="uid://bybsbt0fltpf0" path="res://resources/images/weapons/mortars.svg" id="2_cfprq"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_7rbvd"]
+[ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="5_cuwrh"]
+[ext_resource type="PackedScene" uid="uid://bxsita1et0rr2" path="res://scenes/projectiles/mortar.tscn" id="6_tj24b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x2dvv"]
+radius = 8.0
+
+[node name="Mortars" instance=ExtResource("1_t8iln")]
+script = ExtResource("2_2yr1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_x2dvv")
+
+[node name="CharacterSprite" parent="." index="2"]
+rotate_enabled = false
+
+[node name="Mortars" type="Sprite2D" parent="CharacterSprite" index="3"]
+position = Vector2(9, -4)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("2_cfprq")
+
+[node name="ProjectileLauncher" parent="CharacterSprite/Mortars" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_cuwrh")]
+unique_name_in_owner = true
+position = Vector2(45.1613, -45.1613)
+scale = Vector2(3.22581, 3.22581)
+character = NodePath("../../..")
+projectile_scene = ExtResource("6_tj24b")
+
+[node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_7rbvd")]
+target_distance_min = 100.0
+target_distance_max = 500.0
+teammate_away_weight_max = 0.965
+move_speed = 48.0
+attack_wait = 2.0
+attacking_speed_multiple = 0.1
+character = NodePath("..")
+
+[connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

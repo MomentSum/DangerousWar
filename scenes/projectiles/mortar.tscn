@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxsita1et0rr2"]
+
+[ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_wusd1"]
+[ext_resource type="Script" path="res://scenes/projectiles/mortar.gd" id="2_pi82m"]
+[ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="2_yptnf"]
+[ext_resource type="PackedScene" uid="uid://d0et1fhbu042c" path="res://scenes/projectiles/explosion_spawner.tscn" id="4_630ui"]
+
+[node name="Mortar" instance=ExtResource("1_wusd1")]
+scale = Vector2(0.19, 0.19)
+script = ExtResource("2_pi82m")
+time = 2.0
+height = 200.0
+
+[node name="Character" type="Sprite2D" parent="." index="2"]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_yptnf")
+
+[node name="ExplosionSpawner" parent="." index="3" instance=ExtResource("4_630ui")]
+scale = Vector2(6.06, 6.06)
+damage = 1000.0
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
