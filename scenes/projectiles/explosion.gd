@@ -7,6 +7,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	get_tree().get_first_node_in_group("game_camera").shake(5)
 	for c: Character in get_tree().get_nodes_in_group("character"):
 		if c.team_index == team_index:
 			continue

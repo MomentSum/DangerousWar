@@ -41,7 +41,7 @@ projectile_scene = ExtResource("6_8u3tg")
 target_distance_min = 48.0
 target_distance_max = 384.0
 move_speed = 20.0
-attack_wait = 0.1
+attack_wait = 0.15
 attacking_speed_multiple = 0.1
 character = NodePath("..")
 

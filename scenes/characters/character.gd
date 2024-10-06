@@ -5,10 +5,12 @@ class_name Character
 
 signal target_changed
 
+@export var blood_scene: PackedScene
+
 @export var team_index: int
 @export var aggression_multiple: float = 1
 @export var refind_target_wait: float
-@export var castle_damage: int = 10
+@export var castle_damage: int = 20
 
 
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -76,6 +78,10 @@ func _on_refind_target_timer_timeout() -> void:
 
 
 func _on_hurtbox_died() -> void:
+	var blood = blood_scene.instantiate()
+	blood.position = position
+	blood.modulate = modulate
+	get_tree().get_first_node_in_group("particles_space").add_child(blood)
 	queue_free()
 
 

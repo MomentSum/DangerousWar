@@ -12,7 +12,7 @@ aggression_multiple = 4.0
 
 [node name="Hurtbox" parent="." index="0"]
 health = 1000
-defense = 12
+damage_resist = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_lje0h")
@@ -25,6 +25,6 @@ texture = ExtResource("5_ndi55")
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("2_0d0ul")]
 target_distance_min = 32.0
 target_distance_max = 48.0
-move_speed = 42.0
+move_speed = 22.0
 attacking_speed_multiple = 0.1
 character = NodePath("..")

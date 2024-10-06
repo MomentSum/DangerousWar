@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="DangerousWar"
+config/name_localized={
+"zh_CN": "危险？战争！"
+}
 run/main_scene="res://scenes/title.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://resources/images/icons/new_icon.svg"
+config/windows_native_icon="res://resources/images/icons/new_icon.ico"
 
 [autoload]
 

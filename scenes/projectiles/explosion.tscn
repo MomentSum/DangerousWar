@@ -93,5 +93,6 @@ libraries = {
 autoplay = "boom"
 
 [node name="Character" type="Sprite2D" parent="."]
+z_index = -1
 scale = Vector2(0.155, 0.155)
 texture = ExtResource("2_b3rxr")
