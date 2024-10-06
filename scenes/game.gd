@@ -4,12 +4,11 @@ var win_team_index: int
 
 
 func _on_red_castle_be_destoryed() -> void:
-	game_over(1)
-	$Anim.play("game_over")
+	game_over($RedCastle.team_index)
 
 
 func _on_blue_castle_be_destoryed() -> void:
-	game_over(0)
+	game_over($BlueCastle.team_index)
 
 
 func game_over(team_index: int) -> void:

@@ -300,17 +300,6 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource("1_k5yl3")
 
-[node name="Colors" type="Node2D" parent="."]
-
-[node name="RedColor" type="Node2D" parent="Colors" groups=["Red_color"]]
-modulate = Color(1, 0.45098, 0.301961, 1)
-
-[node name="BlueColor" type="Node2D" parent="Colors" groups=["Blue_color"]]
-modulate = Color(0.14902, 0.784314, 1, 1)
-
-[node name="CColor" type="Node2D" parent="Colors" groups=["c_color"]]
-modulate = Color(0.92549, 0.639216, 0.921569, 1)
-
 [node name="RedArea" parent="." instance=ExtResource("1_hstst")]
 anchors_preset = -1
 anchor_left = 0.164961
@@ -387,9 +376,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = -108.0
+offset_left = 1044.0
 offset_top = -2.0
-offset_right = 9.0
+offset_right = 1161.0
 offset_bottom = 650.0
 grow_horizontal = 0
 grow_vertical = 1

@@ -73,4 +73,4 @@ pointing/emulate_touch_from_mouse=true
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.811765, 0.811765, 0.811765, 1)
+environment/defaults/default_clear_color=Color(0.894118, 0.894118, 0.894118, 1)
