@@ -56,11 +56,10 @@ _data = {
 
 [node name="Cavalry" instance=ExtResource("1_8iasr")]
 script = ExtResource("2_706mo")
-castle_damage = 100
+castle_damage = 50
 
 [node name="Hurtbox" parent="." index="0"]
-health = 100
-defense = 10
+health = 200
 
 [node name="Coll" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_ben8p")
@@ -89,7 +88,7 @@ position = Vector2(8.66459e-05, 135.263)
 rotation = -1.5708
 scale = Vector2(10.4049, 35)
 damage = 25
-peneration_rate = 0.35
+peneration_rate = 1.0
 character = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite/Sword/Hitbox" index="0"]
@@ -103,12 +102,12 @@ libraries = {
 autoplay = "shake"
 
 [node name="CavalryAI" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("4_0ln8m")]
-keep_distance_min = 96.0
-keep_distance_max = 160.0
-move_speed = 100.0
+keep_distance_min = 72.0
+keep_distance_max = 128.0
+move_speed = 64.0
 extra_dash_distance_min = 50.0
-dash_wait = 3.0
-dash_speed = 500.0
+dash_wait = 2.0
+dash_speed = 384.0
 character = NodePath("..")
 
 [connection signal="dashing_began" from="CavalryAI" to="." method="_on_cavalry_ai_dashing_began"]

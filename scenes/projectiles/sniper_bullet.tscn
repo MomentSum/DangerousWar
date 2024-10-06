@@ -15,7 +15,7 @@ scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_70cx4")
 
 [node name="Hitbox" parent="." index="1"]
-damage = 900
+damage = 500
 peneration_rate = 1.0
 single_attack = true
 

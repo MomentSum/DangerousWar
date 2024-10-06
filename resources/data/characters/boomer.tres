@@ -9,7 +9,7 @@ script = ExtResource("3_cpo8d")
 id = &"boomer"
 name = &"自爆步兵"
 icon = ExtResource("2_k32y5")
-price = 100
+price = 400
 description = "无畏的骑士
 "
 character_scene = ExtResource("1_kp4e6")

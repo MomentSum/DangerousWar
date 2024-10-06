@@ -9,6 +9,6 @@ script = ExtResource("2_v0e34")
 id = &"archer"
 name = &"弓箭手"
 icon = ExtResource("1_p0prt")
-price = 50
+price = 100
 description = "是的，弓箭手！！！"
 character_scene = ExtResource("1_sci80")

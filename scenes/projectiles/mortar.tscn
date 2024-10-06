@@ -17,6 +17,6 @@ texture = ExtResource("2_yptnf")
 
 [node name="ExplosionSpawner" parent="." index="3" instance=ExtResource("4_630ui")]
 scale = Vector2(6.06, 6.06)
-damage = 1000.0
+damage = 100.0
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]

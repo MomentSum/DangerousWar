@@ -367,7 +367,7 @@ offset_bottom = 649.5
 grow_horizontal = 1
 grow_vertical = 1
 drop_area = NodePath("../../../../RedArea")
-money_add_speed = 1000.0
+money_add_speed = 100.0
 
 [node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
 process_mode = 1
@@ -384,7 +384,7 @@ grow_horizontal = 0
 grow_vertical = 1
 drop_area = NodePath("../../../../BlueArea")
 team_index = 1
-money_add_speed = 100000.0
+money_add_speed = 100.0
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
 layout_mode = 1

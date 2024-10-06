@@ -16,7 +16,7 @@ scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_76ojt")
 
 [node name="Hitbox" parent="." index="1"]
-damage = 1
+damage = 2
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]

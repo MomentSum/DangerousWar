@@ -8,7 +8,8 @@ signal target_changed
 @export var team_index: int
 @export var aggression_multiple: float = 1
 @export var refind_target_wait: float
-@export var castle_damage: int = 0
+@export var castle_damage: int = 10
+
 
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite

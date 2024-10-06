@@ -14,16 +14,16 @@ height = 128.0
 
 [node name="Hitbox" parent="." index="0"]
 monitoring = false
-damage = 15
+damage = 60
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_fyfhj")
 
-[node name="Timer" parent="." index="2"]
+[node name="Timer" parent="." index="1"]
 wait_time = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 texture_filter = 1
 rotation = 1.5708
 scale = Vector2(0.165, 0.165)

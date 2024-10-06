@@ -132,9 +132,10 @@ _data = {
 
 [node name="Boomer" instance=ExtResource("1_noyjs")]
 script = ExtResource("2_ix1nk")
+castle_damage = 400
 
 [node name="Hurtbox" parent="." index="0"]
-health = 60
+health = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_sfboa")
@@ -153,7 +154,7 @@ texture = ExtResource("6_gpaq2")
 
 [node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("5_xdhg4")]
 monitoring = false
-damage = 600
+damage = 500
 character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
@@ -161,9 +162,8 @@ shape = SubResource("CircleShape2D_u8b36")
 
 [node name="MovementAI" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
 target_distance_max = 42.0
-teammate_away_distance_max = 24.0
-teammate_away_weight_max = 0.0
-move_speed = 60.0
+teammate_away_weight_max = 0.3
+move_speed = 28.0
 attack_wait = 1.0
 character = NodePath("..")
 

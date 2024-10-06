@@ -33,9 +33,9 @@ scale = Vector2(0.195, 0.195)
 texture = ExtResource("3_v0b58")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_m7n5q")]
-target_distance_min = 64.0
+target_distance_min = 32.0
 target_distance_max = 160.0
-move_speed = 48.0
+move_speed = 24.0
 attack_wait = 0.2
 attacking_speed_multiple = 0.1
 character = NodePath("..")

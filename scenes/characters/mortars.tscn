@@ -13,6 +13,9 @@ radius = 8.0
 [node name="Mortars" instance=ExtResource("1_t8iln")]
 script = ExtResource("2_2yr1a")
 
+[node name="Hurtbox" parent="." index="0"]
+health = 60
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_x2dvv")
 
@@ -32,11 +35,10 @@ character = NodePath("../../..")
 projectile_scene = ExtResource("6_tj24b")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_7rbvd")]
-target_distance_min = 100.0
-target_distance_max = 500.0
-teammate_away_weight_max = 0.965
-move_speed = 48.0
-attack_wait = 2.0
+target_distance_min = 48.0
+target_distance_max = 384.0
+move_speed = 20.0
+attack_wait = 3.0
 attacking_speed_multiple = 0.1
 character = NodePath("..")
 

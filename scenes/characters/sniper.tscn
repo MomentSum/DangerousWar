@@ -13,6 +13,9 @@ radius = 8.0
 [node name="Sniper" instance=ExtResource("1_ge8kd")]
 script = ExtResource("2_10kv6")
 
+[node name="Hurtbox" parent="." index="0"]
+health = 60
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_lxc2b")
 
@@ -29,11 +32,11 @@ character = NodePath("../../..")
 projectile_scene = ExtResource("5_3ge4c")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_nji3q")]
-target_distance_min = 128.0
-target_distance_max = 356.0
-move_speed = 40.0
-attack_wait = 4.0
-attacking_speed_multiple = 0.0
+target_distance_min = 48.0
+target_distance_max = 384.0
+move_speed = 20.0
+attack_wait = 3.0
+attacking_speed_multiple = 0.1
 character = NodePath("..")
 
 [connection signal="attack" from="MovementAI" to="." method="_on_movement_ai_attack"]

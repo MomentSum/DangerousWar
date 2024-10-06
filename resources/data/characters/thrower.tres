@@ -9,6 +9,6 @@ script = ExtResource("1_qqfww")
 id = &"thrower"
 name = &"投弹手"
 icon = ExtResource("2_2y0ko")
-price = 75
+price = 200
 description = "丢雷老牟"
 character_scene = ExtResource("1_0x7f7")

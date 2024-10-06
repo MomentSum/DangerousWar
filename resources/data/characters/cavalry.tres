@@ -9,7 +9,7 @@ script = ExtResource("3_jjov6")
 id = &"cavalry"
 name = &"骑兵"
 icon = ExtResource("2_3w84s")
-price = 100
+price = 250
 description = "无畏的骑士
 "
 character_scene = ExtResource("1_yikgx")
