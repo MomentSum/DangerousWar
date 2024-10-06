@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8ibkkhhnpbn"]
+
+[ext_resource type="Script" path="res://scenes/gui/characters_selector.gd" id="1_wj8tq"]
+[ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_jgvgn"]
+
+[node name="CardsPanel" type="PanelContainer"]
+offset_left = 167.0
+offset_top = 25.0
+offset_right = 576.0
+offset_bottom = 541.0
+metadata/_edit_group_ = true
+
+[node name="Cards" type="HFlowContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_wj8tq")
+character_card_scene = ExtResource("2_jgvgn")
+metadata/_edit_use_anchors_ = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://di8cdibthmj4m"]
+[gd_scene load_steps=7 format=3 uid="uid://di8cdibthmj4m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_fdeql"]
 [ext_resource type="Script" path="res://scenes/gui/character_selection.gd" id="1_h0ry6"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_ictxk"]
 [ext_resource type="Script" path="res://scenes/gui/characters_selector.gd" id="3_b43i7"]
 [ext_resource type="PackedScene" uid="uid://cdcwx80rl01ud" path="res://scenes/gui/character_slot.tscn" id="3_dd0gw"]
+[ext_resource type="Texture2D" uid="uid://0ympkkbdp71m" path="res://resources/images/ui/dice.svg" id="6_w8d14"]
 
 [node name="CharacterSelection" type="Control"]
 layout_mode = 3
@@ -18,42 +19,56 @@ script = ExtResource("1_h0ry6")
 
 [node name="RedCardsPanel" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 167.0
-offset_top = 25.0
-offset_right = 576.0
-offset_bottom = 541.0
+offset_left = 144.0
+offset_top = 40.0
+offset_right = 563.0
+offset_bottom = 561.0
 metadata/_edit_group_ = true
 
-[node name="RedCards" type="HFlowContainer" parent="RedCardsPanel" node_paths=PackedStringArray("slots_bar")]
+[node name="ScrollContainer" type="ScrollContainer" parent="RedCardsPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="RedCards" type="HFlowContainer" parent="RedCardsPanel/ScrollContainer" node_paths=PackedStringArray("slots_bar", "random_button")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("3_b43i7")
 character_card_scene = ExtResource("2_ictxk")
-slots_bar = NodePath("../../RedSlots")
+slots_bar = NodePath("../../../RedSlots")
+random_button = NodePath("../../../RedRandom")
 metadata/_edit_use_anchors_ = true
 
 [node name="BlueCardsPanel" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_left = 576.0
-offset_top = 25.0
+offset_top = 40.0
 offset_right = 995.0
-offset_bottom = 546.0
+offset_bottom = 561.0
 metadata/_edit_group_ = true
 
-[node name="BlueCards" type="HFlowContainer" parent="BlueCardsPanel" node_paths=PackedStringArray("slots_bar")]
+[node name="ScrollContainer" type="ScrollContainer" parent="BlueCardsPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="BlueCards" type="HFlowContainer" parent="BlueCardsPanel/ScrollContainer" node_paths=PackedStringArray("slots_bar", "random_button")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("3_b43i7")
 character_card_scene = ExtResource("2_ictxk")
-slots_bar = NodePath("../../BlueSlots")
+slots_bar = NodePath("../../../BlueSlots")
+random_button = NodePath("../../../BlueRandom")
 metadata/_edit_use_anchors_ = true
 
 [node name="RedSlots" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 47.0
-offset_right = 146.0
-offset_bottom = 611.0
+offset_left = 13.0
+offset_top = 44.0
+offset_right = 141.0
+offset_bottom = 608.0
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -80,10 +95,10 @@ layout_mode = 2
 
 [node name="BlueSlots" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 995.0
-offset_top = 43.0
-offset_right = 1123.0
-offset_bottom = 607.0
+offset_left = 990.0
+offset_top = 40.0
+offset_right = 1118.0
+offset_bottom = 604.0
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -110,11 +125,29 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 811.0
-offset_top = 577.0
-offset_right = 939.0
-offset_bottom = 633.0
+offset_left = 511.0
+offset_top = 580.0
+offset_right = 639.0
+offset_bottom = 636.0
 theme_override_font_sizes/font_size = 48
 text = "Start"
+
+[node name="RedRandom" type="Button" parent="."]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 554.0
+offset_right = 442.0
+offset_bottom = 690.0
+scale = Vector2(0.58, 0.58)
+icon = ExtResource("6_w8d14")
+
+[node name="BlueRandom" type="Button" parent="."]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 556.0
+offset_right = 908.0
+offset_bottom = 692.0
+scale = Vector2(0.58, 0.58)
+icon = ExtResource("6_w8d14")
 
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]

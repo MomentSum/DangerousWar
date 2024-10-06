@@ -2,6 +2,7 @@ extends HFlowContainer
 
 @export var character_card_scene: PackedScene
 @export var slots_bar: Control
+@export var random_button: Button
 
 var selecting_cards: Array[CharacterCard]
 
@@ -14,6 +15,8 @@ func _ready() -> void:
 	
 	for slot: CharacterSlot in slots_bar.get_children():
 		slot.slot_down.connect(_on_slot_down.bind(slot))
+	
+	random_button.button_up.connect(random_cards)
 
 
 func _on_card_down(card: CharacterCard) -> void:
@@ -41,3 +44,12 @@ func get_selecting_datas() -> Array[CharacterData]:
 	for card in selecting_cards:
 		arr.append(card.data)
 	return arr
+
+
+func random_cards() -> void:
+	for card in selecting_cards.duplicate():
+		_on_card_down(card)
+	var arr = range(get_child_count())
+	arr.shuffle()
+	for index in arr.slice(0, 7):
+		_on_card_down(get_child(index))
