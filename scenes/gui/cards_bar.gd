@@ -2,10 +2,9 @@ extends Control
 
 @export var card_scene: PackedScene
 @export var drop_area: CharacterDropArea
-@export var team_group: StringName
+@export var team_index: int
 @export var cost_money: bool
 @export var money_add_speed: float
-@export var data_index: int
 
 var _selecting_card: CharacterCard
 
@@ -15,13 +14,11 @@ var _money: float
 func _ready() -> void:
 	#for card: CharacterCard in %Cards.get_children():
 		#card.card_button_down.connect(_on_card_button_down.bind(card))
-	set_data(GameRunningData.selecting_datas[data_index])
-	var color_node = get_tree().get_first_node_in_group(team_group+"_color")
-	if is_instance_valid(color_node):
-		modulate = color_node.modulate
-		modulate.a = 0.9
-		if is_instance_valid(drop_area):
-			drop_area.modulate *= color_node.modulate
+	set_data(GameRunningData.selecting_datas[team_index])
+	modulate = GameRunningData.teams_colors[team_index]
+	if is_instance_valid(drop_area):
+		drop_area.modulate *= modulate
+	modulate.a = 0.9
 	
 	if is_instance_valid(drop_area):
 		drop_area.character_dropped.connect(_on_character_dropped)
@@ -73,7 +70,7 @@ func _on_character_dropped(pos: Vector2) -> void:
 		return
 	
 	var character = _selecting_card.data.character_scene.instantiate() as Character
-	character.team_group = team_group
+	character.team_index = team_index
 	character.position = pos
 	get_tree().get_first_node_in_group("characters_space").add_child(character)
 	

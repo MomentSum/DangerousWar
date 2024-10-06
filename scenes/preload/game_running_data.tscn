@@ -4,3 +4,5 @@
 
 [node name="GameRunningData" type="Node"]
 script = ExtResource("1_a6j03")
+teams_colors = Array[Color]([Color(1, 0.45098, 0.301961, 1), Color(0.14902, 0.784314, 1, 1)])
+teams_names = Array[StringName]([&"Red", &"Blue"])

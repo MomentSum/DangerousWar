@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="3_d6d2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6vxp"]
-size = Vector2(62.6953, 437.109)
+size = Vector2(168, 1017)
 
 [node name="Castle" type="Area2D"]
 collision_layer = 0
@@ -21,8 +21,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_h5uti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.683594, -1.36721)
+position = Vector2(5, 5.50003)
 shape = SubResource("RectangleShape2D_u6vxp")
 
 [node name="Markers" type="Node2D" parent="."]

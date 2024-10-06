@@ -5,7 +5,7 @@ class_name Character
 
 signal target_changed
 
-@export var team_group: StringName
+@export var team_index: int
 @export var aggression_multiple: float = 1
 @export var refind_target_wait: float
 @export var castle_damage: int = 0
@@ -13,6 +13,7 @@ signal target_changed
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite
 
+var team_group: StringName
 
 var viewport_size: Vector2:
 	get:
@@ -38,10 +39,10 @@ var target: Character
 
 
 func _ready() -> void:
-	if not team_group.is_empty():
-		add_to_group(team_group)
+	team_group = "team_%s" % team_index
+	add_to_group(team_group)
 	
-	modulate = get_tree().get_first_node_in_group(team_group + "_color").modulate
+	modulate = GameRunningData.teams_colors[team_index]
 	get_tree().process_frame.connect(find_target,CONNECT_ONE_SHOT)
 	$RefindTargetTimer.wait_time = refind_target_wait
 
@@ -53,7 +54,7 @@ func find_target() -> void:
 	for c: Character in characters:
 		if not is_instance_valid(c):
 			continue
-		if c.team_group == team_group:
+		if c.team_index == team_index:
 			continue
 		var distance = position.distance_to(c.position)
 		var adistance = distance / c.aggression_multiple

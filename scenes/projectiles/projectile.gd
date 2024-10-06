@@ -11,4 +11,4 @@ func _notification(what: int) -> void:
 	match(what):
 		NOTIFICATION_READY:
 			$Hitbox.character = character
-			modulate = get_tree().get_first_node_in_group(character.team_group + "_color").modulate
+			modulate = GameRunningData.teams_colors[character.team_index]
