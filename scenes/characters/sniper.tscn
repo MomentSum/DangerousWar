@@ -20,7 +20,7 @@ health = 60
 shape = SubResource("CircleShape2D_lxc2b")
 
 [node name="SniperRifle" type="Sprite2D" parent="CharacterSprite" index="3"]
-position = Vector2(9, 8)
+position = Vector2(15.75, 2.06)
 scale = Vector2(0.275, 0.275)
 texture = ExtResource("2_tydmc")
 

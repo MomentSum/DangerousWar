@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0k1e7ltcmbkq"]
+[gd_scene load_steps=9 format=3 uid="uid://b0k1e7ltcmbkq"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_t8iln"]
 [ext_resource type="Script" path="res://scenes/characters/mortars.gd" id="2_2yr1a"]
-[ext_resource type="Texture2D" uid="uid://bybsbt0fltpf0" path="res://resources/images/weapons/mortars.svg" id="2_cfprq"]
+[ext_resource type="Texture2D" uid="uid://blxcqbe7c5ydw" path="res://resources/images/weapons/mortars_rack.svg" id="3_ocrbr"]
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="4_7rbvd"]
+[ext_resource type="Texture2D" uid="uid://cifl8tuc4de3h" path="res://resources/images/weapons/mortars_barrel.svg" id="4_uh60p"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="5_cuwrh"]
 [ext_resource type="PackedScene" uid="uid://bxsita1et0rr2" path="res://scenes/projectiles/mortar.tscn" id="6_tj24b"]
 
@@ -22,12 +23,18 @@ shape = SubResource("CircleShape2D_x2dvv")
 [node name="CharacterSprite" parent="." index="2"]
 rotate_enabled = false
 
-[node name="Mortars" type="Sprite2D" parent="CharacterSprite" index="3"]
+[node name="MortarsRack" type="Sprite2D" parent="CharacterSprite" index="3"]
 position = Vector2(9, -4)
 scale = Vector2(0.31, 0.31)
-texture = ExtResource("2_cfprq")
+texture = ExtResource("3_ocrbr")
 
-[node name="ProjectileLauncher" parent="CharacterSprite/Mortars" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_cuwrh")]
+[node name="MortarsBarrel" type="Sprite2D" parent="CharacterSprite" index="4"]
+unique_name_in_owner = true
+position = Vector2(13, -8)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("4_uh60p")
+
+[node name="ProjectileLauncher" parent="CharacterSprite/MortarsBarrel" index="0" node_paths=PackedStringArray("character") instance=ExtResource("5_cuwrh")]
 unique_name_in_owner = true
 position = Vector2(45.1613, -45.1613)
 scale = Vector2(3.22581, 3.22581)

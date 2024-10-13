@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   sodipodi:docname="mortars.svg"
+   sodipodi:docname="mortars_rack.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -39,17 +39,17 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="display:inline;fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       style="fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
        d="M 5.0298565,122.56256 57.275734,123.42859 81.354324,85.343141 32.62669,85.054464 Z"
        id="path2"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       style="display:none;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
        d="m 100.30891,7.6976811 -67.632316,89.6921469 0.0021,14.348802 16.560852,-0.11622 67.402274,-89.423605 z"
        id="path1"
        sodipodi:nodetypes="cccccc" />
     <ellipse
-       style="display:inline;fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       style="display:none;fill:#dadada;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
        id="path4"
        cx="96.587112"
        cy="-52.648052"
@@ -57,7 +57,7 @@
        ry="9.5331469"
        transform="rotate(37.064116)" />
     <path
-       style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0;stroke-dasharray:none"
        d="M 94.586773,47.770108 86.726068,122.27973 101.83734,43.354723 112.42624,103.61037 104.52273,37.559529 94.049695,49.149917 Z"
        id="path3"
        sodipodi:nodetypes="ccccccc" />

@@ -13,6 +13,6 @@ signal died()
 func be_attacked(damage: int, peneration_rate: float = 0) -> void:
 	damage *= 1 - damage_resist * (1 - peneration_rate)
 	health = max(health - damage, 0)
-	be_hurt.emit()
+	be_hurt.emit(damage)
 	if health <= 0:
 		died.emit()
