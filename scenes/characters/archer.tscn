@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk6udvfe58mdc"]
+[gd_scene load_steps=14 format=3 uid="uid://dk6udvfe58mdc"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_alqo0"]
 [ext_resource type="Script" path="res://scenes/characters/archer.gd" id="2_gpq8s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bx61ksprw4g73" path="res://resources/images/weapons/bow/bow_3.svg" id="7_t1pw0"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="8_lfyq3"]
 [ext_resource type="PackedScene" uid="uid://li6b3p8v1ne8" path="res://scenes/projectiles/arrow.tscn" id="9_cqlw0"]
+[ext_resource type="AudioStream" uid="uid://x45qmbj2xrof" path="res://resources/audio/characters/weapons/arrow.wav" id="10_qmw8m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2t87e"]
 radius = 12.0
@@ -67,6 +68,8 @@ unique_name_in_owner = true
 position = Vector2(18, 0)
 character = NodePath("../..")
 projectile_scene = ExtResource("9_cqlw0")
+audio = ExtResource("10_qmw8m")
+volume_db = -10.0
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
 target_distance_min = 64.0

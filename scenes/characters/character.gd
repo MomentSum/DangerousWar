@@ -6,17 +6,18 @@ class_name Character
 signal target_changed
 
 @export var blood_scene: PackedScene
-
 @export var team_index: int
-@export var aggression_multiple: float = 1
-@export var refind_target_wait: float
 @export var castle_damage: int = 20
+@export var aggression_multiple: float = 1
+@export var refind_target_wait: float = 0.2
+
+@export_subgroup("Audio")
+@export var hurt_audio: AudioStream
 
 
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var character_sprite: CharacterSprite = $CharacterSprite
 
-var team_group: StringName
 
 var viewport_size: Vector2:
 	get:
@@ -39,6 +40,7 @@ var distance_to_target: float:
 
 var refind_target_enabled: bool = true
 var target: Character
+var team_group: StringName
 
 
 func _ready() -> void:
@@ -71,6 +73,12 @@ func find_target() -> void:
 		target = nearest_enemy
 		target_changed.emit()
 
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PROCESS:
+		position = position.clamp(Vector2.ZERO, viewport_size)
+
+
 func _on_refind_target_timer_timeout() -> void:
 	if refind_target_enabled:
 		find_target()
@@ -85,6 +93,5 @@ func _on_hurtbox_died() -> void:
 	queue_free()
 
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_PROCESS:
-		position = position.clamp(Vector2.ZERO, viewport_size)
+func _on_character_hurtbox_be_hurt(damage: int) -> void:
+	AudioManager.play_2d(hurt_audio, position, -10)

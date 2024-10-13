@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt233nt6e5iep"]
+[gd_scene load_steps=7 format=3 uid="uid://dt233nt6e5iep"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/explosion.gd" id="1_xynh5"]
 [ext_resource type="Texture2D" uid="uid://beqt7paujvr7d" path="res://resources/images/character.svg" id="2_b3rxr"]
+[ext_resource type="AudioStream" uid="uid://cmb2ahvqancbo" path="res://resources/audio/characters/weapons/explosion.wav" id="3_fuusw"]
 
 [sub_resource type="Animation" id="Animation_0lmjv"]
 length = 0.001
@@ -81,6 +82,7 @@ _data = {
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_xynh5")
 squared_raduis = 100
+audio = ExtResource("3_fuusw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 disabled = true

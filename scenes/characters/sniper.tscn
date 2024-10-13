@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwrd5jnbqr51v"]
+[gd_scene load_steps=9 format=3 uid="uid://cwrd5jnbqr51v"]
 
 [ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_ge8kd"]
 [ext_resource type="Script" path="res://scenes/characters/sniper.gd" id="2_10kv6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="3_nji3q"]
 [ext_resource type="PackedScene" uid="uid://meqegj8png7j" path="res://scenes/projectiles/projectile_launcher.tscn" id="4_084aj"]
 [ext_resource type="PackedScene" uid="uid://pm6nli32m56x" path="res://scenes/projectiles/sniper_bullet.tscn" id="5_3ge4c"]
+[ext_resource type="AudioStream" uid="uid://ci3lea42gtfnc" path="res://resources/audio/characters/weapons/sniper_gun.wav" id="6_s23lu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxc2b"]
 radius = 8.0
@@ -30,6 +31,7 @@ position = Vector2(58.1818, -18.1818)
 scale = Vector2(3.63636, 3.63636)
 character = NodePath("../../..")
 projectile_scene = ExtResource("5_3ge4c")
+audio = ExtResource("6_s23lu")
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_nji3q")]
 target_distance_min = 48.0

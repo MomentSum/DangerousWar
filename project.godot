@@ -23,6 +23,7 @@ config/windows_native_icon="res://resources/images/icons/new_icon.ico"
 
 Assets="*res://scenes/preload/assets.gd"
 GameRunningData="*res://scenes/preload/game_running_data.tscn"
+AudioManager="*res://scenes/preload/audio_manager.tscn"
 
 [display]
 
