@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3c2iqa1785fy"]
+[gd_scene load_steps=5 format=3 uid="uid://d3c2iqa1785fy"]
 
 [ext_resource type="Script" path="res://scenes/gui/manual.gd" id="1_nyrdv"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_ht3dv"]
+[ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="3_2ttdp"]
+[ext_resource type="Script" path="res://scenes/gui/character_Information.gd" id="3_uo3j7"]
 
 [node name="Manual" type="Control"]
 layout_mode = 3
@@ -15,5 +17,57 @@ character_card_scene = ExtResource("2_ht3dv")
 
 [node name="Characters" type="HFlowContainer" parent="."]
 layout_mode = 0
+offset_left = 68.0
+offset_top = 67.0
 offset_right = 834.0
 offset_bottom = 648.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_right = 1156.0
+offset_bottom = 648.0
+
+[node name="Information" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_uo3j7")
+
+[node name="Name" type="Label" parent="PanelContainer/Information"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "兵种名称"
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/Information"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture = ExtResource("3_2ttdp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="PanelContainer/Information"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.890196, 0.317647, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cost: 114514"
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer/Information"]
+custom_minimum_size = Vector2(0, 345)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "这是兵种的描述
+This is the description
+是的
+不是
+冲刺
+冲"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
