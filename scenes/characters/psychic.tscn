@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://byedw2cdjxsoi"]
+
+[ext_resource type="PackedScene" uid="uid://orrylwy00mj5" path="res://scenes/characters/character.tscn" id="1_eejyw"]
+[ext_resource type="Script" path="res://scenes/characters/psychic.gd" id="2_fo5g7"]
+[ext_resource type="Texture2D" uid="uid://dvqd05si23ur6" path="res://resources/images/weapons/psychic_staff.svg" id="2_pv0g0"]
+[ext_resource type="PackedScene" uid="uid://c58upy4kg7ihc" path="res://scenes/characters/ghost.tscn" id="3_acc81"]
+[ext_resource type="PackedScene" uid="uid://dwt7s2pmjupnb" path="res://scenes/characters/ai/movement_ai.tscn" id="3_p44tk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu1i2"]
+radius = 8.0
+
+[node name="Psychic" instance=ExtResource("1_eejyw")]
+script = ExtResource("2_fo5g7")
+game_max_ghost_count = 100
+ghost_scene = ExtResource("3_acc81")
+summon_ghost_count = 5
+hurt_audio = null
+
+[node name="Hurtbox" parent="." index="0"]
+health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_fu1i2")
+
+[node name="PsychicStaff" type="Sprite2D" parent="CharacterSprite" index="3"]
+position = Vector2(6, -5)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_pv0g0")
+
+[node name="SummonTimer" type="Timer" parent="." index="3"]
+wait_time = 3.0
+autostart = true
+
+[node name="MovementAI" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("3_p44tk")]
+target_distance_max = 64.0
+move_speed = 20.0
+attacking_speed_multiple = 1.0
+character = NodePath("..")
+
+[connection signal="timeout" from="SummonTimer" to="." method="_on_summon_timer_timeout"]

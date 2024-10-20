@@ -15,4 +15,4 @@ func _ready() -> void:
 			continue
 		if c.position.distance_squared_to(position) <= squared_raduis * scale.x * scale.x:
 			c.hurtbox.be_attacked(damage, peneration_rate)
-	AudioManager.play_2d(audio, position, -4)
+	AudioManager.play_2d(audio, position, -2)

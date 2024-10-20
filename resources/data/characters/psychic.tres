@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://tjcghe8o2dlk"]
+
+[ext_resource type="PackedScene" uid="uid://byedw2cdjxsoi" path="res://scenes/characters/psychic.tscn" id="1_32jqk"]
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="1_kwrqp"]
+[ext_resource type="Texture2D" uid="uid://dvqd05si23ur6" path="res://resources/images/weapons/psychic_staff.svg" id="2_k6k4p"]
+
+[resource]
+script = ExtResource("1_kwrqp")
+id = &"psychic"
+name = &"通灵师"
+icon = ExtResource("2_k6k4p")
+price = 800
+description = ""
+character_scene = ExtResource("1_32jqk")

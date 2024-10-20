@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://dhkcknpt278ku"]
+
+[ext_resource type="Script" path="res://resources/scripts/character_data.gd" id="1_11uu7"]
+[ext_resource type="PackedScene" uid="uid://bpok8e68prkap" path="res://scenes/characters/berserker.tscn" id="1_43dmx"]
+[ext_resource type="Texture2D" uid="uid://077igk384cik" path="res://resources/images/weapons/axe.svg" id="2_r6emt"]
+
+[resource]
+script = ExtResource("1_11uu7")
+id = &"berserker"
+name = &"狂战士"
+icon = ExtResource("2_r6emt")
+price = 100
+description = ""
+character_scene = ExtResource("1_43dmx")

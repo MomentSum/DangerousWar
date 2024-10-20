@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="psychic_staff.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="4.2381568"
+     inkscape:cx="70.313585"
+     inkscape:cy="49.667818"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#d8d8d8;stroke-width:3.42168;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1"
+       width="5.2743907"
+       height="72.707237"
+       x="58.774323"
+       y="53.714165" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;stroke:#e38e61;stroke-width:0;stroke-linejoin:round"
+       id="path1"
+       inkscape:flatsided="false"
+       sodipodi:sides="4"
+       sodipodi:cx="57.336246"
+       sodipodi:cy="25.954679"
+       sodipodi:r1="28.666908"
+       sodipodi:r2="8.3134031"
+       sodipodi:arg1="0.60398298"
+       sodipodi:arg2="1.3893811"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 80.931409,42.235341 58.836165,34.131654 41.055585,49.549842 49.159272,27.454598 33.741084,9.6740176 55.836328,17.777705 73.616908,2.3595174 65.513221,24.454761 Z"
+       transform="translate(3.7752261,6.6066456)" />
+  </g>
+</svg>

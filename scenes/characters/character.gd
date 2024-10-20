@@ -94,4 +94,4 @@ func _on_hurtbox_died() -> void:
 
 
 func _on_character_hurtbox_be_hurt(damage: int) -> void:
-	AudioManager.play_2d(hurt_audio, position, -10)
+	AudioManager.play_2d(hurt_audio, position, -20)
