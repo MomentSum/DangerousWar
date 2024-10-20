@@ -5,6 +5,14 @@
 
 [sub_resource type="GDScript" id="GDScript_anjcq"]
 script/source = "extends Button
+
+
+func _on_mouse_entered() -> void:
+	create_tween().tween_property(self, \"scale\", Vector2.ONE * 1.2, 0.1)
+
+
+func _on_mouse_exited() -> void:
+	create_tween().tween_property(self, \"scale\", Vector2.ONE, 0.1)
 "
 
 [node name="Title" type="Control"]
@@ -19,23 +27,39 @@ script = ExtResource("1_2f63p")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 17.0
-offset_right = 1145.0
-offset_bottom = 113.0
+offset_left = 386.0
+offset_top = 38.0
+offset_right = 1130.0
+offset_bottom = 134.0
 theme_override_font_sizes/font_size = 96
 text = "Dangerous War"
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0633681
-anchor_top = 0.473765
-anchor_right = 0.261285
-anchor_bottom = 0.584877
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 216.0
+offset_right = 386.0
+offset_bottom = 609.0
+theme_override_constants/separation = 40
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Play"
 script = SubResource("GDScript_anjcq")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="ManualButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "图鉴
+"
+script = SubResource("GDScript_anjcq")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/ManualButton" to="." method="_on_manual_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_exited"]

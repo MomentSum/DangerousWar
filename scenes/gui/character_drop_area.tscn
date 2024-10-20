@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv440mct5fn50"]
 
-[ext_resource type="Texture2D" uid="uid://bw04gh5iqdune" path="res://resources/images/bias.png" id="1_gas6e"]
+[ext_resource type="Texture2D" uid="uid://ymab2juxv8y2" path="res://resources/images/bias.svg" id="1_ja3j8"]
 [ext_resource type="Script" path="res://scenes/gui/character_drop_area.gd" id="1_kqc8s"]
 
 [node name="CharacterDropArea" type="TextureRect"]
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_gas6e")
+texture = ExtResource("1_ja3j8")
 expand_mode = 1
 stretch_mode = 1
 script = ExtResource("1_kqc8s")
