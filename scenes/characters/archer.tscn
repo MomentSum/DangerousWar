@@ -74,7 +74,7 @@ volume_db = -10.0
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_crpix")]
 target_distance_min = 64.0
 target_distance_max = 256.0
-move_speed = 22.0
+move_speed_multiple = 0.9
 attack_wait = 1.2
 character = NodePath("..")
 

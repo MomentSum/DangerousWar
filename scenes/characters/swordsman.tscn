@@ -99,6 +99,7 @@ _data = {
 [node name="Swordsman" instance=ExtResource("1_knicm")]
 script = SubResource("GDScript_smqq5")
 damage = 30
+castle_damage = 10
 
 [node name="Hurtbox" parent="." index="0"]
 health = 300
@@ -115,9 +116,6 @@ texture = ExtResource("4_40k77")
 offset = Vector2(0, -192)
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_esjob")]
-target_distance_min = 16.0
-target_distance_max = 32.0
-move_speed = 24.0
 attack_wait = 0.8
 character = NodePath("..")
 

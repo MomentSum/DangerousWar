@@ -7,10 +7,10 @@
 script = ExtResource("2_rc6lk")
 keep_distance_min = 0.0
 keep_distance_max = 0.0
-move_speed = 0.0
+move_speed_multiple = 1.0
 extra_dash_distance_min = 0.0
 dash_wait = 0.0
-dash_speed = 0.0
+dash_speed_multiple = 1.0
 
 [node name="DashTimer" type="Timer" parent="." index="0"]
 one_shot = true

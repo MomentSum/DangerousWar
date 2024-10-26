@@ -46,7 +46,7 @@ audio = ExtResource("7_vlnc3")
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("4_7rbvd")]
 target_distance_min = 48.0
 target_distance_max = 384.0
-move_speed = 20.0
+move_speed_multiple = 0.6
 attack_wait = 3.0
 attacking_speed_multiple = 0.1
 character = NodePath("..")

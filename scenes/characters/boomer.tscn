@@ -163,7 +163,7 @@ shape = SubResource("CircleShape2D_u8b36")
 [node name="MovementAI" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("4_ebtrs")]
 target_distance_max = 42.0
 teammate_away_weight_max = 0.3
-move_speed = 28.0
+move_speed_multiple = 1.2
 attack_wait = 1.0
 character = NodePath("..")
 

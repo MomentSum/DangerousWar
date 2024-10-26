@@ -12,7 +12,7 @@ func _ready() -> void:
 		var card = character_card_scene.instantiate() as CharacterCard
 		card.set_data(data)
 		card.card_button_down.connect(_on_card_down.bind(card))
-		$Characters.add_child(card)
+		%Characters.add_child(card)
 
 
 func _on_card_down(card: CharacterCard) -> void:

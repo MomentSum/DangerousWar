@@ -37,4 +37,4 @@ func _gui_input(event: InputEvent) -> void:
 
 func _on_drop_timer_timeout() -> void:
 	character_dropped.emit(_drop_position)
-	$DropTimer.start(0.15)
+	$DropTimer.start(0.1)

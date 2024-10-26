@@ -15,14 +15,14 @@ rotation = 0.0
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_76ojt")
 
-[node name="Hitbox" parent="." index="1"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+position = Vector2(-2.38419e-07, 0.5)
+scale = Vector2(0.4, 0.15)
+
+[node name="Hitbox" parent="." index="2"]
 damage = 2
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ss50n")
-
-[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
-position = Vector2(-2.38419e-07, 0.5)
-scale = Vector2(0.4, 0.15)

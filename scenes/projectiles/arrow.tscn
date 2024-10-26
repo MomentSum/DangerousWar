@@ -3,22 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://dnua4jgqc3h7m" path="res://scenes/projectiles/throwable_projectile.tscn" id="1_ea2lt"]
 [ext_resource type="Script" path="res://scenes/projectiles/arrow.gd" id="2_l0811"]
 [ext_resource type="Texture2D" uid="uid://bodpp4inmbpcc" path="res://resources/images/projectiles/arrow.svg" id="3_7muam"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fyfhj"]
-radius = 15.0333
+[ext_resource type="PackedScene" uid="uid://d0et1fhbu042c" path="res://scenes/projectiles/explosion_spawner.tscn" id="5_ut0c5"]
 
 [node name="Arrow" instance=ExtResource("1_ea2lt")]
 script = ExtResource("2_l0811")
 time = 1.0
 height = 128.0
 
-[node name="Hitbox" parent="." index="0"]
-monitoring = false
-damage = 60
-single_attack = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_fyfhj")
+[node name="ExplosionSpawner" parent="." index="0" instance=ExtResource("5_ut0c5")]
+position = Vector2(13, 0)
+scale = Vector2(0.64, 0.64)
+damage = 40.0
+show_effects = false
 
 [node name="Timer" parent="." index="1"]
 wait_time = 2.0

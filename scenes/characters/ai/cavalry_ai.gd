@@ -7,11 +7,10 @@ signal dashing_ended
 
 @export var keep_distance_min: float
 @export var keep_distance_max: float
-@export var move_speed: float
+@export var move_speed_multiple: float = 1
 @export var extra_dash_distance_min: float
 @export var dash_wait: float
-@export var dash_speed: float
-
+@export var dash_speed_multiple: float = 1
 
 var _clockwise_rotation: float
 
@@ -48,7 +47,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if _dashing:
-		character.position += _dash_direction * dash_speed * delta
+		character.position += _dash_direction * MOVE_SPEED * dash_speed_multiple * delta
 		return
 	
 	if not is_instance_valid(target):
@@ -57,17 +56,17 @@ func _process(delta: float) -> void:
 	if character.distance_to_target > keep_distance_max:
 		var angle = asin(keep_distance_max / character.distance_to_target)
 		var direction = character.direction_to_target.rotated(-_clockwise_rotation*angle)
-		character.position += direction * move_speed * delta
+		character.position += direction * MOVE_SPEED * move_speed_multiple * delta
 		_attacking = false
 	else:
 		var vec = character.position - target.position
-		var arc = move_speed * delta
+		var arc = MOVE_SPEED * move_speed_multiple * delta
 		var angle = arc / character.distance_to_target
 		var result_vec = vec.rotated(_clockwise_rotation * angle)
 		var direction = vec.direction_to(result_vec)
 		if character.distance_to_target < keep_distance_min:
 			direction = (direction - character.direction_to_target ) / 2
-		character.position += direction * move_speed * delta
+		character.position += direction * MOVE_SPEED * move_speed_multiple * delta
 		_attacking = true
 
 
@@ -93,5 +92,5 @@ func _on_dash_timer_timeout() -> void:
 	character.refind_target_enabled = false
 	character.character_sprite.rotate_enabled = false
 	await get_tree().create_timer( \
-			(character.distance_to_target + extra_dash_distance_min) / dash_speed).timeout
+			(character.distance_to_target + extra_dash_distance_min) / (dash_speed_multiple * MOVE_SPEED)).timeout
 	$DashingCheckTimer.start()

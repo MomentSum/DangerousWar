@@ -5,6 +5,7 @@ extends Projectile
 
 func _ready() -> void:
 	rotation = direction.angle()
+	$Hitbox.character = character
 
 func _process(delta: float) -> void:
 	position += move_speed * direction * delta

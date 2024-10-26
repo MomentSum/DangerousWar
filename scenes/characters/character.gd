@@ -5,6 +5,8 @@ class_name Character
 
 signal target_changed
 
+const MOVE_SPEED: float = 17
+
 @export var blood_scene: PackedScene
 @export var team_index: int
 @export var castle_damage: int = 20
@@ -12,7 +14,7 @@ signal target_changed
 @export var refind_target_wait: float = 0.2
 
 @export_subgroup("Audio")
-@export var hurt_audio: AudioStream
+@export var death_audio: AudioStream
 
 
 @onready var hurtbox: Hurtbox = $Hurtbox
@@ -89,9 +91,6 @@ func _on_hurtbox_died() -> void:
 	var blood = blood_scene.instantiate()
 	blood.position = position
 	blood.modulate = modulate
+	AudioManager.play_2d(death_audio, position, -20)
 	get_tree().get_first_node_in_group("particles_space").add_child(blood)
 	queue_free()
-
-
-func _on_character_hurtbox_be_hurt(damage: int) -> void:
-	AudioManager.play_2d(hurt_audio, position, -20)

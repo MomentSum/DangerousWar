@@ -8,3 +8,7 @@ class_name CharacterAI
 var target: Character:
 	get:
 		return character.target
+
+var MOVE_SPEED: float:
+	get:
+		return character.MOVE_SPEED

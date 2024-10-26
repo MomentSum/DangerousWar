@@ -9,7 +9,7 @@
 [node name="Character" type="Node2D" groups=["character"]]
 script = ExtResource("1_p3xoq")
 blood_scene = ExtResource("2_18qvj")
-hurt_audio = ExtResource("4_17v73")
+death_audio = ExtResource("4_17v73")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_htkme")]
 collision_layer = 3
@@ -23,6 +23,5 @@ autostart = true
 [node name="CharacterSprite" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_6g35d")]
 character = NodePath("..")
 
-[connection signal="be_hurt" from="Hurtbox" to="." method="_on_character_hurtbox_be_hurt"]
 [connection signal="died" from="Hurtbox" to="." method="_on_hurtbox_died"]
 [connection signal="timeout" from="RefindTargetTimer" to="." method="_on_refind_target_timer_timeout"]

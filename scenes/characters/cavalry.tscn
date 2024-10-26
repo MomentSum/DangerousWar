@@ -104,10 +104,10 @@ autoplay = "shake"
 [node name="CavalryAI" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("4_0ln8m")]
 keep_distance_min = 72.0
 keep_distance_max = 128.0
-move_speed = 64.0
+move_speed_multiple = 2.5
 extra_dash_distance_min = 50.0
 dash_wait = 2.0
-dash_speed = 384.0
+dash_speed_multiple = 20.0
 character = NodePath("..")
 
 [connection signal="dashing_began" from="CavalryAI" to="." method="_on_cavalry_ai_dashing_began"]

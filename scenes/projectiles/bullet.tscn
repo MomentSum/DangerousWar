@@ -9,19 +9,19 @@ size = Vector2(8, 3)
 [node name="Bullet" instance=ExtResource("1_dyuft")]
 move_speed = 800.0
 
-[node name="Sprite2D" parent="." index="0"]
-position = Vector2(0, 1)
-rotation = 0.0
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("2_7h4r7")
-
-[node name="Hitbox" parent="." index="1"]
+[node name="Hitbox" parent="." index="0"]
 damage = 20
 single_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ss50n")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, 1)
+rotation = 0.0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_7h4r7")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 position = Vector2(-2.38419e-07, 0.5)

@@ -9,6 +9,6 @@ script = ExtResource("1_11uu7")
 id = &"berserker"
 name = &"狂战士"
 icon = ExtResource("2_r6emt")
-price = 100
+price = 400
 description = ""
 character_scene = ExtResource("1_43dmx")

@@ -5,6 +5,8 @@ extends Node2D
 
 @export var damage: float
 @export var peneration_rate: float
+@export var single_attack: bool
+@export var show_effects: bool = true
 @export var character: Character:
 	set(new):
 		character = new
@@ -22,6 +24,8 @@ func spawn() -> void:
 	explosion.scale = scale
 	explosion.damage = damage
 	explosion.peneration_rate = peneration_rate
+	explosion.show_effects = show_effects
+	explosion.single_attack = single_attack
 	explosion.team_index = _team_index
 	explosion.modulate = GameRunningData.teams_colors[_team_index]
 	get_tree().get_first_node_in_group("characters_space").add_child(explosion)
