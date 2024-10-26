@@ -12,7 +12,7 @@ radius = 4.12311
 script = ExtResource("2_2erwf")
 damage = 1
 castle_damage = 5
-hurt_audio = null
+aggression_multiple = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_iebdb")
@@ -29,7 +29,6 @@ scale = Vector2(0.5, 0.5)
 target_distance_min = 12.0
 target_distance_max = 12.0
 teammate_away_distance_max = 12.0
-move_speed = 28.0
 attack_wait = 1.0
 attacking_speed_multiple = 1.0
 character = NodePath("..")
