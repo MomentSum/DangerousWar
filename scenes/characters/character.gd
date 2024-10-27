@@ -46,7 +46,7 @@ var team_group: StringName
 
 
 func _ready() -> void:
-	team_group = "team_%s" % team_index
+	team_group = GameRunningData.teams_names[team_index]
 	add_to_group(team_group)
 	
 	modulate = GameRunningData.teams_colors[team_index]
@@ -91,6 +91,6 @@ func _on_hurtbox_died() -> void:
 	var blood = blood_scene.instantiate()
 	blood.position = position
 	blood.modulate = modulate
-	AudioManager.play_2d(death_audio, position, -20)
+	AudioManager.play_2d(death_audio, position, 0)
 	get_tree().get_first_node_in_group("particles_space").add_child(blood)
 	queue_free()

@@ -126,12 +126,23 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 511.0
-offset_top = 580.0
-offset_right = 639.0
-offset_bottom = 636.0
+offset_left = 598.0
+offset_top = 583.0
+offset_right = 726.0
+offset_bottom = 639.0
 theme_override_font_sizes/font_size = 48
-text = "Start"
+text = "开始"
+flat = true
+script = ExtResource("6_nyu87")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 583.0
+offset_right = 543.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 48
+text = "返回"
 flat = true
 script = ExtResource("6_nyu87")
 
@@ -156,3 +167,6 @@ icon = ExtResource("6_w8d14")
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
 [connection signal="mouse_entered" from="Start" to="Start" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="Start" method="_on_mouse_exited"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[connection signal="mouse_entered" from="Back" to="Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Back" to="Back" method="_on_mouse_exited"]

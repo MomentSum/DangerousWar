@@ -1,44 +1,75 @@
-[gd_scene load_steps=24 format=3 uid="uid://678j1k3bc4f0"]
+[gd_scene load_steps=21 format=3 uid="uid://678j1k3bc4f0"]
 
 [ext_resource type="Script" path="res://scenes/sandbox_game.gd" id="1_088gv"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="2_6k266"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="4_f6xea"]
-[ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="5_2a8xs"]
+[ext_resource type="Script" path="res://scenes/gui/cards_container.gd" id="4_k1a4f"]
+[ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="5_axdvp"]
 [ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="6_n33q0"]
 [ext_resource type="Texture2D" uid="uid://jjamb05m1743" path="res://resources/images/ui/restart.svg" id="7_8gnuj"]
 [ext_resource type="Texture2D" uid="uid://d2twu5af47kir" path="res://resources/images/ui/exit.svg" id="8_opp77"]
 [ext_resource type="Texture2D" uid="uid://0hcksk1mjpk4" path="res://resources/images/ui/resume.svg" id="9_ypl0y"]
 
-[sub_resource type="GDScript" id="GDScript_wuwvk"]
-script/source = "extends Button
+[sub_resource type="GDScript" id="GDScript_kvgeg"]
+script/source = "extends PanelContainer
 
 
+@export var drop_areas: Array[CharacterDropArea]
+@export var prices: PackedInt32Array
 
-
-func _on_button_down() -> void:
-	%Anim.play(\"pause\")
-	await get_tree().create_timer(0.1).timeout
-	get_tree().paused = true
-"
-
-[sub_resource type="GDScript" id="GDScript_7oi4m"]
-script/source = "extends Button
-
-var _playing: bool = true
+@onready var cards: CardsContainer = $HBoxContainer/VBoxContainer/Scroll/Cards
+@onready var scroll_bar: HScrollBar = $HBoxContainer/VBoxContainer/HScrollBar
+@onready var scroll: Control = $HBoxContainer/VBoxContainer/Scroll
 
 
 func _ready() -> void:
-	get_tree().process_frame.connect(_on_button_up,CONNECT_ONE_SHOT)
+	for i in range(drop_areas.size()):
+		var area = drop_areas[i]
+		area.modulate = GameRunningData.teams_colors[i]
+		area.character_dropped.connect(_on_drop_area_dopped.bind(i))
+	prices.resize(drop_areas.size())
+	
+	cards.set_data(Assets.character_datas)
+	get_tree().process_frame.connect(func():
+		scroll_bar.max_value = cards.get_minimum_size().x
+		scroll_bar.page = scroll.size.x
+	, CONNECT_ONE_SHOT)
 
 
-func _on_button_up() -> void:
-	_playing = not _playing
-	if _playing:
-		%Spaces.process_mode = Node.PROCESS_MODE_INHERIT
-		text = \"停止\"
-	else:
-		%Spaces.process_mode = Node.PROCESS_MODE_DISABLED
-		text = \"运行\"
+func _on_drop_area_dopped(position: Vector2, team_index: int) -> void:
+	if not is_instance_valid(cards.selecting_card):
+		return
+	var character = cards.selecting_card.data.character_scene.instantiate() as Character
+	character.position = position
+	character.team_index = team_index
+	%CharactersSpace.add_child(character)
+	prices[team_index] += cards.selecting_card.data.price
+
+
+func _on_h_scroll_bar_value_changed(value: float) -> void:
+	cards.position.x = -value
+"
+
+[sub_resource type="GDScript" id="GDScript_h0t41"]
+script/source = "extends Label
+
+@export var team_index: int
+
+
+func _ready() -> void:
+	modulate = GameRunningData.teams_colors[team_index] * 0.7
+	modulate.a = 1
+	
+
+
+func _process(delta: float) -> void:
+	var characters_count_str = str(get_tree().get_nodes_in_group(GameRunningData.teams_names[team_index]).size())
+	var team_price_str = \"($%s)\" % str(%CharactersCards.prices[team_index])
+	match(horizontal_alignment):
+		HORIZONTAL_ALIGNMENT_RIGHT:
+			text = team_price_str + characters_count_str
+		HORIZONTAL_ALIGNMENT_LEFT:
+			text = characters_count_str + team_price_str
 "
 
 [sub_resource type="GDScript" id="GDScript_1w8pj"]
@@ -46,9 +77,7 @@ script/source = "extends Label
 
 
 func _process(_delta: float) -> void:
-	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS)) \\
-			+ \"\\nA:\" + str(get_tree().get_nodes_in_group(\"a\").size()) \\
-			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
+	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS))
 "
 
 [sub_resource type="GDScript" id="GDScript_sl88w"]
@@ -61,33 +90,6 @@ func _on_button_up() -> void:
 "
 
 [sub_resource type="GDScript" id="GDScript_n5ks7"]
-script/source = "extends TextureButton
-
-
-func _on_button_up() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/title.tscn\")
-"
-
-[sub_resource type="GDScript" id="GDScript_f4yk8"]
-script/source = "extends TextureButton
-
-
-func _on_button_up() -> void:
-	%Anim.play(\"resume\")
-	get_tree().paused = false
-"
-
-[sub_resource type="GDScript" id="GDScript_bt386"]
-script/source = "extends TextureButton
-
-
-func _on_button_up() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/sandbox_game.tscn\")
-"
-
-[sub_resource type="GDScript" id="GDScript_cm7bb"]
 script/source = "extends TextureButton
 
 
@@ -137,50 +139,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/GUI/Opeartions/RedCardsBar:position")
+tracks/3/path = NodePath("CanvasLayer/GUI/Opeartions/CharactersCards:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -0.5)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/GUI/Opeartions/BlueCardsBar:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1044, -2), Vector2(1044, -2)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/GUI/Pause:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/GUI/Pause:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3riog"]
@@ -211,83 +177,20 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_rb46r"]
-resource_name = "game_start"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/GUI/Opeartions/RedCardsBar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(-256, 0), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/GUI/Opeartions/BlueCardsBar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(1243, 0), Vector2(1044, -2)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
 [sub_resource type="Animation" id="Animation_ojs5a"]
 resource_name = "pause"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/GUI/Pause:visible")
+tracks/0/path = NodePath("CanvasLayer/GUI/Opeartions/CharactersCards:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/GUI/Pause:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.18, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(0, -128), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_t6s8e"]
@@ -296,33 +199,20 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/GUI/Pause:visible")
+tracks/0/path = NodePath("CanvasLayer/GUI/Opeartions/CharactersCards:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/GUI/Pause:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(0, 0), Vector2(0, -128)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5wl7q"]
 _data = {
 "RESET": SubResource("Animation_0huj8"),
 "game_over": SubResource("Animation_3riog"),
-"game_start": SubResource("Animation_rb46r"),
 "pause": SubResource("Animation_ojs5a"),
 "resume": SubResource("Animation_t6s8e")
 }
@@ -341,7 +231,15 @@ func shake(shake_distance: float) -> void:
 [node name="Game" type="Node2D"]
 script = ExtResource("1_088gv")
 
-[node name="RedArea" parent="." instance=ExtResource("2_6k266")]
+[node name="Areas" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="RedArea" parent="Areas" instance=ExtResource("2_6k266")]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00350237
 anchor_top = -0.208333
@@ -352,7 +250,8 @@ offset_right = -12.0347
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="BlueArea" parent="." instance=ExtResource("2_6k266")]
+[node name="BlueArea" parent="Areas" instance=ExtResource("2_6k266")]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.463542
 anchor_top = -0.208333
@@ -369,6 +268,7 @@ grow_vertical = 1
 unique_name_in_owner = true
 
 [node name="CharactersSpace" type="Node2D" parent="Spaces" groups=["characters_space"]]
+unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="ProjectilesSpace" type="Node2D" parent="Spaces" groups=["projectiles_space"]]
@@ -398,45 +298,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RedCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("5_2a8xs")]
-process_mode = 1
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -0.5
-offset_right = 113.0
-offset_bottom = 649.5
-grow_horizontal = 1
-grow_vertical = 1
-drop_area = NodePath("../../../../RedArea")
-money_add_speed = 200.0
-
-[node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("5_2a8xs")]
-process_mode = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -108.0
-offset_top = -2.0
-offset_right = 9.0
-offset_bottom = 650.0
-grow_horizontal = 0
-grow_vertical = 1
-drop_area = NodePath("../../../../BlueArea")
-team_index = 1
-money_add_speed = 200.0
-
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 21.0
-offset_right = 77.0
-offset_bottom = 56.0
+offset_left = 566.0
+offset_top = 12.0
+offset_right = 622.0
+offset_bottom = 68.0
 grow_horizontal = 2
 rotation = 1.55334
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -444,28 +314,68 @@ theme_override_font_sizes/font_size = 48
 toggle_mode = true
 text = "〓"
 flat = true
-script = SubResource("GDScript_wuwvk")
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
-modulate = Color(0, 0, 0, 1)
+[node name="CharactersCards" type="PanelContainer" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_areas")]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.380392)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -88.0
-offset_right = 48.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 48
+anchors_preset = -1
+offset_right = 1154.0
+offset_bottom = 132.0
+script = SubResource("GDScript_kvgeg")
+drop_areas = [NodePath("../../../../Areas/RedArea"), NodePath("../../../../Areas/BlueArea")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/Opeartions/CharactersCards"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Scroll" type="Control" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Cards" type="HBoxContainer" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/VBoxContainer/Scroll"]
+layout_mode = 2
+offset_left = 6.0
+offset_right = 2966.0
+offset_bottom = 76.0
+script = ExtResource("4_k1a4f")
+character_card_scene = ExtResource("5_axdvp")
+team_index = -1
+selection_cancelable = true
+
+[node name="HScrollBar" type="HScrollBar" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 toggle_mode = true
-text = "Play"
-flat = true
-script = SubResource("GDScript_7oi4m")
+texture_normal = ExtResource("8_opp77")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("7_8gnuj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("9_ypl0y")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="View" type="Control" parent="CanvasLayer/GUI"]
 layout_mode = 1
@@ -475,15 +385,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="StateLabel" type="Label" parent="CanvasLayer/GUI/View"]
+[node name="Label" type="Label" parent="CanvasLayer/GUI/View"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 601.0
+offset_right = 571.0
+offset_bottom = 649.0
+theme_override_font_sizes/font_size = 48
+text = "12345"
+horizontal_alignment = 2
+script = SubResource("GDScript_h0t41")
+
+[node name="Label2" type="Label" parent="CanvasLayer/GUI/View"]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 601.0
+offset_right = 1149.0
+offset_bottom = 649.0
+theme_override_font_sizes/font_size = 48
+text = "12345"
+script = SubResource("GDScript_h0t41")
+team_index = 1
+
+[node name="FPSlabel3" type="Label" parent="CanvasLayer/GUI/View"]
+layout_mode = 0
+offset_top = 615.0
+offset_right = 1152.0
+offset_bottom = 647.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.466667)
 theme_override_font_sizes/font_size = 32
-text = "FPS:
-A:
-B:"
+text = "FPS: "
+horizontal_alignment = 2
 script = SubResource("GDScript_1w8pj")
 
 [node name="GameOver" type="Control" parent="CanvasLayer/GUI"]
@@ -575,86 +508,22 @@ ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_n5ks7")
 
-[node name="Pause" type="Control" parent="CanvasLayer/GUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Back" type="ColorRect" parent="CanvasLayer/GUI/Pause"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.341176, 0.341176, 0.341176, 0.670588)
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GUI/Pause"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -157.0
-offset_top = -52.0
-offset_right = 155.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/Pause/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 48
-
-[node name="Resume" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("9_ypl0y")
-ignore_texture_size = true
-stretch_mode = 5
-script = SubResource("GDScript_f4yk8")
-
-[node name="Restart" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("7_8gnuj")
-ignore_texture_size = true
-stretch_mode = 5
-script = SubResource("GDScript_bt386")
-
-[node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("8_opp77")
-ignore_texture_size = true
-stretch_mode = 5
-script = SubResource("GDScript_cm7bb")
-
 [node name="Anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_5wl7q")
 }
-autoplay = "game_start"
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["game_camera"]]
 position = Vector2(576, 324)
 script = SubResource("GDScript_pfxp2")
 
-[connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="CanvasLayer/GUI/Opeartions/PauseButton" method="_on_button_down"]
-[connection signal="button_up" from="CanvasLayer/GUI/Opeartions/PlayButton" to="CanvasLayer/GUI/Opeartions/PlayButton" method="_on_button_up"]
+[connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="." method="_on_pause_button_button_down"]
+[connection signal="value_changed" from="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/VBoxContainer/HScrollBar" to="CanvasLayer/GUI/Opeartions/CharactersCards" method="_on_h_scroll_bar_value_changed"]
+[connection signal="button_up" from="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/ExitButton" to="." method="_on_exit_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/RestartButton" to="." method="_on_restart_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/Opeartions/CharactersCards/HBoxContainer/PlayButton" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" to="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" method="_on_button_up"]
-[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" method="_on_button_up"]
-[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" method="_on_button_up"]
-[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" method="_on_button_up"]

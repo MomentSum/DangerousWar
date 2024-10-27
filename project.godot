@@ -24,6 +24,7 @@ config/windows_native_icon="res://resources/images/icons/new_icon.ico"
 Assets="*res://scenes/preload/assets.gd"
 GameRunningData="*res://scenes/preload/game_running_data.tscn"
 AudioManager="*res://scenes/preload/audio_manager.tscn"
+DebugInfo="*res://scenes/preload/debug_info.tscn"
 
 [display]
 
@@ -42,6 +43,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg")
+
+[game]
+
+debug/fps_display=true
 
 [godot_resource_groups]
 

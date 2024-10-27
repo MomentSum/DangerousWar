@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://nxuwu8cskeom"]
+
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_2tcg5"]
+[ext_resource type="Script" path="res://scenes/preload/debug_info.gd" id="2_3bypj"]
+
+[node name="DebugInfo" type="Control"]
+process_mode = 3
+z_index = 10
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2tcg5")
+script = ExtResource("2_3bypj")
+
+[node name="FPSLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "FPS: "
+horizontal_alignment = 2

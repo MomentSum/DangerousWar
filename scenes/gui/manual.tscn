@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3c2iqa1785fy"]
+[gd_scene load_steps=7 format=3 uid="uid://d3c2iqa1785fy"]
 
 [ext_resource type="Script" path="res://scenes/gui/manual.gd" id="1_nyrdv"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_pa8cl"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_ht3dv"]
 [ext_resource type="Texture2D" uid="uid://b2d3wmk2funsm" path="res://resources/images/weapons/horse.svg" id="3_2ttdp"]
 [ext_resource type="Script" path="res://scenes/gui/character_Information.gd" id="3_uo3j7"]
+[ext_resource type="Script" path="res://scenes/gui/flat_button.gd" id="6_in5uc"]
 
 [node name="Manual" type="Control"]
 layout_mode = 3
@@ -20,9 +21,11 @@ character_card_scene = ExtResource("2_ht3dv")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 self_modulate = Color(0.803922, 0.803922, 0.803922, 1)
 layout_mode = 0
-offset_left = 834.0
-offset_right = 1156.0
-offset_bottom = 648.0
+offset_left = 829.0
+offset_top = 35.0
+offset_right = 1131.0
+offset_bottom = 625.0
+metadata/_edit_group_ = true
 
 [node name="Information" type="VBoxContainer" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -49,7 +52,7 @@ theme_override_font_sizes/font_size = 32
 text = "Cost: 114514"
 
 [node name="Description" type="RichTextLabel" parent="PanelContainer/Information"]
-custom_minimum_size = Vector2(0, 345)
+custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "这是兵种的描述
@@ -63,14 +66,16 @@ This is the description
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-theme_override_font_sizes/font_size = 24
-text = "Back"
+theme_override_font_sizes/font_size = 48
+text = "返回"
+flat = true
+script = ExtResource("6_in5uc")
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 32.0
-offset_right = 795.0
+offset_left = 104.0
+offset_top = 56.0
+offset_right = 813.0
 offset_bottom = 625.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2"]
@@ -83,3 +88,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]

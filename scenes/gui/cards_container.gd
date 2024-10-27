@@ -1,4 +1,4 @@
-extends HFlowContainer
+extends Container
 
 
 class_name CardsContainer
@@ -46,5 +46,6 @@ func press_card(card: CharacterCard) -> void:
 		selecting_card.be_deselected()
 	
 	selecting_card = card
-	selecting_card.be_selected()
 	card_down.emit(card)
+	if is_instance_valid(card):
+		selecting_card.be_selected()

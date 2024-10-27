@@ -32,6 +32,7 @@ scale = Vector2(3.63636, 3.63636)
 character = NodePath("../../..")
 projectile_scene = ExtResource("5_3ge4c")
 audio = ExtResource("6_s23lu")
+volume_db = -2.0
 
 [node name="MovementAI" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("3_nji3q")]
 target_distance_min = 48.0

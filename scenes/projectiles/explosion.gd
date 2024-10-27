@@ -19,5 +19,5 @@ func _ready() -> void:
 			if single_attack:
 				return
 	if show_effects:
-		AudioManager.play_2d(audio, position, -2)
+		AudioManager.play_2d(audio, position, -10)
 		get_tree().get_first_node_in_group("game_camera").shake(5)

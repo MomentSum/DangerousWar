@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=23 format=3 uid="uid://bstgsc6o0av36"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
@@ -22,16 +22,6 @@ func _on_button_down() -> void:
 	get_tree().paused = true
 "
 
-[sub_resource type="GDScript" id="GDScript_1w8pj"]
-script/source = "extends Label
-
-
-func _process(_delta: float) -> void:
-	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS)) \\
-			+ \"\\nA:\" + str(get_tree().get_nodes_in_group(\"a\").size()) \\
-			+ \"\\nB:\" + str(get_tree().get_nodes_in_group(\"b\").size())
-"
-
 [sub_resource type="GDScript" id="GDScript_sl88w"]
 script/source = "extends TextureButton
 
@@ -42,6 +32,15 @@ func _on_button_up() -> void:
 "
 
 [sub_resource type="GDScript" id="GDScript_n5ks7"]
+script/source = "extends TextureButton
+
+
+func _on_button_up() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/title.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_cm7bb"]
 script/source = "extends TextureButton
 
 
@@ -66,15 +65,6 @@ script/source = "extends TextureButton
 func _on_button_up() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
-"
-
-[sub_resource type="GDScript" id="GDScript_cm7bb"]
-script/source = "extends TextureButton
-
-
-func _on_button_up() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/title.tscn\")
 "
 
 [sub_resource type="Animation" id="Animation_0huj8"]
@@ -395,6 +385,7 @@ offset_bottom = 649.5
 grow_horizontal = 1
 grow_vertical = 1
 drop_area = NodePath("../../../../RedArea")
+cost_money = true
 money_add_speed = 200.0
 
 [node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
@@ -404,14 +395,15 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = 1044.0
+offset_left = -108.0
 offset_top = -2.0
-offset_right = 1161.0
+offset_right = 9.0
 offset_bottom = 650.0
 grow_horizontal = 0
 grow_vertical = 1
 drop_area = NodePath("../../../../BlueArea")
 team_index = 1
+cost_money = true
 money_add_speed = 200.0
 
 [node name="PauseButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
@@ -439,16 +431,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="StateLabel" type="Label" parent="CanvasLayer/GUI/View"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 32
-text = "FPS:
-A:
-B:"
-script = SubResource("GDScript_1w8pj")
 
 [node name="GameOver" type="Control" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
@@ -576,6 +558,14 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 48
 
+[node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("9_0sn3h")
+ignore_texture_size = true
+stretch_mode = 5
+script = SubResource("GDScript_cm7bb")
+
 [node name="Resume" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -591,14 +581,6 @@ texture_normal = ExtResource("8_ijqd7")
 ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_ufyb5")
-
-[node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("9_0sn3h")
-ignore_texture_size = true
-stretch_mode = 5
-script = SubResource("GDScript_cm7bb")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -618,6 +600,6 @@ script = SubResource("GDScript_pfxp2")
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" to="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" method="_on_button_up"]
+[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Resume" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Restart" method="_on_button_up"]
-[connection signal="button_up" from="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" to="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer/Exit" method="_on_button_up"]
