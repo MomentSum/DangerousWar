@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://di8cdibthmj4m"]
+[gd_scene load_steps=8 format=3 uid="uid://di8cdibthmj4m"]
 
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_fdeql"]
 [ext_resource type="Script" path="res://scenes/gui/character_selection.gd" id="1_h0ry6"]
 [ext_resource type="PackedScene" uid="uid://cj258gv81mfi4" path="res://scenes/gui/character_card.tscn" id="2_ictxk"]
 [ext_resource type="Script" path="res://scenes/gui/characters_selector.gd" id="3_b43i7"]
 [ext_resource type="PackedScene" uid="uid://cdcwx80rl01ud" path="res://scenes/gui/character_slot.tscn" id="3_dd0gw"]
+[ext_resource type="Script" path="res://scenes/gui/flat_button.gd" id="6_nyu87"]
 [ext_resource type="Texture2D" uid="uid://0ympkkbdp71m" path="res://resources/images/ui/dice.svg" id="6_w8d14"]
 
 [node name="CharacterSelection" type="Control"]
@@ -131,6 +132,8 @@ offset_right = 639.0
 offset_bottom = 636.0
 theme_override_font_sizes/font_size = 48
 text = "Start"
+flat = true
+script = ExtResource("6_nyu87")
 
 [node name="RedRandom" type="Button" parent="."]
 layout_mode = 0
@@ -151,3 +154,5 @@ scale = Vector2(0.58, 0.58)
 icon = ExtResource("6_w8d14")
 
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
+[connection signal="mouse_entered" from="Start" to="Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Start" to="Start" method="_on_mouse_exited"]

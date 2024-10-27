@@ -2,18 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/title.gd" id="1_2f63p"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_8aqqg"]
-
-[sub_resource type="GDScript" id="GDScript_anjcq"]
-script/source = "extends Button
-
-
-func _on_mouse_entered() -> void:
-	create_tween().tween_property(self, \"scale\", Vector2.ONE * 1.2, 0.1)
-
-
-func _on_mouse_exited() -> void:
-	create_tween().tween_property(self, \"scale\", Vector2.ONE, 0.1)
-"
+[ext_resource type="Script" path="res://scenes/gui/flat_button.gd" id="3_5tu81"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -42,11 +31,20 @@ offset_right = 386.0
 offset_bottom = 609.0
 theme_override_constants/separation = 40
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="BattleButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Play"
-script = SubResource("GDScript_anjcq")
+text = "对战模式"
+flat = true
+script = ExtResource("3_5tu81")
+metadata/_edit_use_anchors_ = true
+
+[node name="SandboxButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "沙盒模式"
+flat = true
+script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
 
 [node name="ManualButton" type="Button" parent="VBoxContainer"]
@@ -54,12 +52,21 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "图鉴
 "
-script = SubResource("GDScript_anjcq")
+flat = true
+script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_button_button_up"]
-[connection signal="mouse_entered" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_mouse_exited"]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="button_up" from="VBoxContainer/BattleButton" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/BattleButton" to="VBoxContainer/BattleButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/BattleButton" to="VBoxContainer/BattleButton" method="_on_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/SandboxButton" to="." method="_on_sandbox_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/SandboxButton" to="VBoxContainer/SandboxButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/SandboxButton" to="VBoxContainer/SandboxButton" method="_on_mouse_exited"]
 [connection signal="button_up" from="VBoxContainer/ManualButton" to="." method="_on_manual_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_exited"]

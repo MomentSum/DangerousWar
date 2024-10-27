@@ -1,14 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://bstgsc6o0av36"]
+[gd_scene load_steps=24 format=3 uid="uid://678j1k3bc4f0"]
 
-[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_0kgbk"]
-[ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="1_hstst"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_k5yl3"]
-[ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="1_xqigd"]
-[ext_resource type="PackedScene" uid="uid://dn681g5d7clg3" path="res://scenes/castle.tscn" id="4_u60u2"]
-[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="6_1vujt"]
-[ext_resource type="Texture2D" uid="uid://0hcksk1mjpk4" path="res://resources/images/ui/resume.svg" id="7_s00bm"]
-[ext_resource type="Texture2D" uid="uid://jjamb05m1743" path="res://resources/images/ui/restart.svg" id="8_ijqd7"]
-[ext_resource type="Texture2D" uid="uid://d2twu5af47kir" path="res://resources/images/ui/exit.svg" id="9_0sn3h"]
+[ext_resource type="Script" path="res://scenes/sandbox_game.gd" id="1_088gv"]
+[ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="2_6k266"]
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="4_f6xea"]
+[ext_resource type="PackedScene" uid="uid://c1wbixhhhqs6m" path="res://scenes/gui/cards_bar.tscn" id="5_2a8xs"]
+[ext_resource type="Texture2D" uid="uid://cb0j7rfbadd2f" path="res://resources/images/weapons/sword.svg" id="6_n33q0"]
+[ext_resource type="Texture2D" uid="uid://jjamb05m1743" path="res://resources/images/ui/restart.svg" id="7_8gnuj"]
+[ext_resource type="Texture2D" uid="uid://d2twu5af47kir" path="res://resources/images/ui/exit.svg" id="8_opp77"]
+[ext_resource type="Texture2D" uid="uid://0hcksk1mjpk4" path="res://resources/images/ui/resume.svg" id="9_ypl0y"]
 
 [sub_resource type="GDScript" id="GDScript_wuwvk"]
 script/source = "extends Button
@@ -20,6 +19,26 @@ func _on_button_down() -> void:
 	%Anim.play(\"pause\")
 	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = true
+"
+
+[sub_resource type="GDScript" id="GDScript_7oi4m"]
+script/source = "extends Button
+
+var _playing: bool = true
+
+
+func _ready() -> void:
+	get_tree().process_frame.connect(_on_button_up,CONNECT_ONE_SHOT)
+
+
+func _on_button_up() -> void:
+	_playing = not _playing
+	if _playing:
+		%Spaces.process_mode = Node.PROCESS_MODE_INHERIT
+		text = \"停止\"
+	else:
+		%Spaces.process_mode = Node.PROCESS_MODE_DISABLED
+		text = \"运行\"
 "
 
 [sub_resource type="GDScript" id="GDScript_1w8pj"]
@@ -59,13 +78,13 @@ func _on_button_up() -> void:
 	get_tree().paused = false
 "
 
-[sub_resource type="GDScript" id="GDScript_ufyb5"]
+[sub_resource type="GDScript" id="GDScript_bt386"]
 script/source = "extends TextureButton
 
 
 func _on_button_up() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/sandbox_game.tscn\")
 "
 
 [sub_resource type="GDScript" id="GDScript_cm7bb"]
@@ -320,24 +339,24 @@ func shake(shake_distance: float) -> void:
 "
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_k5yl3")
+script = ExtResource("1_088gv")
 
-[node name="RedArea" parent="." instance=ExtResource("1_hstst")]
+[node name="RedArea" parent="." instance=ExtResource("2_6k266")]
 anchors_preset = -1
-anchor_left = 0.144995
+anchor_left = 0.00350237
 anchor_top = -0.208333
-anchor_right = 0.288225
+anchor_right = 0.510447
 anchor_bottom = 1.15432
 offset_left = 0.965271
 offset_right = -12.0347
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="BlueArea" parent="." instance=ExtResource("1_hstst")]
+[node name="BlueArea" parent="." instance=ExtResource("2_6k266")]
 anchors_preset = -1
-anchor_left = 0.690972
+anchor_left = 0.463542
 anchor_top = -0.208333
-anchor_right = 0.823785
+anchor_right = 0.96441
 anchor_bottom = 1.15432
 offset_left = 42.0
 offset_top = -2.0
@@ -346,19 +365,15 @@ offset_bottom = -2.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="RedCastle" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(88, 319)
+[node name="Spaces" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="BlueCastle" parent="." instance=ExtResource("4_u60u2")]
-position = Vector2(1074, 324)
-team_index = 1
-
-[node name="CharactersSpace" type="Node2D" parent="." groups=["characters_space"]]
+[node name="CharactersSpace" type="Node2D" parent="Spaces" groups=["characters_space"]]
 y_sort_enabled = true
 
-[node name="ProjectilesSpace" type="Node2D" parent="." groups=["projectiles_space"]]
+[node name="ProjectilesSpace" type="Node2D" parent="Spaces" groups=["projectiles_space"]]
 
-[node name="ParticlesSpace" type="Node2D" parent="." groups=["particles_space"]]
+[node name="ParticlesSpace" type="Node2D" parent="Spaces" groups=["particles_space"]]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -371,7 +386,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_0kgbk")
+theme = ExtResource("4_f6xea")
 
 [node name="Opeartions" type="Control" parent="CanvasLayer/GUI"]
 process_mode = 1
@@ -383,7 +398,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RedCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
+[node name="RedCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("5_2a8xs")]
 process_mode = 1
 layout_mode = 1
 anchors_preset = 0
@@ -397,16 +412,16 @@ grow_vertical = 1
 drop_area = NodePath("../../../../RedArea")
 money_add_speed = 200.0
 
-[node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
+[node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("5_2a8xs")]
 process_mode = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_left = 1044.0
+offset_left = -108.0
 offset_top = -2.0
-offset_right = 1161.0
+offset_right = 9.0
 offset_bottom = 650.0
 grow_horizontal = 0
 grow_vertical = 1
@@ -430,6 +445,27 @@ toggle_mode = true
 text = "〓"
 flat = true
 script = SubResource("GDScript_wuwvk")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/GUI/Opeartions"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -88.0
+offset_right = 48.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+toggle_mode = true
+text = "Play"
+flat = true
+script = SubResource("GDScript_7oi4m")
 
 [node name="View" type="Control" parent="CanvasLayer/GUI"]
 layout_mode = 1
@@ -494,7 +530,7 @@ offset_left = 520.0
 offset_top = 182.0
 offset_right = 659.0
 offset_bottom = 324.0
-texture = ExtResource("6_1vujt")
+texture = ExtResource("6_n33q0")
 expand_mode = 1
 stretch_mode = 5
 
@@ -526,7 +562,7 @@ theme_override_constants/separation = 96
 [node name="Restart" type="TextureButton" parent="CanvasLayer/GUI/GameOver/HBoxContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("8_ijqd7")
+texture_normal = ExtResource("7_8gnuj")
 ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_sl88w")
@@ -534,7 +570,7 @@ script = SubResource("GDScript_sl88w")
 [node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/GameOver/HBoxContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-texture_normal = ExtResource("9_0sn3h")
+texture_normal = ExtResource("8_opp77")
 ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_n5ks7")
@@ -547,12 +583,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Back" type="ColorRect" parent="CanvasLayer/GUI/Pause"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.341176, 0.341176, 0.341176, 0.670588)
@@ -565,10 +603,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -44.0
-offset_right = 144.0
-offset_bottom = 44.0
+offset_left = -157.0
+offset_top = -52.0
+offset_right = 155.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -579,7 +617,7 @@ theme_override_constants/separation = 48
 [node name="Resume" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("7_s00bm")
+texture_normal = ExtResource("9_ypl0y")
 ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_f4yk8")
@@ -587,15 +625,15 @@ script = SubResource("GDScript_f4yk8")
 [node name="Restart" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("8_ijqd7")
+texture_normal = ExtResource("7_8gnuj")
 ignore_texture_size = true
 stretch_mode = 5
-script = SubResource("GDScript_ufyb5")
+script = SubResource("GDScript_bt386")
 
 [node name="Exit" type="TextureButton" parent="CanvasLayer/GUI/Pause/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("9_0sn3h")
+texture_normal = ExtResource("8_opp77")
 ignore_texture_size = true
 stretch_mode = 5
 script = SubResource("GDScript_cm7bb")
@@ -612,9 +650,8 @@ autoplay = "game_start"
 position = Vector2(576, 324)
 script = SubResource("GDScript_pfxp2")
 
-[connection signal="be_destoryed" from="RedCastle" to="." method="_on_red_castle_be_destoryed"]
-[connection signal="be_destoryed" from="BlueCastle" to="." method="_on_blue_castle_be_destoryed"]
 [connection signal="button_down" from="CanvasLayer/GUI/Opeartions/PauseButton" to="CanvasLayer/GUI/Opeartions/PauseButton" method="_on_button_down"]
+[connection signal="button_up" from="CanvasLayer/GUI/Opeartions/PlayButton" to="CanvasLayer/GUI/Opeartions/PlayButton" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="." method="_on_restart_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" to="CanvasLayer/GUI/GameOver/HBoxContainer/Restart" method="_on_button_up"]
 [connection signal="button_up" from="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" to="CanvasLayer/GUI/GameOver/HBoxContainer/Exit" method="_on_button_up"]

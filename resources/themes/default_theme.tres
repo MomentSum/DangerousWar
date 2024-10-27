@@ -6,5 +6,8 @@
 [resource]
 default_font = ExtResource("2_xi7ma")
 default_font_size = 16
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.545098, 0.545098, 0.545098, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Panel/styles/panel = ExtResource("1_bh08j")
 PanelContainer/styles/panel = ExtResource("1_bh08j")

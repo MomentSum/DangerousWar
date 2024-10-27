@@ -11,4 +11,8 @@ func _ready() -> void:
 func _on_start_button_up() -> void:
 	GameRunningData.selecting_datas[0] = %RedCards.get_selecting_datas()
 	GameRunningData.selecting_datas[1] = %BlueCards.get_selecting_datas()
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	match(GameRunningData.game_mode):
+		0:
+			get_tree().change_scene_to_file("res://scenes/game.tscn")
+		1:
+			get_tree().change_scene_to_file("res://scenes/sandbox_game.tscn")

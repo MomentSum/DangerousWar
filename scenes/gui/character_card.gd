@@ -23,6 +23,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func be_selected() -> void:
 	$Bias.show()
+	print("u")
 
 
 func be_deselected() -> void:

@@ -6,19 +6,19 @@ extends Control
 @export var cost_money: bool
 @export var money_add_speed: float
 
-var _selecting_card: CharacterCard
-
 var _money: float
 
 
 func _ready() -> void:
-	#for card: CharacterCard in %Cards.get_children():
-		#card.card_button_down.connect(_on_card_button_down.bind(card))
-	set_data(GameRunningData.selecting_datas[team_index])
-	modulate = GameRunningData.teams_colors[team_index]
+	%Cards.team_index = team_index
+	
+	%Cards.set_data(GameRunningData.selecting_datas[team_index])
+	var color = GameRunningData.teams_colors[team_index]
+	$Bar.self_modulate = color
+	$Bar.self_modulate.a = 0.9
+	$Money.modulate = color
 	if is_instance_valid(drop_area):
-		drop_area.modulate *= modulate
-	modulate.a = 0.9
+		drop_area.modulate *= color
 	
 	if is_instance_valid(drop_area):
 		drop_area.character_dropped.connect(_on_character_dropped)
@@ -37,44 +37,19 @@ func _process(delta: float) -> void:
 	%MoneyLabel.text = str(int(_money))
 
 
-func set_data(card_datas: Array[CharacterData]) -> void:
-	clear_cards()
-	for data in card_datas:
-		var card = card_scene.instantiate() as CharacterCard
-		card.set_data(data)
-		card.card_button_down.connect(_on_card_button_down.bind(card))
-		%Cards.add_child(card)
-
-
-func clear_cards() -> void:
-	for child in %Cards.get_children():
-		child.queue_free()
-	_selecting_card = null
-
-
-func _on_card_button_down(card: CharacterCard) -> void:
-	if is_instance_valid(_selecting_card):
-		_selecting_card.be_deselected()
-	if _selecting_card == card:
-		_selecting_card = null
-		return
-	_selecting_card = card
-	_selecting_card.be_selected()
-
-
 func _on_character_dropped(pos: Vector2) -> void:
-	if not is_instance_valid(_selecting_card):
+	if not is_instance_valid(%Cards.selecting_card):
 		return
 	
-	if cost_money and _money < _selecting_card.data.price:
+	if cost_money and _money < %Cards.selecting_card.data.price:
 		return
 	
-	var character = _selecting_card.data.character_scene.instantiate() as Character
+	var character = %Cards.selecting_card.data.character_scene.instantiate() as Character
 	character.team_index = team_index
 	character.position = pos
 	get_tree().get_first_node_in_group("characters_space").add_child(character)
 	
 	if cost_money:
-		_money -= _selecting_card.data.price
+		_money -= %Cards.selecting_card.data.price
 	else:
-		_money += _selecting_card.data.price
+		_money += %Cards.selecting_card.data.price
