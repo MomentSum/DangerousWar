@@ -1,0 +1,233 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlkljw5p2yjxb"]
+
+[ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_vjtd5"]
+[ext_resource type="Script" path="res://scenes/gui/settings.gd" id="2_s44au"]
+[ext_resource type="Script" path="res://scenes/gui/flat_button.gd" id="3_2rcop"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dde8i"]
+thickness = 5
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vjtd5")
+script = ExtResource("2_s44au")
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Separator" type="VBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/Separator"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "音量"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Settings/HBoxContainer/VBoxContainer/Separator"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_dde8i")
+
+[node name="Control" type="Control" parent="Settings/HBoxContainer/VBoxContainer/Separator"]
+custom_minimum_size = Vector2(0, 13.2)
+layout_mode = 2
+
+[node name="BGMVolume" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/BGMVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "背景音量"
+
+[node name="HSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer/BGMVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -100.0
+max_value = 20.0
+
+[node name="AudioVolume" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/AudioVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "音效音量"
+
+[node name="HSlider" type="HSlider" parent="Settings/HBoxContainer/VBoxContainer/AudioVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -100.0
+max_value = 20.0
+
+[node name="Separator2" type="VBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/Separator2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "队伍"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Settings/HBoxContainer/VBoxContainer/Separator2"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_dde8i")
+
+[node name="Control" type="Control" parent="Settings/HBoxContainer/VBoxContainer/Separator2"]
+custom_minimum_size = Vector2(0, 13.2)
+layout_mode = 2
+
+[node name="LeftTeamName" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/LeftTeamName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "左侧队伍名称"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/HBoxContainer/VBoxContainer/LeftTeamName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "速度"
+placeholder_text = "TeamName"
+scroll_fit_content_height = true
+
+[node name="LeftTeamColor" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/LeftTeamColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "左侧队伍颜色"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Settings/HBoxContainer/VBoxContainer/LeftTeamColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="RightTeamName" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/RightTeamName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "右侧队伍名称"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/HBoxContainer/VBoxContainer/RightTeamName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "速度"
+placeholder_text = "TeamName"
+scroll_fit_content_height = true
+
+[node name="RightTeamColor" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/RightTeamColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "背景音量"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Settings/HBoxContainer/VBoxContainer/RightTeamColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="Separator3" type="VBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/Separator3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "其他"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Settings/HBoxContainer/VBoxContainer/Separator3"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_dde8i")
+
+[node name="Control" type="Control" parent="Settings/HBoxContainer/VBoxContainer/Separator3"]
+custom_minimum_size = Vector2(0, 13.2)
+layout_mode = 2
+
+[node name="Language" type="HBoxContainer" parent="Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Settings/HBoxContainer/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "背景音量"
+
+[node name="ColorPickerButton" type="OptionButton" parent="Settings/HBoxContainer/VBoxContainer/Language"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+item_count = 2
+selected = 0
+popup/item_0/text = "简体中文"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 62.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "返回"
+flat = true
+script = ExtResource("3_2rcop")
+
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/BGMVolume/HSlider" to="Settings" method="_on_bgm_volume_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/VBoxContainer/AudioVolume/HSlider" to="Settings" method="_on_audio_volume_value_changed"]
+[connection signal="text_changed" from="Settings/HBoxContainer/VBoxContainer/LeftTeamName/TextEdit" to="Settings" method="_on_left_team_name_text_changed"]
+[connection signal="color_changed" from="Settings/HBoxContainer/VBoxContainer/LeftTeamColor/ColorPickerButton" to="Settings" method="_on_left_team_color_color_changed"]
+[connection signal="text_changed" from="Settings/HBoxContainer/VBoxContainer/RightTeamName/TextEdit" to="Settings" method="_on_right_team_name_text_changed"]
+[connection signal="button_up" from="BackButton" to="Settings" method="_on_back_button_button_up"]

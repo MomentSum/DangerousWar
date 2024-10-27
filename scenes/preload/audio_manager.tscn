@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfhw6uq7bxl62"]
+[gd_scene load_steps=3 format=3 uid="uid://bfhw6uq7bxl62"]
 
 [ext_resource type="Script" path="res://scenes/preload/audio_manager.gd" id="1_jhoy2"]
+[ext_resource type="AudioStream" uid="uid://d22b0pcxasufv" path="res://resources/audio/bgm/test_bgm.mp3" id="2_pety6"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_jhoy2")
@@ -8,3 +9,7 @@ script = ExtResource("1_jhoy2")
 [node name="2DPlayers" type="Node" parent="."]
 
 [node name="Players" type="Node" parent="."]
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pety6")
+autoplay = true

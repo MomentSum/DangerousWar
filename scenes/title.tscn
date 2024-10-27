@@ -29,11 +29,11 @@ offset_left = 38.0
 offset_top = 216.0
 offset_right = 386.0
 offset_bottom = 609.0
-theme_override_constants/separation = 40
+theme_override_constants/separation = 30
 
 [node name="BattleButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "对战模式"
 flat = true
 script = ExtResource("3_5tu81")
@@ -41,7 +41,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SandboxButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "沙盒模式"
 flat = true
 script = ExtResource("3_5tu81")
@@ -49,17 +49,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ManualButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "图鉴
 "
 flat = true
 script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "设置
+"
+flat = true
+script = ExtResource("3_5tu81")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_up" from="VBoxContainer/BattleButton" to="." method="_on_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/BattleButton" to="VBoxContainer/BattleButton" method="_on_mouse_entered"]
@@ -70,3 +74,6 @@ offset_bottom = 40.0
 [connection signal="button_up" from="VBoxContainer/ManualButton" to="." method="_on_manual_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ManualButton" to="VBoxContainer/ManualButton" method="_on_mouse_exited"]
+[connection signal="button_up" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/SettingsButton" to="VBoxContainer/SettingsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/SettingsButton" to="VBoxContainer/SettingsButton" method="_on_mouse_exited"]
