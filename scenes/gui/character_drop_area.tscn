@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scenes/gui/character_drop_area.gd" id="1_kqc8s"]
 
 [node name="CharacterDropArea" type="TextureRect"]
-top_level = true
 z_index = -2
 z_as_relative = false
 anchors_preset = 15
