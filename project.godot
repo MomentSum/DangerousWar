@@ -82,6 +82,10 @@ player_move_up={
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://resources/languages/strings.en.translation", "res://resources/languages/strings.zh.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"

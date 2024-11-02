@@ -11,3 +11,4 @@ extends Node
 
 func _ready() -> void:
 	selecting_datas.resize(2)
+	teams_names = [Assets.settings.left_team_name, Assets.settings.right_team_name]

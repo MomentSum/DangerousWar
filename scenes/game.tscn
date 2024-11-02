@@ -385,7 +385,6 @@ offset_bottom = 649.5
 grow_horizontal = 1
 grow_vertical = 1
 drop_area = NodePath("../../../../RedArea")
-cost_money = true
 money_add_speed = 200.0
 
 [node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
@@ -462,7 +461,7 @@ offset_right = 218.0
 offset_bottom = 152.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
-text = "GAME OVER"
+text = "game.game_over"
 
 [node name="WinInfo" type="Control" parent="CanvasLayer/GUI/GameOver"]
 unique_name_in_owner = true

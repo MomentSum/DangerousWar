@@ -44,3 +44,7 @@ func change_volume_db(change: float) -> void:
 
 func set_bgm_voume_db(volume_db: float) -> void:
 	$BGMPlayer.volume_db = volume_db
+
+
+func _ready() -> void:
+	set_bgm_voume_db(Assets.settings.bgm_volume)

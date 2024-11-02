@@ -1,0 +1,19 @@
+id,en,zh
+ui.settings,Settings,设置
+ui.back,Back,返回
+ui.sandbox,Sandbox,沙盒模式
+ui.battle,Battle,对战模式
+settings.left_team_name,Name of Left Team,左队名称
+settings.right_team_name,Name of Right Team,右队名称
+settings.bgm_volume,Bgm Volume,背景音量
+settings.audio_volume,Audio Volume,音效音量
+ui.manual,Manual,图鉴
+settings.language,Language,语言
+settings.volume,Volume,音量
+settings.others,Others,其他
+settings.team,Team,队伍
+game.win,"WINNER: ",胜者：
+game.game_over,GAME OVER!,胜负已定！
+ui.start,Start,开始
+game.price,"Price: ",价格：
+info.author,Made by Momentsum,Momentsum 制作

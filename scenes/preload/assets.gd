@@ -14,6 +14,8 @@ func _ready() -> void:
 		settings = load(SETTINGS_PATH)
 	else:
 		settings = SettingsData.new()
+	
+	TranslationServer.set_locale(settings.locate)
 
 
 func save_settings() -> void:

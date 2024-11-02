@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://678j1k3bc4f0"]
+[gd_scene load_steps=20 format=3 uid="uid://678j1k3bc4f0"]
 
 [ext_resource type="Script" path="res://scenes/sandbox_game.gd" id="1_088gv"]
 [ext_resource type="PackedScene" uid="uid://bv440mct5fn50" path="res://scenes/gui/character_drop_area.tscn" id="2_6k266"]
@@ -70,14 +70,6 @@ func _process(delta: float) -> void:
 			text = team_price_str + characters_count_str
 		HORIZONTAL_ALIGNMENT_LEFT:
 			text = characters_count_str + team_price_str
-"
-
-[sub_resource type="GDScript" id="GDScript_1w8pj"]
-script/source = "extends Label
-
-
-func _process(_delta: float) -> void:
-	text = \"FPS:\" + str(Performance.get_monitor(Performance.TIME_FPS))
 "
 
 [sub_resource type="GDScript" id="GDScript_sl88w"]
@@ -407,17 +399,6 @@ theme_override_font_sizes/font_size = 48
 text = "12345"
 script = SubResource("GDScript_h0t41")
 team_index = 1
-
-[node name="FPSlabel3" type="Label" parent="CanvasLayer/GUI/View"]
-layout_mode = 0
-offset_top = 615.0
-offset_right = 1152.0
-offset_bottom = 647.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.466667)
-theme_override_font_sizes/font_size = 32
-text = "FPS: "
-horizontal_alignment = 2
-script = SubResource("GDScript_1w8pj")
 
 [node name="GameOver" type="Control" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true

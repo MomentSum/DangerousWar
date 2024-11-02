@@ -131,7 +131,7 @@ offset_top = 583.0
 offset_right = 726.0
 offset_bottom = 639.0
 theme_override_font_sizes/font_size = 48
-text = "开始"
+text = "ui.start"
 flat = true
 script = ExtResource("6_nyu87")
 
@@ -142,7 +142,7 @@ offset_top = 583.0
 offset_right = 543.0
 offset_bottom = 639.0
 theme_override_font_sizes/font_size = 48
-text = "返回"
+text = "ui.back"
 flat = true
 script = ExtResource("6_nyu87")
 

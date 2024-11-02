@@ -1,8 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://eflmp6jcpku1"]
+[gd_scene load_steps=9 format=3 uid="uid://eflmp6jcpku1"]
 
 [ext_resource type="Script" path="res://scenes/title.gd" id="1_2f63p"]
 [ext_resource type="Theme" uid="uid://duumt3ib4xkid" path="res://resources/themes/default_theme.tres" id="1_8aqqg"]
 [ext_resource type="Script" path="res://scenes/gui/flat_button.gd" id="3_5tu81"]
+
+[sub_resource type="GDScript" id="GDScript_h1hd2"]
+script/source = "extends Label
+
+
+func _on_mouse_entered() -> void:
+	$Anim.play(\"mouse_entered\")
+
+
+func _on_mouse_exited() -> void:
+	$Anim.play(\"mouse_exited\")
+"
+
+[sub_resource type="Animation" id="Animation_fdl1m"]
+resource_name = "mouse_entered"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.18, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.18, 1),
+"update": 0,
+"values": [Vector2(20, -50), Vector2(20, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_mx0ne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_ju40c"]
+resource_name = "mouse_exited"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.18, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.18, 1),
+"update": 0,
+"values": [Vector2(20, 50), Vector2(20, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67axj"]
+_data = {
+"RESET": SubResource("Animation_mx0ne"),
+"mouse_entered": SubResource("Animation_fdl1m"),
+"mouse_exited": SubResource("Animation_ju40c")
+}
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -23,6 +161,46 @@ offset_bottom = 134.0
 theme_override_font_sizes/font_size = 96
 text = "Dangerous War"
 
+[node name="Info" type="Label" parent="."]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 83.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "info.author"
+script = SubResource("GDScript_h1hd2")
+
+[node name="Anim" type="AnimationPlayer" parent="Info"]
+root_node = NodePath("../VBoxContainer/Bilibili")
+libraries = {
+"": SubResource("AnimationLibrary_67axj")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 20.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 44.0
+
+[node name="Bilibili" type="LinkButton" parent="Info/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Bilibil"
+uri = "https://space.bilibili.com/1713919710"
+
+[node name="Github" type="LinkButton" parent="Info/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Github"
+uri = "https://github.com/MomentSum"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 38.0
@@ -34,7 +212,7 @@ theme_override_constants/separation = 30
 [node name="BattleButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "对战模式"
+text = "ui.battle"
 flat = true
 script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
@@ -42,7 +220,7 @@ metadata/_edit_use_anchors_ = true
 [node name="SandboxButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "沙盒模式"
+text = "ui.sandbox"
 flat = true
 script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
@@ -50,8 +228,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ManualButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "图鉴
-"
+text = "ui.manual"
 flat = true
 script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
@@ -59,12 +236,13 @@ metadata/_edit_use_anchors_ = true
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "设置
-"
+text = "ui.settings"
 flat = true
 script = ExtResource("3_5tu81")
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="Info" to="Info" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Info" to="Info" method="_on_mouse_exited"]
 [connection signal="button_up" from="VBoxContainer/BattleButton" to="." method="_on_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/BattleButton" to="VBoxContainer/BattleButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/BattleButton" to="VBoxContainer/BattleButton" method="_on_mouse_exited"]

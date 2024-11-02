@@ -4,7 +4,9 @@
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0.545098, 0.545098, 0.545098, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+LinkButton/colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
 Panel/styles/panel = ExtResource("1_bh08j")
 PanelContainer/styles/panel = ExtResource("1_bh08j")

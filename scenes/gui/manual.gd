@@ -13,6 +13,7 @@ func _ready() -> void:
 		card.set_data(data)
 		card.card_button_down.connect(_on_card_down.bind(card))
 		%Characters.add_child(card)
+	%Characters.get_child(0).card_button_down.emit()
 
 
 func _on_card_down(card: CharacterCard) -> void:
