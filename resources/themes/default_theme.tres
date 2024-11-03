@@ -10,3 +10,4 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 LinkButton/colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
 Panel/styles/panel = ExtResource("1_bh08j")
 PanelContainer/styles/panel = ExtResource("1_bh08j")
+PopupMenu/font_sizes/font_size = 32

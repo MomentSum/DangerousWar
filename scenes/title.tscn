@@ -159,6 +159,7 @@ offset_left = 386.0
 offset_top = 38.0
 offset_right = 1130.0
 offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "Dangerous War"
 

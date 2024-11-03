@@ -125,6 +125,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "速度"
 placeholder_text = "settings.team_name"
+context_menu_enabled = false
 scroll_fit_content_height = true
 
 [node name="RightTeamName" type="HBoxContainer" parent="Settings/VBoxContainer"]
@@ -144,6 +145,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "速度"
 placeholder_text = "settings.team_name"
+context_menu_enabled = false
 scroll_fit_content_height = true
 
 [node name="Separator3" type="VBoxContainer" parent="Settings/VBoxContainer"]
