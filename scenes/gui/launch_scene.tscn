@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctuxd884aa7xi"]
+
+[ext_resource type="Script" path="res://scenes/gui/launch_scene.gd" id="1_4jhxd"]
+[ext_resource type="Texture2D" uid="uid://dm1hinlajbepo" path="res://resources/images/icons/launch_image.png" id="1_stph2"]
+
+[node name="LaunchScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4jhxd")
+
+[node name="Image" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_stph2")

@@ -10,6 +10,6 @@ id = &"boomer"
 name = &"自爆步兵"
 icon = ExtResource("2_k32y5")
 price = 400
-description = "无畏的骑士
-"
+description = "在其他单位掩护下得以打出巨量范围伤害，攻城尤为有效
+“MD我和你爆了！”"
 character_scene = ExtResource("1_kp4e6")

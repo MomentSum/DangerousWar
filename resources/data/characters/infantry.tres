@@ -10,5 +10,6 @@ id = &"infantry"
 name = &"步兵"
 icon = ExtResource("2_bjuw6")
 price = 150
-description = ""
+description = "近程快速输出的全能方案，旨在摧毁快速移动单位以及堆叠单位。
+“大人，时代变了！”"
 character_scene = ExtResource("1_qm0ee")

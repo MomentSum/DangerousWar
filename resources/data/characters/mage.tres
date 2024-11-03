@@ -10,5 +10,6 @@ id = &"mage"
 name = &"法师"
 icon = ExtResource("2_78d0j")
 price = 150
-description = "无畏的法师"
+description = "快速摧毁血厚的单体目标
+"
 character_scene = ExtResource("1_074yv")

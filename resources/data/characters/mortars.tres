@@ -10,5 +10,7 @@ id = &"mortars"
 name = &"迫击炮兵"
 icon = ExtResource("2_46mwk")
 price = 800
-description = ""
+description = "旨在远程地摧毁敌方的堆叠单位。 
+“Fire in the hole!”
+"
 character_scene = ExtResource("1_ij64b")

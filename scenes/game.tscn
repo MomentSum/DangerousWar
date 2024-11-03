@@ -312,27 +312,36 @@ func shake(shake_distance: float) -> void:
 [node name="Game" type="Node2D"]
 script = ExtResource("1_k5yl3")
 
-[node name="RedArea" parent="." instance=ExtResource("1_hstst")]
+[node name="Areas" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1161.0
+offset_bottom = 650.0
+
+[node name="RedArea" parent="Areas" instance=ExtResource("1_hstst")]
+z_index = 0
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.144995
-anchor_top = -0.208333
-anchor_right = 0.288225
-anchor_bottom = 1.15432
-offset_left = 0.965271
-offset_right = -12.0347
+anchor_left = 0.145564
+anchor_top = -0.166154
+anchor_right = -0.143842
+anchor_bottom = 0.26
+offset_right = 512.0
+offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="BlueArea" parent="." instance=ExtResource("1_hstst")]
+[node name="BlueArea" parent="Areas" instance=ExtResource("1_hstst")]
+z_index = 0
+z_as_relative = true
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.690972
-anchor_top = -0.208333
-anchor_right = 0.823785
-anchor_bottom = 1.15432
-offset_left = 42.0
-offset_top = -2.0
-offset_right = 41.0
-offset_bottom = -2.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 795.0
+offset_top = -108.0
+offset_right = 1056.0
+offset_bottom = 817.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -384,7 +393,8 @@ offset_right = 113.0
 offset_bottom = 649.5
 grow_horizontal = 1
 grow_vertical = 1
-drop_area = NodePath("../../../../RedArea")
+drop_area = NodePath("../../../../Areas/RedArea")
+cost_money = true
 money_add_speed = 200.0
 
 [node name="BlueCardsBar" parent="CanvasLayer/GUI/Opeartions" node_paths=PackedStringArray("drop_area") instance=ExtResource("1_xqigd")]
@@ -400,7 +410,7 @@ offset_right = 1161.0
 offset_bottom = 650.0
 grow_horizontal = 0
 grow_vertical = 1
-drop_area = NodePath("../../../../BlueArea")
+drop_area = NodePath("../../../../Areas/BlueArea")
 team_index = 1
 cost_money = true
 money_add_speed = 200.0

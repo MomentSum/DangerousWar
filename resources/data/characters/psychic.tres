@@ -10,5 +10,6 @@ id = &"psychic"
 name = &"通灵师"
 icon = ExtResource("2_k6k4p")
 price = 600
-description = ""
+description = "旨在召唤大量堆叠的单位以掩护进攻
+"
 character_scene = ExtResource("1_32jqk")

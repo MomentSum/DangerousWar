@@ -10,5 +10,5 @@ id = &"archer"
 name = &"弓箭手"
 icon = ExtResource("1_p0prt")
 price = 100
-description = "是的，弓箭手！！！"
+description = "以较低成本快速堆叠以打击或单体敌方堆叠目标"
 character_scene = ExtResource("1_sci80")

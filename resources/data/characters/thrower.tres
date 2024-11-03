@@ -10,5 +10,6 @@ id = &"thrower"
 name = &"投弹手"
 icon = ExtResource("2_2y0ko")
 price = 200
-description = "丢雷老牟"
+description = "旨在快速摧毁近程的大量堆叠。
+"
 character_scene = ExtResource("1_0x7f7")

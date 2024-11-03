@@ -10,6 +10,6 @@ id = &"sniper"
 name = &"狙击手"
 icon = ExtResource("2_fhxiq")
 price = 500
-description = "无畏的骑士
+description = "摧毁敌方血厚的掩护单位
 "
 character_scene = ExtResource("1_5uhtq")

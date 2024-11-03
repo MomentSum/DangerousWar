@@ -10,5 +10,6 @@ id = &"machine_gunner"
 name = &"机枪手"
 icon = ExtResource("2_qj3ku")
 price = 500
-description = ""
+description = "可以快速摧毁极大量的堆叠单位
+"
 character_scene = ExtResource("1_utpcq")

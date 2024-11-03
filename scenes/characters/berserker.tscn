@@ -102,7 +102,7 @@ shape = SubResource("CircleShape2D_prctg")
 [node name="Axe" type="Sprite2D" parent="CharacterSprite" index="3"]
 position = Vector2(-3, 6)
 rotation = -2.13803
-scale = Vector2(0.245, 0.245)
+scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_2p25g")
 offset = Vector2(0, -32)
 

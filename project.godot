@@ -15,10 +15,11 @@ config/name_localized={
 "zh_CN": "危险？战争！"
 }
 config/version="1.1.0"
-run/main_scene="res://scenes/title.tscn"
+run/main_scene="res://scenes/gui/launch_scene.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.2", "Mobile")
-boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/bg_color=Color(0.894118, 0.894118, 0.894118, 1)
+boot_splash/show_image=false
 config/icon="res://resources/images/icons/new_icon.svg"
 config/windows_native_icon="res://resources/images/icons/new_icon.ico"
 

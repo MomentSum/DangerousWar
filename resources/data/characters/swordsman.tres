@@ -10,5 +10,6 @@ id = &"swordsman"
 name = &"剑士"
 icon = ExtResource("1_lhoja")
 price = 50
-description = "无畏的剑士‘"
+description = "可以以低成本快速堆叠，并且血量不低
+"
 character_scene = ExtResource("1_ijgkd")

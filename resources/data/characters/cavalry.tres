@@ -10,6 +10,6 @@ id = &"cavalry"
 name = &"骑兵"
 icon = ExtResource("2_3w84s")
 price = 250
-description = "无畏的骑士
-"
+description = "以迅雷不及掩耳之势快速击垮敌方的近程堆叠目标，同时分散火力
+“我精骑三千，足敌君羸卒数万”"
 character_scene = ExtResource("1_yikgx")

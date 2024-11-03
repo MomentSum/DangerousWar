@@ -10,5 +10,6 @@ id = &"hypaspist"
 name = &"盾兵"
 icon = ExtResource("2_2t8yw")
 price = 300
-description = "格挡一切！！！"
+description = "血量极厚，能吸引火力，掩护其他单位
+"
 character_scene = ExtResource("1_qflvr")

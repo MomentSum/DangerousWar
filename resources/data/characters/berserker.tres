@@ -10,5 +10,6 @@ id = &"berserker"
 name = &"狂战士"
 icon = ExtResource("2_r6emt")
 price = 400
-description = ""
+description = "拥有一定防御能力的单位，能够摧毁堆叠单位
+"
 character_scene = ExtResource("1_43dmx")
